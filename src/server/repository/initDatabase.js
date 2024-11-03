@@ -12,7 +12,7 @@ class InitDatabase {
         }).promise();
     }
 
-    async inializeDatabase() {
+    async initializeDatabase() {
         const database = process.env.MYSQL_DATABASE
         const query = `CREATE DATABASE IF NOT EXISTS ${database}`
         
@@ -21,7 +21,7 @@ class InitDatabase {
     }
 
     async initializeUsersTable() {
-        this.pool.execute(`CREATE TABLE IF NOT EXISTS users(
+        await this.pool.execute(`CREATE TABLE IF NOT EXISTS users(
             userId VARCHAR(40) NOT NULL UNIQUE,
             email VARCHAR(60) NOT NULL UNIQUE,
             password VARCHAR(15) NOT NULL,
@@ -31,7 +31,7 @@ class InitDatabase {
     }
 
     async initializeNamesTable() {
-        this.pool.execute(`CREATE TABLE IF NOT EXISTS names (
+        await this.pool.execute(`CREATE TABLE IF NOT EXISTS names (
             userId VARCHAR(40) NOT NULL UNIQUE,
             firstName VARCHAR(30) NOT NULL,
             lastName VARCHAR(30) NOT NULL,
@@ -42,7 +42,7 @@ class InitDatabase {
     }
 
     async initializeImagesTable() {
-        this.pool.execute(`CREATE TABLE IF NOT EXISTS images(
+        await this.pool.execute(`CREATE TABLE IF NOT EXISTS images(
             imageId VARCHAR(40) NOT NULL UNIQUE,
             image LONGBLOB NOT NULL,
             imageName VARCHAR(255) NOT NULL,
@@ -52,7 +52,7 @@ class InitDatabase {
     }
 
     async initializeProductsTable() {
-        this.pool.execute(`CREATE TABLE IF NOT EXISTS products(
+        await this.pool.execute(`CREATE TABLE IF NOT EXISTS products(
             productId VARCHAR(40) NOT NULL UNIQUE,
             productName VARCHAR(50) NOT NULL,
             price DECIMAL(12, 4) NOT NULL,
@@ -63,7 +63,7 @@ class InitDatabase {
     }
 
     async initializeProductSizesTable() {
-        this.pool.execute(`CREATE TABLE IF NOT EXISTS productSizes(
+        await this.pool.execute(`CREATE TABLE IF NOT EXISTS productSizes(
             productSizeId VARCHAR(40),
             productId VARCHAR(40),
             sizeId VARCHAR(5) NOT NULL, 
@@ -76,7 +76,7 @@ class InitDatabase {
     }
 
     async initializeProductImagesTable() {
-        this.pool.execute(`CREATE TABLE IF NOT EXISTS productImages(
+        await this.pool.execute(`CREATE TABLE IF NOT EXISTS productImages(
             imageId VARCHAR(40) NOT NULL UNIQUE,
             productId VARCHAR(40) NOT NULL UNIQUE,
 
@@ -87,7 +87,7 @@ class InitDatabase {
     }
 
     async initializeSizesTable() {
-        this.pool.execute(`CREATE TABLE IF NOT EXISTS sizes(
+        await this.pool.execute(`CREATE TABLE IF NOT EXISTS sizes(
             sizeId VARCHAR(40) NOT NULL UNIQUE,
             size VARCHAR(5) NOT NULL,
             isTop TINYINT(1) NOT NULL DEFAULT 0,
@@ -104,7 +104,7 @@ class InitDatabase {
     }
 
     async initializeOrdersTable() {
-        this.pool.execute(`CREATE TABLE IF NOT EXISTS orders(
+        await this.pool.execute(`CREATE TABLE IF NOT EXISTS orders(
             orderId VARCHAR(40) NOT NULL UNIQUE,
             buyerId VARCHAR(40) NOT NULL,
             orderDate DATETIME NOT NULL,
@@ -116,11 +116,10 @@ class InitDatabase {
     }
     
     async initializeUsersInfoTable() {
-        this.pool.execute(`CREATE TABLE IF NOT EXISTS usersInfo(
+        await this.pool.execute(`CREATE TABLE IF NOT EXISTS usersInfo(
             userId VARCHAR(40) NOT NULL UNIQUE,
             srCode VARCHAR(10) NOT NULL UNIQUE,
             contactNumber VARCHAR(15) NOT NULL,
-
 
             PRIMARY KEY(userId),
             FOREIGN KEY(userId) REFERENCES users(userId)
@@ -128,15 +127,27 @@ class InitDatabase {
     }
 
     async initializeCartsTable() {
-        this.pool.execute(`CREATE TABLE IF NOT EXISTS carts(
+        await this.pool.execute(`CREATE TABLE IF NOT EXISTS carts(
             cartId VARCHAR(40) NOT NULL UNIQUE,
             productId VARCHAR(40) NOT NULL, 
-            userid VARCHAR(40) NOT NULL
+            userid VARCHAR(40) NOT NULL,
             quantity INT NOT NULL,
+            time DATETIME NOT NULL,
 
             PRIMARY KEY(cartId),
             FOREIGN KEY(productId) REFERENCES products(productId),
             FOREIGN KEY(userId) REFERENCES users(userId)
+        )`)
+    }
+
+    async initializeUserImagesTable() {
+        await this.pool.execute(`CREATE TABLE IF NOT EXISTS userImages(
+            userId VARCHAR(40) NOT NULL UNIQUE,
+            imageId VARCHAR(40) NOT NULL,
+
+            PRIMARY KEY(userId),
+            FOREIGN KEY(userId) REFERENCES users(userId),
+            FOREIGN KEY(imageId) REFERENCES images(imageId)
         )`)
     }
 }

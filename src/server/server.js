@@ -16,8 +16,19 @@ app.use('/user', usersRoute)
 
 app.get('/', async (req, res) =>  {
     try {
-        await database.inializeDatabase()
+        await database.initializeDatabase()
         await database.initializeUsersTable()
+        await database.initializeNamesTable() 
+        await database.initializeImagesTable()
+        await database.initializeProductsTable()
+        await database.initializeProductImagesTable()
+        await database.initializeSizesTable()
+        await database.initializeProductSizesTable()
+        await database.initializeOrdersTable()
+        await database.initializeUsersInfoTable()
+        await database.initializeCartsTable()
+        await database.initializeUserImagesTable()
+
         res.send('BSU Resource Server')
     } 
     catch(error) {
