@@ -1,5 +1,5 @@
 import express, { raw } from 'express'
-import user from '../controller/user.js'
+import user from '../controllers/user.js'
 
 const router = express.Router()
 
