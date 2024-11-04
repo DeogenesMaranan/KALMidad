@@ -1,18 +1,9 @@
-import env from 'dotenv'
-import mysql from 'mysql2'
-
-
-/*
-    USE ? IN PASSING PARAMS ONLY IN:
-    1. SELECT queries with WHERE
-    2. INSERT
-    3. UPDATE
-    4. DELETE
-*/
+import env from 'dotenv';
+import mysql from 'mysql2/promise';
 
 class Database {
     constructor() {
-        env.config()
+        env.config();
 
         this.pool = mysql.createPool({
             host: process.env.HOST,
@@ -23,17 +14,33 @@ class Database {
     }
 
     async getAll(query) {
-        await this.pool.execute(query)
+        this.queryValidation(query)
+        try {
+            return [results] = await this.pool.execute(query)
+        } catch (error) {
+            console.error("Error executing query:", error)
+            throw new Error('Database query failed.')
+        }
     }
 
-    async getAll(query, params) {
-        if (typeof query !== "string") {
-            throw new Error("Invalid query!");
+    async invoke(query, params) {
+        this.queryValidation(query, params);
+        try {
+            return [results] = await this.pool.query(query, params)
+        } catch (error) {
+            console.error("Error executing query:", error)
+            throw new Error('Database query failed.')
+        }
+    }
+
+    queryValidation(query, params = []) {
+        if (typeof query !== 'string') {
+            throw new TypeError('Invalid MySQL query: query must be a string.')
         }
         if (!Array.isArray(params)) {
-            throw new Error("Parameters must be in array.")
+            throw new TypeError('Parameters must be in an array.')
         }
-
-        await this.pool.query(query, params)  
     }
 }
+
+export default new Database();
