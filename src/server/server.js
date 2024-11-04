@@ -1,7 +1,7 @@
 import env from 'dotenv'
 import express from 'express'
 import bodyParser from 'body-parser'
-import usersRoute from './route/user.js'
+import usersRoute from './routes/user.js'
 import database from './repository/init-database.js'
 
 
