@@ -44,3 +44,4 @@ signOut.addEventListener('click', () => {
             console.log(error)
         })
 })
+

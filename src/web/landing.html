@@ -2,6 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+
     <title>Firebase 9</title>
   </head>
   <body>
@@ -25,10 +27,15 @@
       <input type="password" id="in_password">
 
       <button type="button" id="signin">Sign In</button>
+      <br/>
     </form>
+    
+    <div class="g-recaptcha" data-sitekey="6LdWjHkqAAAAAMMpfbOq-0ggCIbcEdto18bFJO_k" data-action="LOGIN"></div>
+    <br/>
+      <!-- <input type="submit" value="Submit"> -->
 
     <button type="button" id="signout">Sign Out</button>
-
+    
     <script src="bundle.js"></script>
   </body>
 </html>

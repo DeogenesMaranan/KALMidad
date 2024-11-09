@@ -2,12 +2,14 @@ import { initializeApp } from "firebase/app";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAEewTd9Kx9Aek-SXu0sWwpORQ3z7yFiyU",
-  authDomain: "wst-mc-project-server.firebaseapp.com",
-  projectId: "wst-mc-project-server",
-  storageBucket: "wst-mc-project-server.firebasestorage.app",
-  messagingSenderId: "180478976171",
-  appId: "1:180478976171:web:fa2d61ddbe1754bf4dd7ee"
+  apiKey: "AIzaSyDUjD3bPsXooNWGXDwXotLh79uQSpt3V0U",
+  authDomain: "kalmidad-project-server.firebaseapp.com",
+  projectId: "kalmidad-project-server",
+  storageBucket: "kalmidad-project-server.firebasestorage.app",
+  messagingSenderId: "911925663451",
+  appId: "1:911925663451:web:9b354d2c927d6b31245efe"
 };
 
 export default initializeApp(firebaseConfig);
+
+
