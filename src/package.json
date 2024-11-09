@@ -1,0 +1,19 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "firebase": "^11.0.1",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
+  }
+}
