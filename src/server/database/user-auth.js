@@ -8,10 +8,10 @@ import {
 } from 'firebase/auth'
 
 import firebaseApp from './firebase-config.js'
-import StringValidator from '../validation/string-validator.js'
+import StringValidator from '../services/string-validator.js'
 
 
-class User {
+class UserAuth {
     
     #auth
 
@@ -26,7 +26,8 @@ class User {
 
                 let userCredential = signInWithEmailAndPassword(this.#auth, email, password)
                 resolve((await userCredential).user)
-            } catch(error) {
+            } 
+            catch(error) {
                 reject(error)
             }
         })
@@ -40,7 +41,8 @@ class User {
                 
                 let userCredential = createUserWithEmailAndPassword(this.#auth, email, password)
                 resolve((await userCredential).user)
-            } catch (error) {
+            } 
+            catch (error) {
                 reject(error)
             }
         });
@@ -51,7 +53,8 @@ class User {
             try {
                 await signOut(this.#auth)
                 resolve('Signout successful.')
-            } catch (error) {
+            } 
+            catch (error) {
                 reject('Error signing out.')
             }
         })
@@ -67,4 +70,4 @@ class User {
     }
 }
 
-export default new User()
+export default new UserAuth()

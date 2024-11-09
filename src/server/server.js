@@ -1,9 +1,12 @@
-import user from './database/user.js'
-
+import user from './database/user-auth.js'
+import NameModel from './model/name.js'
+import NameDb from './database/name.js'
 
 const signUp = document.getElementById('signup')
 const signIn = document.getElementById('signin')
 const signOut = document.getElementById('signout')
+const add_name = document.getElementById('add-name')
+
 
 signUp.addEventListener('click', () => {
     event.preventDefault()
@@ -13,10 +16,9 @@ signUp.addEventListener('click', () => {
 
     user.signup(p_email, p_password)
         .then((userCredential) => {
-            console.log(userCredential.email)
-            
+            console.log(userCredential.email)  
         }).catch((error) => {
-            console.log(error.message)
+            console.error(error.message)
         })
 })
 
@@ -30,7 +32,7 @@ signIn.addEventListener('click', () => {
         .then((userCredential) => {
             console.log(`Login successful. ID: ${userCredential.uid} email: ${userCredential.email}`)
         }).catch((error) => {
-            console.log(error.message)
+            console.error(error.message)
         })
 })
 
@@ -41,7 +43,22 @@ signOut.addEventListener('click', () => {
         .then((confirmation) => {
             console.log(confirmation)
         }).catch((error) => {
-            console.log(error)
+            console.error(error)
         })
 })
 
+add_name.addEventListener('click', () => {
+    event.preventDefault()
+
+    let name = new NameModel()
+    name.lastname = document.getElementById('add_lname').value
+    name.firstname = document.getElementById('add_fname').value
+    name.middlename = document.getElementById('add_mname').value
+
+    NameDb.insertName(name)
+        .then((confirmation) => {
+            console.log(confirmation)
+        }).catch((error) => {
+            console.error(error)
+        })
+})
