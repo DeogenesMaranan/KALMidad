@@ -73,8 +73,8 @@
       
       
       <br>
-      <div class="g-recaptcha" 
-          data-sitekey="6LdWjHkqAAAAAMMpfbOq-0ggCIbcEdto18bFJO_k" 
+      <div class="g-recaptcha"
+          data-sitekey="6LdWjHkqAAAAAMMpfbOq-0ggCIbcEdto18bFJO_k"
           data-callback="onRecaptchaSuccess">
       </div>
     </form>
@@ -82,7 +82,13 @@
     <br/>
     <button type="button" id="signout">Sign Out</button>
 
-    
+
+    <script>
+      function onRecaptchaSuccess(token) {
+        document.getElementById('signin').disabled = false;
+        document.getElementById('signup').disabled = false;
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
     <script type="module" src="../presenter/landing.js"></script>
   </body>

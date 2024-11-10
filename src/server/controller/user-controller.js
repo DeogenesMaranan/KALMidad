@@ -8,9 +8,8 @@ class UserController {
     }
     
     async signin(req, res) {
-        const { p_email, p_password } = req.body
-
         try {
+            const { p_email, p_password } = req.body
             const userCredential = await this.#userAuth.signin(p_email, p_password)
             res.status(201).json({ message: 'Signin successful', user: userCredential });
 
@@ -20,6 +19,16 @@ class UserController {
         }
     }
 
+    async signup(req, res) {
+        try {
+            const { p_email, p_password } = req.body
+            const userCredential = await this.#userAuth.signup(p_email, p_password)
+            res.status(201).json({ message: 'Signup successful', user: userCredential})
+        }
+        catch(error) {
+            res.status(400).json({error: error.message})
+        }
+    }
 }
 
 export default new UserController()

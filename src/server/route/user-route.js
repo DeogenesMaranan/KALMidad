@@ -9,5 +9,9 @@ router.post('/signin', (req, res) => {
     UserController.signin(req, res)
 })
 
+router.post('/signup', (req, res) => {
+    UserController.signup(req, res)
+})
+
 
 export default router
