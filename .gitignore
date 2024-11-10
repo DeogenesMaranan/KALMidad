@@ -6,10 +6,6 @@
 *.pem
 *test/
 
-# Package files
-package-lock.json
-yarn.lock
-
 # Logs
 npm-debug.log
 yarn-error.log
@@ -17,15 +13,14 @@ yarn-error.log
 # Build artifacts
 package/*.tar
 dist/
-build/
 
 # IDE/Editor settings
 .vscode/
 .idea/
 
 # Configuration files with secrets
-config.js
-settings.json
+# config.js
+# settings.json
 
 # Cache
 .cache/
