@@ -3,7 +3,7 @@ import {
     getFirestore
 } from 'firebase/firestore'
 import firebaseApp from './firebase-config.js'
-import { nameToFirestore } from '../services/converter.js'
+import { nameToFirestore } from '../../services/converter.js'
 
 class Name {
     #db
@@ -12,10 +12,10 @@ class Name {
         this.#db = getFirestore(firebaseApp)
     }
 
-    insertName(p_name) {
+    insertName(p_name, p_uid) {
         return new Promise(async (resolve, reject) => {
             try {
-                const ref = doc(this.#db, 'user-credential', 'name')
+                const ref = doc(this.#db, 'users-credential', p_uid)
                 const jsonName = nameToFirestore(p_name)
 
                 await setDoc(ref, jsonName)

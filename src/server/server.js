@@ -1,5 +1,5 @@
 import user from './database/user-auth.js'
-import NameModel from './model/name.js'
+import NameModel from '../model/name.js'
 import NameDb from './database/name.js'
 
 const signUp = document.getElementById('signup')
