@@ -1,3 +1,17 @@
 
 // Enviroment variables 
 .env
+
+*.bin
+package-lock.json
+yarn.lock
+npm-debug.log
+yarn-error.log
+package/*.tar
+dist/
+build/
+.vscode/
+.idea/
+config.js
+settings.json
+.cache/
