@@ -2,16 +2,28 @@
 // Enviroment variables 
 .env
 
-*.bin
+./src/node_modules/.bin
+
+# Package files
 package-lock.json
 yarn.lock
+
+# Logs
 npm-debug.log
 yarn-error.log
+
+# Build artifacts
 package/*.tar
 dist/
 build/
+
+# IDE/Editor settings
 .vscode/
 .idea/
+
+# Configuration files with secrets
 config.js
 settings.json
+
+# Cache
 .cache/
