@@ -12,7 +12,8 @@ class UserController {
 
         try {
             const userCredential = await this.#userAuth.signin(p_email, p_password)
-            res.status(201).json({ email: userCredential.email })
+            res.status(201).json({ message: 'Signin successful', user: userCredential });
+
         } 
         catch(error) {
             res.status(400).json({error: error.message})

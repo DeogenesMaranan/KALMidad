@@ -5,6 +5,9 @@ const router = Router()
 
 router.get('/', () => console.log('users'))
 
-router.post('/signin', UserController.signin.bind(UserController))
+router.post('/signin', (req, res) => {
+    UserController.signin(req, res)
+})
+
 
 export default router

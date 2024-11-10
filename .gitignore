@@ -8,9 +8,6 @@
 .vscode/
 .idea/
 
-# Configuration files with secrets
-# config.js
-# settings.json
 
 # Cache
 .cache/
