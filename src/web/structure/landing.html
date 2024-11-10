@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+
+    <title>Firebase 9</title>
+
+    <style>
+      body {
+        width: 60vw;
+        margin: auto;
+      }
+      input {
+        width: 40vw;
+      }
+    </style>
+  </head>
+  <body>
+    <h1> Firebase 9 </h1>
+
+    <form>
+
+      <fieldset>
+        <legend>SIGN UP</legend>
+
+        <label for="email">Email: </label>
+        <input type="email" id="email">
+        
+        <br><br>
+        <label for="password">Password: </label>
+        <input type="password" id="password">
+  
+        <br><br>
+        <button type="button" id="signup">Sign Up</button>
+      </fieldset>
+
+    <br>
+
+      <fieldset>
+        <legend>SIGN IN</legend>
+        <label for="in_email">Email: </label>
+        <input type="email" id="in_email">
+        
+        <br><br>
+        <label for="in_password">Password: </label>
+        <input type="password" id="in_password">
+        
+        <br><br>
+        <button type="button" id="signin">Sign In</button>
+      </fieldset>
+
+      <br> 
+
+      <fieldset>
+        <legend>ADD NAME</legend>
+
+        <label for="add_fname">First Name: </label>
+        <input type="text" id="add_fname">
+
+        <br><br>
+        <label for="add_mname">Middle Name: </label>
+        <input type="text" id="add_mname">
+
+        <br><br>
+        <label for="add_lname">Last Name: </label>
+        <input type="text" id="add_lname">
+
+        <br><br>
+        <button type="button" id="add-name">ADD</button>
+      </fieldset>
+    </form>
+    
+    <br>
+
+    <div class="g-recaptcha" data-sitekey="6LdWjHkqAAAAAMMpfbOq-0ggCIbcEdto18bFJO_k" 
+          data-callback="onRecaptchaSuccess"></div>
+    <br/>
+
+    <button type="button" id="signout">Sign Out</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="./presenter/landing.js"></script>
+  </body>
+</html>

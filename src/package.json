@@ -1,10 +1,11 @@
 {
   "name": "src",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode development"
+    "start": "node ./server/index.js",
+    "dev": "nodemon ./server/index.js"
   },
   "keywords": [],
   "author": "",
@@ -12,8 +13,10 @@
   "description": "",
   "type": "module",
   "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
     "firebase": "^11.0.1",
-    "webpack": "^5.96.1",
-    "webpack-cli": "^5.1.4"
+    "nodemon": "^3.1.7"
   }
 }

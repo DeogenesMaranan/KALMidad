@@ -8,7 +8,7 @@ import {
 } from 'firebase/auth'
 
 import firebaseApp from './firebase-config.js'
-import StringValidator from '../services/string-validator.js'
+import StringValidator from '../../services/string-validator.js'
 
 
 class UserAuth {
