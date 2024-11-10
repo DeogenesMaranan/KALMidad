@@ -2,17 +2,7 @@
 // Enviroment variables 
 .env
 
-*.bin
 *.pem
-*test/
-
-# Logs
-npm-debug.log
-yarn-error.log
-
-# Build artifacts
-package/*.tar
-dist/
 
 # IDE/Editor settings
 .vscode/
