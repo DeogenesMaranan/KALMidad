@@ -4,8 +4,6 @@
 
 *.bin
 *.pem
-*bin/
-*lib/
 *test/
 
 # Package files
