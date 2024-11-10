@@ -2,7 +2,11 @@
 // Enviroment variables 
 .env
 
-./src/node_modules/.bin
+*.bin
+*.pem
+*bin/
+*lib/
+*test/
 
 # Package files
 package-lock.json
