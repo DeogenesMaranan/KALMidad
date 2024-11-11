@@ -58,6 +58,14 @@ async function insertUserInfo(p_user) {
     }
 }
 
+async function getUserInfo(p_uid) {
+    try {
+        const response = await axios.get()
+    } catch(error) {
+        console.error('Process Error: ', error.message)
+    }
+}
+
 const signinButton = document.getElementById('signin')
 signinButton.addEventListener('click', () => {
     const recaptchaToken = document.getElementById('g-recaptcha-response').value

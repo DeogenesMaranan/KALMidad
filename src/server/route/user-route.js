@@ -23,4 +23,8 @@ route.get('/getUserInfoById', (req, res) => {
     UserCredentialController.getUserInfoById(req, res)
 })
 
+route.get('/getAllUserInfo', (req, res) => {
+    UserCredentialController.getAllUserInfo(req, res)
+})
+
 export default route

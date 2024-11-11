@@ -48,6 +48,17 @@ class UserCredential {
         catch(error) { res.status(400).json({ error: error.message }) }
     }
 
+    async getAllUserInfo(req, res) {
+        try {
+            const result = await this.#userDb.getAllUserInfo()
+            res.status(200).json({ 
+                message: 'Fetching successful.',
+                data: result
+            })
+        }
+        catch(error) { res.status(400).json({ error: error.messsage}) }
+    }
+
     async getAllByConstraint(req, res) {
         try {
             const { field: p_field, constraint: p_constraint } = req.body;

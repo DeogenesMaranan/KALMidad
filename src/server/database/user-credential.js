@@ -46,6 +46,24 @@ class UserCredential {
         })
     }
 
+    getAllUserInfo() {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const db = getFirestore()
+                const request = query(collection(db, "users-credential"))
+                const snapshot = await getDocs(request)
+
+                if(!snapshot.empty) {
+                    const results = snapshot.docs.map(doc => doc.data())
+                    resolve(results)
+                } else {
+                    throw new Error('Fetching failed. No information was found.')
+                }
+            }
+            catch(error) { reject(error) }
+        })
+    }
+
     // getall:
     // by city (newest first)
     // get report history where status = resolved 
@@ -61,8 +79,8 @@ class UserCredential {
                 console.log("constraint" + p_constraint)
 
                 if (!snapshot.empty) {
-                    const results = snapshot.docs.map(doc => doc.data());
-                    resolve(results);
+                    // const results = snapshot.docs.map(doc => doc.data());
+                    resolve(snapshot);
                 } else {
                     throw new Error(`Fetching failed. No information found.`)
                 }
