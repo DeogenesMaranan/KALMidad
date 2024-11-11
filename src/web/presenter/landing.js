@@ -58,10 +58,39 @@ async function insertUserInfo(p_user) {
     }
 }
 
+// get one user info for admin profile page.
 async function getUserInfo(p_uid) {
     try {
-        const response = await axios.get()
+        const response = await axios.get(
+            'http://localhost:5500/users/getUserInfoById', {
+                params: {
+                    document: 'users-credential',
+                    uid: p_uid,
+                },
+                headers: {'Content-Type': 'application/json', },
+            }
+        )
+        return response
     } catch(error) {
+        console.error('Process Error: ', error.message)
+    }
+}
+
+// for list of reports per city
+async function getAllByCity(p_city) {
+    try {
+        const response = await axios.get(
+            'http://localhost:5500/data/getAllByConstraint', 
+            {
+                field: 'city',
+                constraint: p_city,
+            },
+            { headers: { 'Content-Type': 'application/json', }}
+        )
+        // const filteredData = response.data.filter((doc) => doc.status !== "Resolved");
+        return response;
+    }
+    catch(error) {
         console.error('Process Error: ', error.message)
     }
 }
@@ -96,3 +125,28 @@ addNameButton.addEventListener('click', () => {
 
     insertUserInfo(p_user)
 })
+
+
+function sampleRun() {
+    getAllByCity('San Pascual')
+        .then((reportList) => {
+            console.log('REPORT LIST:', reportList);
+        })
+        .catch((error) => {
+            console.error('Error fetching report list:', error);
+        });
+}
+
+function sampleRun1() {
+    getUserInfo('jiZ0VjqKvPWDuimKsBcHwKNrqz43')
+        .then((reportList) => {
+            console.log('USER INFO:', reportList)
+        })
+        .catch((error) => {
+            console.error('Error fetching user info:', error);
+        });
+}
+
+
+sampleRun()
+sampleRun1()

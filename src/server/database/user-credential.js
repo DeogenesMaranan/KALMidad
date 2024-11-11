@@ -37,6 +37,7 @@ class UserCredential {
                 const snapshot = await getDoc(ref)
 
                 if (snapshot.exists()) {
+                    console.log("db: ", snapshot.data())
                     resolve(snapshot.data())
                 } else {
                     throw new Error(`Fetching failed. No information found.`)
@@ -79,8 +80,8 @@ class UserCredential {
                 console.log("constraint" + p_constraint)
 
                 if (!snapshot.empty) {
-                    // const results = snapshot.docs.map(doc => doc.data());
-                    resolve(snapshot);
+                    const results = snapshot.docs.map(doc => doc.data());
+                    resolve(results);
                 } else {
                     throw new Error(`Fetching failed. No information found.`)
                 }

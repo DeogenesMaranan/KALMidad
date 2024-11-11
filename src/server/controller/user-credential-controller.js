@@ -31,7 +31,7 @@ class UserCredential {
 
     async getUserInfoById(req, res) {
         try {
-            const { document: p_document, uid: p_uid } = req.body;
+            const { document: p_document, uid: p_uid } = req.query;
 
             if (!p_document || !p_uid) {
                 return res.status(400).json({ 
@@ -40,14 +40,12 @@ class UserCredential {
             }
 
             const response = await this.#userDb.getUserInfoById(p_document, p_uid)
-            res.status(200).json({ 
-                message: 'Fetching successful.',
-                data: response
-            })
+            res.status(200).json(response)
         }
         catch(error) { res.status(400).json({ error: error.message }) }
     }
 
+    // the Following codes, are still pending to be fix.
     async getAllUserInfo(req, res) {
         try {
             const result = await this.#userDb.getAllUserInfo()
@@ -63,6 +61,8 @@ class UserCredential {
         try {
             const { field: p_field, constraint: p_constraint } = req.body;
 
+            console.log('Field ', p_field)
+            console.log('Constraint ', p_constraint)
             if (!p_field || p_constraint == undefined) {
                 return res.status(400).json({ 
                     error: 'Missing required parameters: field or constraint' 
