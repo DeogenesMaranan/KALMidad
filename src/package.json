@@ -4,9 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server/index.js",
-    "dev": "nodemon ./server/index.js",
     "build": "webpack"
   },
   "keywords": [],
@@ -26,7 +24,6 @@
     "express": "^4.21.1",
     "firebase": "^11.0.1",
     "net-browserify": "^0.2.4",
-    "nodemon": "^3.1.7",
     "path-browserify": "^1.0.1",
     "querystring-es3": "^0.2.1",
     "stream-browserify": "^3.0.0",
