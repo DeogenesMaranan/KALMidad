@@ -11,9 +11,7 @@ export function nameToFirestore(userInfo) {
             suffix: userInfo.suffix,
             userType: userInfo.userType,
             region: userInfo.region,
-            state: userInfo.state,
-            city: userInfo.city,
-            town: userInfo.town
+            state: userInfo.state
         };
     }
     throw new Error('Expected User Credential instance for serialization');

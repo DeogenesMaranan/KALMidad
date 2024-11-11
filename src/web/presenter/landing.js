@@ -47,8 +47,6 @@ async function insertUserInfo(p_user) {
                 suffix: p_user.suffix,
                 region: p_user.region,
                 state: p_user.state,
-                town: p_user.town,
-                city: p_user.city,
             }, 
             { headers: { 'Content-Type': 'application/json', }}
         )
@@ -87,8 +85,6 @@ addNameButton.addEventListener('click', () => {
     p_user.lastname = document.getElementById('add_lname').value 
     p_user.region = "Region IVA - CALABORZON"
     p_user.state = 'Batangas'
-    p_user.city = 'San Pascual'
-    p_user.town = 'Padre Castillo'
 
     insertUserInfo(p_user)
 })

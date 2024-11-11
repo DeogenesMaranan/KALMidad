@@ -1,6 +1,6 @@
 import UserDb from '../database/user-credential.js'
 import UserInfoModel from '../../model/user-credential.js'
-import { snapshotEqual } from 'firebase/firestore'
+import { getFirestore, snapshotEqual } from 'firebase/firestore'
 
 class UserCredential {
 
@@ -19,8 +19,6 @@ class UserCredential {
             p_user.suffix = req.body.suffix
             p_user.region = req.body.region
             p_user.state = req.body.state
-            p_user.city = req.body.city
-            p_user.town = req.body.town
 
             await this.#userDb.insertUserInfo(p_user, req.body.uid)
             res.status(201).json({ message: 'Insert successful: ' 
@@ -54,7 +52,7 @@ class UserCredential {
         try {
             const { field: p_field, constraint: p_constraint } = req.body;
 
-            if (!p_field || p_constraint === undefined) {
+            if (!p_field || p_constraint == undefined) {
                 return res.status(400).json({ 
                     error: 'Missing required parameters: field or constraint' 
                 });
@@ -72,12 +70,6 @@ class UserCredential {
     async getCount(req, res) {
         try {
             const { field: p_field } = req.body;
-
-            if (p_field === undefined) {
-                return res.status(400).json({ 
-                    error: 'Missing required parameter: field' 
-                });
-            }
 
             const response = await this.#userDb.getCount(p_field)
             res.status(200).json({

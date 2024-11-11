@@ -1,8 +1,6 @@
 
 
 class UserCredential {
-    #town
-    #city
     #state 
     #suffix
     #region 
@@ -11,11 +9,9 @@ class UserCredential {
     #firstname 
     #middlename
 
-    constructor(firstname='', middlename='', lastname='', city='',
-                suffix='null', region='', state='', town=''
+    constructor(firstname='', middlename='', lastname='',
+                suffix='null', region='', state=''
     ) {
-        this.#town = town
-        this.#city = city
         this.#state = state
         this.#suffix = suffix
         this.#region = region
@@ -25,8 +21,6 @@ class UserCredential {
         this.#middlename = middlename
     }
 
-    get town() { return this.#town}
-    get city() { return this.#city }
     get state() { return this.#state }
     get suffix() { return this.#suffix }
     get region() { return this.#region }
@@ -35,8 +29,6 @@ class UserCredential {
     get firstname() { return this.#firstname }
     get middlename() { return this.#middlename }
 
-    set town(town) { this.#town = town }
-    set city(city) { this.#city = city }
     set state(state) { this.#state = state }
     set suffix(suffix) {this.#suffix = suffix }
     set region(region) { this.#region = region } 

@@ -5,22 +5,20 @@ import {
     getDocs,
     query,
     collection,
-    getCountFromServer
+    getCountFromServer,
+    where,
+    Firestore
 } from 'firebase/firestore'
 import firebaseApp from './firebase-config.js'
 import { nameToFirestore } from '../../services/converter.js'
+import { resolve } from 'url'
 
 class UserCredential {
-    #db
-
-    constructor() {
-        this.#db = getFirestore(firebaseApp)
-    }
-
     insertUserInfo(p_user, p_uid) {
         return new Promise(async (resolve, reject) => {
             try {
-                const ref = doc(this.#db, 'users-credential', p_uid)
+                const db = getFirestore(firebaseApp)
+                const ref = doc(db, 'users-credential', p_uid)
                 const jsonName = nameToFirestore(p_user)
 
                 await setDoc(ref, jsonName)
@@ -34,7 +32,8 @@ class UserCredential {
     getUserInfoById(p_document, p_uid) {
         return new Promise(async (resolve, reject) => {
             try{
-                const ref = doc(this.#db, p_document, p_uid)
+                const db = getFirestore()
+                const ref = doc(db, p_document, p_uid)
                 const snapshot = await getDoc(ref)
 
                 if (snapshot.exists()) {
@@ -54,9 +53,12 @@ class UserCredential {
     getAllByConstraint(p_field, p_constraint) {
         return new Promise( async (resolve, reject) => {
             try {
-                const request = query(collection(this.#db, 'report'),
-                                    where(p_field, '==', p_constraint))
+                const db = getFirestore(firebaseApp)
+                const request = query(collection(db, "report"), 
+                                where(p_field, "==", p_constraint))
+
                 const snapshot = await getDocs(request)
+                console.log("constraint" + p_constraint)
 
                 if (!snapshot.empty) {
                     const results = snapshot.docs.map(doc => doc.data());
@@ -79,10 +81,14 @@ class UserCredential {
     getCount(p_field) {
         return new Promise(async (resolve, reject) => {
             try {
-                const request = (p_field == null)
-                    ? query(collection(this.#db, 'report'))
-                    : query(collection(this.#db, 'report'), 
-                            where('flag', '==', p_field))
+                const db = getFirestore()
+                let request
+                
+                if (p_field == undefined) {
+                    request = query(collection(db, 'report'))
+                } else{
+                    request = query(collection(db, 'report'), where('flag', '==', p_field))
+                }
 
                 const snapshot = await getCountFromServer(request)
                 resolve(snapshot.data().count)
