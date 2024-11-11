@@ -3,8 +3,7 @@ import env from 'dotenv'
 import express from 'express'
 import bodyParser from 'body-parser'
 import userRoute from './route/user-route.js'
-import nameRoute from './route/name-route.js'
-
+import dataRoute from './route/data-route.js'
 
 env.config()
 const app = express()
@@ -15,8 +14,7 @@ app.use(cors());
 
 // user routes
 app.use('/users', userRoute)
-app.use('/names', nameRoute)
-
+app.use('/data', dataRoute)
 
 app.use(express.static('public'));
 app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`))

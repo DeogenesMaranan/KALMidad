@@ -1,14 +1,20 @@
 
-import Name from '../model/name.js';
+import UserCredential from '../model/user-credential.js';
 
 
-export function nameToFirestore(name) {
-    if (name instanceof Name) {
+export function nameToFirestore(userInfo) {
+    if (userInfo instanceof UserCredential) {
         return {
-            firstname: name.firstname,
-            middlename: name.middlename,
-            lastname: name.lastname,
+            firstname: userInfo.firstname,
+            middlename: userInfo.middlename,
+            lastname: userInfo.lastname,
+            suffix: userInfo.suffix,
+            userType: userInfo.userType,
+            region: userInfo.region,
+            state: userInfo.state,
+            city: userInfo.city,
+            town: userInfo.town
         };
     }
-    throw new Error('Expected Name instance for serialization');
+    throw new Error('Expected User Credential instance for serialization');
 }

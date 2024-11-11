@@ -1,4 +1,4 @@
-import nameModel from '../../model/name.js'
+import userInfoModel from '../../model/user-credential.js'
 
 
 let loggedInUid;
@@ -36,14 +36,19 @@ async function signupUser(p_email, p_password, recaptchaToken) {
     }
 }
 
-async function insertName(p_name) {
+async function insertUserInfo(p_user) {
     try {
         const response = await axios.post(
-            'http://localhost:5500/names/insertName', { 
+            'http://localhost:5500/users/insertUserInfo', { 
                 uid: loggedInUid,
-                firstname: p_name.firstname, 
-                middlename: p_name.middlename, 
-                lastname: p_name.lastname
+                firstname: p_user.firstname, 
+                middlename: p_user.middlename, 
+                lastname: p_user.lastname,
+                suffix: p_user.suffix,
+                region: p_user.region,
+                state: p_user.state,
+                town: p_user.town,
+                city: p_user.city,
             }, 
             { headers: { 'Content-Type': 'application/json', }}
         )
@@ -75,11 +80,15 @@ signupButton.addEventListener('click', () => {
 
 const addNameButton = document.getElementById('add-name')
 addNameButton.addEventListener('click', () => {
-    const p_name = new nameModel()
+    const p_user = new userInfoModel()
 
-    p_name.firstname = document.getElementById('add_fname').value
-    p_name.middlename = document.getElementById('add_mname').value
-    p_name.lastname = document.getElementById('add_lname').value
+    p_user.firstname = document.getElementById('add_fname').value
+    p_user.middlename = document.getElementById('add_mname').value
+    p_user.lastname = document.getElementById('add_lname').value 
+    p_user.region = "Region IVA - CALABORZON"
+    p_user.state = 'Batangas'
+    p_user.city = 'San Pascual'
+    p_user.town = 'Padre Castillo'
 
-    insertName(p_name)
+    insertUserInfo(p_user)
 })

@@ -1,17 +1,26 @@
 import { Router } from 'express'
 import UserController from '../controller/user-controller.js'
+import UserCredentialController from '../controller/user-credential-controller.js'
 
-const router = Router()
 
-router.get('/', () => console.log('users'))
+const route = Router()
 
-router.post('/signin', (req, res) => {
+route.get('/', () => console.log('users'))
+
+route.post('/signin', (req, res) => {
     UserController.signin(req, res)
 })
 
-router.post('/signup', (req, res) => {
+route.post('/signup', (req, res) => {
     UserController.signup(req, res)
 })
 
+route.post('/insertUserInfo', (req, res) => {
+    UserCredentialController.insertUserInfo(req, res)
+})
 
-export default router
+route.get('/getUserInfoById', (req, res) => {
+    UserCredentialController.getUserInfoById(req, res)
+})
+
+export default route
