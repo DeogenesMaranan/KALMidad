@@ -1,155 +1,51 @@
-import userInfoModel from '../../model/user-credential.js'
+document.addEventListener('DOMContentLoaded', function() {
+    // Helper function to toggle modal visibility
+    function toggleModal(openModalId, closeModalId) {
+        document.getElementById(openModalId).style.display = 'flex';
+        document.getElementById(closeModalId).style.display = 'none';
+    }
 
+    // Show Register Modal when Register button (from header or Register modal) is clicked
+    document.getElementById('register-btn').addEventListener('click', function() {
+        toggleModal('register-modal', 'signin-modal');
+    });
 
-let loggedInUid;
+    // Show Signin Modal when Signin link in the header is clicked
+    document.getElementById('signin-header').addEventListener('click', function() {
+        toggleModal('signin-modal', 'register-modal');
+    });
 
-async function signInUser(p_email, p_password, recaptchaToken) {
-    try {
-        const response = await axios.post(
-            'http://localhost:5500/users/signin', 
-            { p_email, p_password, recaptchaToken, }, 
-            { headers: { 'Content-Type': 'application/json', }}
-        );
+    // Show Signin Modal when "Signin" link inside the Register Modal is clicked
+    document.getElementById('signin-inside').addEventListener('click', function() {
+        toggleModal('signin-modal', 'register-modal');
+    });
 
-        if (response.data && response.data.message) {
-            loggedInUid = response.data.user.uid
-            console.log('User signed in:', response.data.user)
+    // Show Register Modal when "Sign up" link inside the Signin Modal is clicked
+    document.getElementById('signup-inside').addEventListener('click', function() {
+        toggleModal('register-modal', 'signin-modal');
+    });
+
+    // Optional: Close the modal if the user clicks anywhere outside the modal content
+    window.addEventListener('click', function(event) {
+        if (event.target === document.getElementById('register-modal')) {
+            document.getElementById('register-modal').style.display = 'none';
+        } else if (event.target === document.getElementById('signin-modal')) {
+            document.getElementById('signin-modal').style.display = 'none';
         }
-    } catch (error) {
-        console.error('Sign-in error:', error);
-    }
-};
+    });
 
-async function signupUser(p_email, p_password, recaptchaToken) {
-    try {
-        const response = await axios.post(
-            'http://localhost:5500/users/signup',
-            { p_email, p_password, recaptchaToken, },
-            { headers: { 'Content-Type': 'application/json', }}
-        )
-        if (response.data && response.data.message) {
-            loggedInUid = response.data.user.uid
-            console.log('User signed up:', response.data.user)
+    // Password visibility toggle
+    document.getElementById('toggle-password').addEventListener('click', function() {
+        const passwordField = document.getElementById('password');
+        //const eyeIcon = document.getElementById('toggle-password'); di pa tapos hehe 
+        
+        // Toggle password visibility
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text'; // Show password
+            //eyeIcon.innerHTML = '&#128064;'; // Change to 'closed eye' icon
+        } else {
+            passwordField.type = 'password'; // Hide password
+            //eyeIcon.innerHTML = '&#128065;'; // Change to 'open eye' icon
         }
-    } catch(error) {
-        console.error('Sign-up error:', error)
-    }
-}
-
-async function insertUserInfo(p_user) {
-    try {
-        loggedInUid = 'sfdsfds'
-        const response = await axios.post(
-            'http://localhost:5500/users/insertUserInfo', { 
-                uid: loggedInUid,
-                firstname: p_user.firstname, 
-                middlename: p_user.middlename, 
-                lastname: p_user.lastname,
-                town: p_user.town,
-                city: p_user.city,
-                userType: p_user.userType,
-            }, 
-            { headers: { 'Content-Type': 'application/json', }}
-        )
-        if (response.data.message) {
-            console.log('Process Successful: ', response.data.message)
-        }
-    } catch(error) {
-        console.error('Process Error: ', error.message)
-    }
-}
-
-// get one user info for admin profile page.
-async function getUserInfo(p_uid) {
-    try {
-        const response = await axios.get(
-            'http://localhost:5500/users/getUserInfoById', {
-                params: {
-                    document: 'users-credential',
-                    uid: p_uid,
-                },
-                headers: {'Content-Type': 'application/json', },
-            }
-        )
-        return response
-    } catch(error) {
-        console.error('Process Error: ', error.message)
-    }
-}
-
-// for list of reports per city
-async function getAllByCity(p_city) {
-    try {
-        const response = await axios.get(
-            'http://localhost:5500/data/getAllByConstraint', 
-            {
-                params: {field: 'city',
-                constraint: p_city,
-                },
-                headers: { 'Content-Type': 'application/json', },
-            }
-        )
-        // const filteredData = response.data.filter((doc) => doc.status !== "Resolved");
-        return response;
-    }
-    catch(error) {
-        console.error('Process Error: ', error.message)
-    }
-}
-
-const signinButton = document.getElementById('signin')
-signinButton.addEventListener('click', () => {
-    const recaptchaToken = document.getElementById('g-recaptcha-response').value
-    const p_email = document.getElementById('in_email').value
-    const p_password = document.getElementById('in_password').value
-
-    signInUser(p_email, p_password, recaptchaToken)
-})
-
-const signupButton = document.getElementById('signup')
-signupButton.addEventListener('click', () => {
-    const recaptchaToken = document.getElementById('g-recaptcha-response').value
-    const p_email = document.getElementById('email').value
-    const p_password = document.getElementById('password').value
-
-    signupUser(p_email, p_password, recaptchaToken)
-})
-
-const addNameButton = document.getElementById('add-name')
-addNameButton.addEventListener('click', () => {
-    const p_user = new userInfoModel()
-
-    p_user.firstname = document.getElementById('add_fname').value
-    p_user.middlename = document.getElementById('add_mname').value
-    p_user.lastname = document.getElementById('add_lname').value 
-    p_user.city = 'San Pascual'
-    p_user.town = 'Padre Castillo'
-    p_user.userType = 'client'
-
-    insertUserInfo(p_user)
-})
-
-
-function sampleRun() {
-    getAllByCity('San Pascual')
-        .then((reportList) => {
-            console.log('REPORT LIST:', reportList);
-        })
-        .catch((error) => {
-            console.error('Error fetching report list:', error);
-        });
-}
-
-function sampleRun1() {
-    getUserInfo('jiZ0VjqKvPWDuimKsBcHwKNrqz43')
-        .then((reportList) => {
-            console.log('USER INFO:', reportList.data.firstname)
-        })
-        .catch((error) => {
-            console.error('Error fetching user info:', error);
-        });
-}
-
-
-sampleRun()
-sampleRun1()
+    });
+});

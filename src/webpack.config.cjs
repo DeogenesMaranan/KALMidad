@@ -10,7 +10,8 @@ module.exports = {
     }, 
     entry: {
         server: path.resolve(__dirname, './server/index.js'),
-        landing: path.resolve(__dirname, './web/presenter/landing.js')
+        landing: path.resolve(__dirname, './web/presenter/landing.js'),
+        landingRequest: path.resolve(__dirname, './web/presenter/landingRequest.js')
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -47,6 +48,14 @@ module.exports = {
             resourceRegExp: /express/,
         }),
     ],
+    module: {
+        rules: [
+        {
+            test: /\.css$/i,          
+            use: ['style-loader', 'css-loader'],
+        },
+        ],
+      },
     stats: {
         errorDetails: true,
     },

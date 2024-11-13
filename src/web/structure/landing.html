@@ -1,96 +1,87 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-   
-    <title>Firebase 9</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-      body {
-        width: 60vw;
-        margin: auto;
-      }
-      input {
-        width: 40vw;
-      }
-    </style>
-    
+    <title>KALMidad</title>
+
+    <link rel="stylesheet" href="../styling/account.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"> 
     <script src="https://www.google.com/recaptcha/api.js" defer></script>
-  </head>
-  <body>
-    <h1> Firebase 9 </h1>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="javascript:void(0);" id="signin-header">Signin</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content-container">
+        <div class="left-side">
+            <img src="../assets/KALMidad.png" alt="Logo" class="logo">
+            <p class="intro-text">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            </p>
+            <button class="register-button" id="register-btn">Register</button>
+        </div>
+        <div class="right-side"></div>
+    </div>
 
-    <form>
+    <!-- Register Modal -->
+    <div class="register-modal" id="register-modal">
+        <div class="register-modal-content">
+            <h2>Create your account</h2>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email Address">
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            <div class="signin-link">
+                <p>Already have an account? <a href="javascript:void(0);" id="signin-inside">Signin</a></p>
+            </div>
+            <div class="g-recaptcha"
+                data-sitekey="6LdWjHkqAAAAAMMpfbOq-0ggCIbcEdto18bFJO_k"
+                data-callback="onRecaptchaSuccess">
+            </div>            
+            <button class="submit-button" id="signup-button">Sign Up</button>
+        </div>
+    </div>
 
-      <fieldset>
-        <legend>SIGN UP</legend>
-
-        <label for="email">Email: </label>
-        <input type="email" id="email">
-        
-        <br><br>
-        <label for="password">Password: </label>
-        <input type="password" id="password">
-  
-        <br><br>
-        <button type="button" id="signup" disabled>Sign Up</button>
-      </fieldset>
-
-    <br>
-
-      <fieldset>
-        <legend>SIGN IN</legend>
-        <label for="in_email">Email: </label>
-        <input type="email" id="in_email">
-        
-        <br><br>
-        <label for="in_password">Password: </label>
-        <input type="password" id="in_password">
-        
-        <br><br>
-        <button type="button" id="signin" disabled>Sign In</button>
-      </fieldset>
-
-      <br> 
-      
-      <fieldset>
-        <legend>ADD NAME</legend>
-
-        <label for="add_fname">First Name: </label>
-        <input type="text" id="add_fname">
-        
-        <br><br>
-        <label for="add_mname">Middle Name: </label>
-        <input type="text" id="add_mname">
-
-        <br><br>
-        <label for="add_lname">Last Name: </label>
-        <input type="text" id="add_lname">
-        
-        <br><br>
-        <button type="button" id="add-name" disabled>ADD</button>
-      </fieldset>
-      
-      
-      <br>
-      <div class="g-recaptcha"
-          data-sitekey="6LdWjHkqAAAAAMMpfbOq-0ggCIbcEdto18bFJO_k"
-          data-callback="onRecaptchaSuccess">
-      </div>
-    </form>
-    
-    <br/>
-    <button type="button" id="signout">Sign Out</button>
-
+    <!-- Signin Modal -->
+    <div class="signin-modal" id="signin-modal">
+        <div class="signin-modal-content">
+            <h2>Signin to your account</h2>
+            <div class="form-group">
+                <input type="email" id="signin-email" placeholder="Email Address">
+            </div>
+            <div class="form-group">
+                <input type="password" id="signin-password" placeholder="Password">
+            </div>
+            <div class="signup-link">
+                <p>Don't have an account? <a href="javascript:void(0);" id="signup-inside">Sign up</a></p>
+            </div>
+            <div class="g-recaptcha"
+                data-sitekey="6LdWjHkqAAAAAMMpfbOq-0ggCIbcEdto18bFJO_k"
+                data-callback="onRecaptchaSuccess">
+            </div>
+            <button class="submit-button" id="signin-button">Signin</button>
+        </div>
+    </div>
 
     <script>
-      function onRecaptchaSuccess(token) {
-        document.getElementById('signin').disabled = false;
-        document.getElementById('signup').disabled = false;
-        document.getElementById('add-name').disabled = false;
-      }
-    </script>
+        function onRecaptchaSuccess(token) {
+          document.getElementById('signin-button').disabled = false;
+          document.getElementById('signup-button').disabled = false;
+        //   document.getElementById('add-name').disabled = false;
+        }
+      </script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
-    <script type="module" src="../presenter/landing.js"></script>
-  </body>
+    <script src="../../dist/landing.bundle.js"></script>
+    <script src="../../dist/landingRequest.bundle.js"></script>
+</body>
 </html>
