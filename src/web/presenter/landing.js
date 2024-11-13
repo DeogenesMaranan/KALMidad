@@ -38,15 +38,16 @@ async function signupUser(p_email, p_password, recaptchaToken) {
 
 async function insertUserInfo(p_user) {
     try {
+        loggedInUid = 'sfdsfds'
         const response = await axios.post(
             'http://localhost:5500/users/insertUserInfo', { 
                 uid: loggedInUid,
                 firstname: p_user.firstname, 
                 middlename: p_user.middlename, 
                 lastname: p_user.lastname,
-                suffix: p_user.suffix,
-                region: p_user.region,
-                state: p_user.state,
+                town: p_user.town,
+                city: p_user.city,
+                userType: p_user.userType,
             }, 
             { headers: { 'Content-Type': 'application/json', }}
         )
@@ -82,10 +83,11 @@ async function getAllByCity(p_city) {
         const response = await axios.get(
             'http://localhost:5500/data/getAllByConstraint', 
             {
-                field: 'city',
+                params: {field: 'city',
                 constraint: p_city,
-            },
-            { headers: { 'Content-Type': 'application/json', }}
+                },
+                headers: { 'Content-Type': 'application/json', },
+            }
         )
         // const filteredData = response.data.filter((doc) => doc.status !== "Resolved");
         return response;
@@ -120,8 +122,9 @@ addNameButton.addEventListener('click', () => {
     p_user.firstname = document.getElementById('add_fname').value
     p_user.middlename = document.getElementById('add_mname').value
     p_user.lastname = document.getElementById('add_lname').value 
-    p_user.region = "Region IVA - CALABORZON"
-    p_user.state = 'Batangas'
+    p_user.city = 'San Pascual'
+    p_user.town = 'Padre Castillo'
+    p_user.userType = 'client'
 
     insertUserInfo(p_user)
 })
@@ -140,7 +143,7 @@ function sampleRun() {
 function sampleRun1() {
     getUserInfo('jiZ0VjqKvPWDuimKsBcHwKNrqz43')
         .then((reportList) => {
-            console.log('USER INFO:', reportList)
+            console.log('USER INFO:', reportList.data.firstname)
         })
         .catch((error) => {
             console.error('Error fetching user info:', error);

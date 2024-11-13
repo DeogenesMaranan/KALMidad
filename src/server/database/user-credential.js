@@ -6,12 +6,11 @@ import {
     query,
     collection,
     getCountFromServer,
-    where,
-    Firestore
+    where
 } from 'firebase/firestore'
 import firebaseApp from './firebase-config.js'
 import { nameToFirestore } from '../../services/converter.js'
-import { resolve } from 'url'
+
 
 class UserCredential {
     insertUserInfo(p_user, p_uid) {
@@ -20,7 +19,7 @@ class UserCredential {
                 const db = getFirestore(firebaseApp)
                 const ref = doc(db, 'users-credential', p_uid)
                 const jsonName = nameToFirestore(p_user)
-
+                
                 await setDoc(ref, jsonName)
                 resolve('User\'s info added successfully')
             } 
@@ -37,7 +36,6 @@ class UserCredential {
                 const snapshot = await getDoc(ref)
 
                 if (snapshot.exists()) {
-                    console.log("db: ", snapshot.data())
                     resolve(snapshot.data())
                 } else {
                     throw new Error(`Fetching failed. No information found.`)
@@ -77,7 +75,6 @@ class UserCredential {
                                 where(p_field, "==", p_constraint))
 
                 const snapshot = await getDocs(request)
-                console.log("constraint" + p_constraint)
 
                 if (!snapshot.empty) {
                     const results = snapshot.docs.map(doc => doc.data());

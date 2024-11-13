@@ -24,7 +24,6 @@ class UserAuth {
             try {
                 await setPersistence(this.#auth, browserSessionPersistence)
 
-                console.log('signing')
                 let userCredential = signInWithEmailAndPassword(this.#auth, email, password)
                 resolve((await userCredential).user)
             } 
