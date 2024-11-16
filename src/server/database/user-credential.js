@@ -9,19 +9,41 @@ import {
     where
 } from 'firebase/firestore'
 import firebaseApp from './firebase-config.js'
-import { nameToFirestore } from '../../services/converter.js'
+import { 
+    nameToFirestore, 
+    reportToFirebase 
+} from '../../services/converter.js'
 
 
 class UserCredential {
+    #firebaseApp
+
+    constructor() {
+        this.#firebaseApp = firebaseApp
+    }
     insertUserInfo(p_user, p_uid) {
         return new Promise(async (resolve, reject) => {
             try {
-                const db = getFirestore(firebaseApp)
+                const db = getFirestore(this.#firebaseApp)
                 const ref = doc(db, 'users-credential', p_uid)
                 const jsonName = nameToFirestore(p_user)
                 
                 await setDoc(ref, jsonName)
                 resolve('User\'s info added successfully')
+            } 
+            catch(error) { reject(error) }
+        })
+    }
+
+    insertNewReport(p_reportDetails, p_uid) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const db = getFirestore(this.#firebaseApp)
+                const ref = collection(db, `report/${p_uid}/userReport`)
+                const jsonReport = reportToFirebase(p_reportDetails)
+
+                const reportId = await addDoc(ref, jsonReport)
+                resolve(`Report successfully submitted: ${reportId}`)
             } 
             catch(error) { reject(error) }
         })
@@ -70,7 +92,7 @@ class UserCredential {
     getAllByConstraint(p_field, p_constraint) {
         return new Promise( async (resolve, reject) => {
             try {
-                const db = getFirestore(firebaseApp)
+                const db = getFirestore(this.#firebaseApp)
                 const request = query(collection(db, "report"), 
                                 where(p_field, "==", p_constraint))
 

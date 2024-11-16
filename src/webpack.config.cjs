@@ -1,6 +1,6 @@
 
-const webpack = require('webpack')
 const path = require('path');
+const webpack = require('webpack')
 
 
 module.exports = {
@@ -10,6 +10,7 @@ module.exports = {
     }, 
     entry: {
         server: path.resolve(__dirname, './server/index.js'),
+        test: path.resolve(__dirname, './web/presenter/test.js'),
         landing: path.resolve(__dirname, './web/presenter/landing.js'),
         landingRequest: path.resolve(__dirname, './web/presenter/landingRequest.js')
     },
@@ -27,12 +28,14 @@ module.exports = {
             "stream": require.resolve("stream-browserify"),
             "crypto": require.resolve("crypto-browserify"),
             "zlib": require.resolve("browserify-zlib"),
+            "https": require.resolve("https-browserify"),
             "querystring": require.resolve("querystring-es3"),
             "http": require.resolve("stream-http"),
             "assert": require.resolve("assert/"),
             "vm": require.resolve("vm-browserify"),
             "fs": require.resolve("browserify-fs"),
-            "net": require.resolve("net-browserify")
+            "net": require.resolve("net-browserify"),
+            "stream": require.resolve("stream-browserify"),
         },
         modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     },

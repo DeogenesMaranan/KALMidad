@@ -1,5 +1,7 @@
+
 import UserDb from '../database/user-credential.js'
 import UserInfoModel from '../../model/user-credential.js'
+import ReportDetails from '../../model/report-details.js'
 
 
 class UserCredential {
@@ -28,6 +30,25 @@ class UserCredential {
             })
         }
         catch (error) { res.status(400).json({ error: error.message }) }
+    }
+
+    async insertNewReport(req, res) {
+        try {
+            const p_report = new ReportDetails()
+            p_report.city = req.body.city
+            p_report.flag = req.body.flag
+            p_report.status = req.body.status
+            p_report.calamity = req.body.calamity
+            p_report.dateTime = req.body.dateTime
+            p_report.location = req.body.location
+            p_report.imageLink = req.body.imageLink
+            p_report.description = req.body.description
+
+            await this.#userDb.insertNewReport(p_report, req.body.uid)
+
+            res.status(201).json({ message: 'Report successfully submitted.'})
+        }
+        catch(error) { res.status(400).json({error: error.message }) }
     }
 
     async getUserInfoById(req, res) {
