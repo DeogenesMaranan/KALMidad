@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* General font style for the entire page */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Sidebar Adjustment */
+.sidebar {
+    width: 120px;  /* Default width */
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #393E41;
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+/* Main Content Adjustment */
+.main-content {
+    margin-left: 120px;  /* Ensures it aligns with the sidebar */
+    padding: 20px;
+    flex-grow: 1;
+    transition: margin-left 0.3s ease;
+    width: calc(100% - 120px);  /* Respects the sidebar's width */
+}
+
+/* Profile Settings Page Styling */
+#profile-settings-content {
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px;
+    height: 100vh;
+}
+
+/* Header for Profile Settings */
+.settings-header {
+    display: flex;
+    flex-direction: column; /* Stack the logo and title vertically */
+    align-items: flex-start; /* Align the items to the left */
+    margin-bottom: 20px; /* Add some space below the header */
+}
+
+.logo {
+    width: 120px; /* Adjust logo size */
+    height: auto;
+    margin-bottom: 50px;
+}
+
+.account-settings-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px; /* Add some space between the logo and the title */
+    margin-bottom: 20px;
+}
+
+
+/* Profile Section */
+.profile-section {
+    margin-top: 20px;
+}
+
+.profile-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Make the profile picture circular */
+    object-fit: cover;
+}
+
+.edit-profile-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-profile-btn img {
+    width: 25px;
+    height: 25px;
+}
+
+/* Profile Info Section */
+.profile-info {
+    margin-bottom: 20px;
+}
+
+/* Label Styling */
+.profile-info label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Info Row Container */
+.info-row {
+    margin-bottom: 20px; /* Space between rows */
+}
+
+/* Text and Button Container */
+.info-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Text Styling */
+.info-text p {
+    margin: 0; /* Remove any default margin */
+    flex-grow: 1; /* Text will take all available space */
+}
+
+/* Buttons Styling */
+.edit-btn, .signout-btn {
+    background-color: white;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 120px; /* Set a minimum width for all buttons */
+    text-align: center; /* Center the button text */
+}
+
+/* Edit Button Styling */
+.edit-btn {
+    font-weight: normal;
+}
+
+/* Signout Button Styling */
+.signout-btn {
+    font-weight: normal;
+    color: black; 
+}
+
+/* Line Divisions */
+.divider {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-bottom: 20px;
+}
