@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { upload } from '../database/init-multer.js'
 import ImageServerController from '../controller/image-server-controller.js'
 import UserCredentialController from '../controller/user-credential-controller.js'
 
@@ -16,7 +17,7 @@ route.post('/insertReport', (req, res) => {
     UserCredentialController.insertNewReport(req, res)
 })
 
-route.post('/uploadImage', (req, res) => {
+route.post('/uploadImage', upload.single('image'), (req, res) => {
     ImageServerController.uploadImage(req, res)
 })
 

@@ -11,14 +11,14 @@ class ImageServerController {
 
     async uploadImage(req, res) {
         try {
-            console.log('upload-1')
-            const imagePath = req.body.imagePath
-            console.log('upload-2')
+            const imagePath = req.file.path
 
-            const imageURL = this.#server.uploadImage(imagePath)
+            const imageURL = await this.#server.uploadImage(imagePath)
             
-            console.log('upload-3')
-            res.status(201).json({ data: imageURL})
+            res.status(201).json({ 
+                message: "Upload successful.",
+                data: imageURL
+            })
         }
         catch(error) { res.status(400).json({ message: error.message })}
     }
