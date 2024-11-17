@@ -1,0 +1,49 @@
+
+:root {
+    --clr-white: #FFFFFF;
+    --clr-light-gray: #F0F0F0;
+    --clr--yellow-orange: #E7BB41;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+.confirmation-constainer {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirmation-constainer h1 {
+    text-align: center;
+    color: black;
+}
+
+.check-icon {
+    width: 11rem;
+    height: auto;
+    padding: 2.5rem 0rem;
+}
+
+.text-bg {
+    width: 19rem;
+    padding: 0rem 2rem;
+    border-radius: 0.5rem;
+    background-color: var(--clr-light-gray);
+}
+
+.text-bg h3 {
+    text-align: center;
+    color: var(--clr--yellow-orange);
+}

@@ -10,6 +10,10 @@ body {
     padding: 0;
 }
 
+body::-webkit-scrollbar {
+    display: none; 
+}
+
 .signin-modal {
     background-color: #ffffff;
     width: 90%;
