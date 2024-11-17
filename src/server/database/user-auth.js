@@ -4,7 +4,8 @@ import {
     setPersistence, 
     browserSessionPersistence,
     signInWithEmailAndPassword,
-    createUserWithEmailAndPassword, 
+    createUserWithEmailAndPassword,
+    sendEmailVerification, 
 } from 'firebase/auth'
 
 import firebaseApp from './firebase-config.js'
@@ -24,8 +25,8 @@ class UserAuth {
             try {
                 await setPersistence(this.#auth, browserSessionPersistence)
 
-                let userCredential = signInWithEmailAndPassword(this.#auth, email, password)
-                resolve((await userCredential).user)
+                let userCredential = await signInWithEmailAndPassword(this.#auth, email, password)
+                resolve(userCredential.user)
             } 
             catch(error) {
                 reject(error)
@@ -39,8 +40,10 @@ class UserAuth {
                 await setPersistence(this.#auth, browserSessionPersistence)
                 this.#constraintPassword(password)
                 
-                let userCredential = createUserWithEmailAndPassword(this.#auth, email, password)
-                resolve((await userCredential).user)
+                let userCredential = await createUserWithEmailAndPassword(this.#auth, email, password)
+                await sendEmailVerification(this.#auth.currentUser)
+
+                resolve(userCredential.user)
             } 
             catch (error) {
                 reject(error)

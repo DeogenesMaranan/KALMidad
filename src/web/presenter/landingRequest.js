@@ -149,7 +149,3 @@ function sampleRun1() {
             console.error('Error fetching user info:', error);
         });
 }
-
-
-sampleRun()
-sampleRun1()

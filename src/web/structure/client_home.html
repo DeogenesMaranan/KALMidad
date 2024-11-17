@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home[Client]</title>
+    <link rel="stylesheet" href="../styling/client_home.css">
+    <link rel="stylesheet" href="../styling/client_assessment.css">
+    <link rel="stylesheet" href="../styling/client_settings.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="menu-icon" id="menu-icon">
+          <img src="../assets/menu.svg" alt="Menu" onclick="toggleSidebar()">
+        </div>
+        <div class="menu-items">
+          <div class="menu-item" id="home">
+            <img src="../assets/home.svg" alt="Home Icon">
+            <span>Home</span>
+          </div>
+          <div class="menu-item" id="recent-assessments">
+            <img src="../assets/scan.svg" alt="Recent Assessments Icon">
+            <span>Recent Assessments</span>
+          </div>
+          <div class="menu-item" id="profile-settings">
+            <img src="../assets/user.svg" alt="Profile Settings Icon">
+            <span>Profile Settings</span>
+          </div>
+        </div>
+        <!-- Logout Section -->
+    <div class="logout">
+        <img src="../assets/logout.svg" alt="Logout Icon" class="logout-icon">
+        <span class="logout-text">Log out</span>
+      </div>
+    </div>
+
+    <!-- Main Content (Home) -->
+<div class="main-content" id="home-content">
+    <img src="../assets/home_logo.png" alt="Home Logo" class="home-logo">
+    <img src="../assets/account_circle.svg" alt="User Icon" class="user-icon">
+    <div class="frame-container">
+        <img src="../assets/Frame 80.png" alt="Frame 80" class="main-image">
+        <div class="text-container">
+            <!-- Explicitly set font color to white -->
+            <p class="text-small" style="color: white;">Keep track of most affected areas in</p>
+            <p class="text-large" style="color: white;">Batangas</p>
+        </div>
+    </div>
+
+    <!-- Box Content below Frame 80 -->
+    <div class="big-box">
+        <div class="small-box clickable" id="open-report-popup">
+            <div class="plus-icon">+</div>
+            <p class="small-text">Create new report</p>
+        </div>  
+        <div class="small-box">
+            <img src="../assets/Group 28.png" alt="Status Icon" class="box-image">
+        </div>
+    </div>
+
+    <!-- Report Popup: This must show after the user clicks the clickable small box -->
+    <div id="report-popup" class="popup">
+        <div class="popup-content">
+            <span id="close-report-popup" class="close-btn">&times;</span>
+            <h2>
+                <span style="font-size: small; color: black;">To create report</span><br>
+                <span style="font-size: larger; color: #E7BB41;">Setup your profile details</span>
+            </h2>
+            <form>
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first-name" required>
+
+                <label for="middle-name">Middle Name:</label>
+                <input type="text" id="middle-name" name="middle-name" required>
+
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" name="last-name" required>
+
+                <div class="form-group">
+                    <div>
+                        <label for="town" style="color: #000000;">Town:</label>
+                        <select id="town" name="town">
+                            <option value="town1">Town 1</option>
+                            <option value="town2">Town 2</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="city" style="color: #000000;">City:</label>
+                        <select id="city" name="city">
+                            <option value="city1">Batangas</option>
+                            <option value="city2">Quezon</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- User Profile Box -->
+<div id="user-profile-box" class="user-profile-box">
+    <div class="profile-header">
+        <img src="../assets/account_circle.svg" alt="User Icon" class="profile-icon">
+        <h3 class="profile-name">NAME</h3>
+        <p class="profile-email">email@gmail.com</p>
+        <button class="signout-btn" style="color: black;">Signout</button>
+    </div>
+</div>
+
+
+    <!-- Recent Assessments Content -->
+<div class="main-content" id="assessments-content" style="display: none;">
+    <img src="../assets/home_logo.png" alt="Home Logo" class="home-logo">
+    <div class="assessment-controls">
+      <img src="../assets/calendar.svg" alt="Calendar Icon" class="icon">
+      <input type="date" id="calendar-picker">
+      <img src="../assets/location.svg" alt="Location Icon" class="icon">
+      <select id="location-select">
+        <option value="all">ALL</option>
+        <option value="batangas">BATANGAS</option>
+        <!-- Add location options here -->
+      </select>
+      <img src="../assets/flag.svg" alt="Flag Icon" class="icon">
+      <select id="severity-select">
+        <option value="all">All</option>
+        <option value="catastrophic">Catastrophic</option>
+        <option value="severe">Severe</option>
+        <option value="moderate">Moderate</option>
+        <option value="minor">Minor</option>
+        <!-- Add more options here if needed -->
+      </select>
+    </div>
+    <!-- Divider in between-->
+    <hr class="divider">
+
+    <table class="assessment-table">
+      <thead>
+        <tr>
+          <th style="color: black;">Image</th>
+          <th style="color: black;">Flag</th>
+          <th style="color: black;">Calamity</th>
+          <th style="color: black;">Date</th>
+          <th style="color: black;">Location</th>
+          <th style="color: black;">Status</th>
+          <th style="color: black;">Description</th>
+      </tr>      
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="../assets/sample_image.jpg" alt="Report Image" class="report-image"></td>
+          <td>Catastrophic</td>
+          <td>Typhoon</td>
+          <td>November 25, 2024</td>
+          <td>Red Street, San Mateo, San Pascual, Batangas</td>
+          <td>Resolved</td>
+          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</td>
+        </tr>
+        <!-- Additional rows here -->
+      </tbody>
+    </table>
+  </div>
+   
+      <!-- Profile Settings Content -->
+<div class="main-content" id="profile-settings-content" style="display: none;">
+  <div class="support-request-container">
+      <!-- Left Panel with Illustration and Text -->
+      <div class="left-panel">
+          <!-- Logo at the top right corner -->
+          <img src="../assets/home_logo.png" alt="Logo" class="logo">
+          <img src="../assets/Group 38.png" alt="Help Icon" class="help-icon">
+      </div>
+
+      <!-- Right Panel with Form -->
+      <div class="right-panel">
+          <h2 class="form-title">Support Request Form</h2>
+          <p class="form-description">Please complete the form below detailing your request, and a member of our support staff will respond as soon as possible.</p>
+          <form class="support-form">
+              <div class="form-group">
+                  <label for="first-name">FIRST NAME </label>
+                  <input type="text" id="first-name" name="first-name" required>
+              </div>
+              <div class="form-group">
+                  <label for="last-name">LAST NAME </label>
+                  <input type="text" id="last-name" name="last-name" required>
+              </div>
+              <div class="form-group">
+                  <label for="calamity-type">WHAT TYPE OF CALAMITY AFFECTED YOU? </label>
+                  <select id="calamity-type" name="calamity-type" required>
+                      <option value="typhoon">Typhoon</option>
+                      <option value="earthquake">Earthquake</option>
+                      <option value="flood">Flood</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="date">WHEN DID THIS HAPPEN? </label>
+                  <input type="date" id="date" name="date" required>
+              </div>
+              <div class="form-group">
+                  <label for="location-city">IN WHICH PART OF BATANGAS ARE YOU? </label>
+                  <div class="location-inputs">
+                      <input type="text" id="location-city" name="location-city" placeholder="City" required>
+                      <input type="text" id="location-town" name="location-town" placeholder="Town" required>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="image-link">ADD THE IMAGE LINK OF DESTRUCTION MADE TO YOU BY THIS CALAMITY </label>
+                  <input type="url" id="image-link" name="image-link" required>
+              </div>
+              <div class="form-group">
+                <label for="description" class="optional-label">ADD DETAILED EXPLANATION HOW THIS CALAMITY AFFECTED YOU (optional)</label>
+                <textarea id="description" name="description"></textarea>
+            </div>            
+              <button type="submit" class="submit-btn">SUBMIT</button>
+          </form>
+      </div>
+  </div>
+</div>
+<script src="../presenter/client_home.js"></script>
+</body>
+</html>

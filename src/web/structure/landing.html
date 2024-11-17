@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>KALMidad</title>
+    <title>KAMLidad</title>
 
-    <link rel="stylesheet" href="../styling/account.css">
+    <link rel="stylesheet" href="../styling/landing.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"> 
-    <script src="https://www.google.com/recaptcha/api.js" defer></script>
 </head>
+
 <body>
     <header>
         <nav>
@@ -31,57 +31,12 @@
         <div class="right-side"></div>
     </div>
 
-    <!-- Register Modal -->
-    <div class="register-modal" id="register-modal">
-        <div class="register-modal-content">
-            <h2>Create your account</h2>
-            <div class="form-group">
-                <input type="email" id="email" placeholder="Email Address">
-            </div>
-            <div class="form-group">
-                <input type="password" id="password" placeholder="Password">
-            </div>
-            <div class="signin-link">
-                <p>Already have an account? <a href="javascript:void(0);" id="signin-inside">Signin</a></p>
-            </div>
-            <div class="g-recaptcha"
-                data-sitekey="6LdWjHkqAAAAAMMpfbOq-0ggCIbcEdto18bFJO_k"
-                data-callback="onRecaptchaSuccess">
-            </div>            
-            <button class="submit-button" id="signup-button">Sign Up</button>
-        </div>
+    <div class="popup-container">
+        <iframe src="" frameborder="0" class="popup-frame" id="popup-frame" scrolling="no">
+            
+        </iframe>
     </div>
 
-    <!-- Signin Modal -->
-    <div class="signin-modal" id="signin-modal">
-        <div class="signin-modal-content">
-            <h2>Signin to your account</h2>
-            <div class="form-group">
-                <input type="email" id="signin-email" placeholder="Email Address">
-            </div>
-            <div class="form-group">
-                <input type="password" id="signin-password" placeholder="Password">
-            </div>
-            <div class="signup-link">
-                <p>Don't have an account? <a href="javascript:void(0);" id="signup-inside">Sign up</a></p>
-            </div>
-            <div class="g-recaptcha"
-                data-sitekey="6LdWjHkqAAAAAMMpfbOq-0ggCIbcEdto18bFJO_k"
-                data-callback="onRecaptchaSuccess">
-            </div>
-            <button class="submit-button" id="signin-button">Signin</button>
-        </div>
-    </div>
-
-    <script>
-        function onRecaptchaSuccess(token) {
-          document.getElementById('signin-button').disabled = false;
-          document.getElementById('signup-button').disabled = false;
-        //   document.getElementById('add-name').disabled = false;
-        }
-      </script>
-    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
-    <script src="../../dist/landing.bundle.js"></script>
-    <script src="../../dist/landingRequest.bundle.js"></script>
+    <script src="../presenter/landing.js"></script>
 </body>
 </html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home[User]</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styling/home.css">
+  <link rel="stylesheet" href="../styling/assessment.css"> 
+  <link rel="stylesheet" href="../styling/setting.css">
+  
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <div class="menu-icon" id="menu-icon">
+      <img src="../assets/menu.svg" alt="Menu" onclick="toggleSidebar()">
+    </div>
+    <div class="menu-items">
+      <div class="menu-item" id="home">
+        <img src="../assets/home.svg" alt="Home Icon">
+        <span>Home</span>
+      </div>
+      <div class="menu-item" id="recent-assessments">
+        <img src="../assets/scan.svg" alt="Recent Assessments Icon">
+        <span>Recent Assessments</span>
+      </div>
+      <div class="menu-item" id="profile-settings">
+        <img src="../assets/user.svg" alt="Profile Settings Icon">
+        <span>Profile Settings</span>
+      </div>
+    </div>
+
+    <!-- Logout Section -->
+    <div class="logout">
+      <img src="../assets/logout.svg" alt="Logout Icon" class="logout-icon">
+      <span class="logout-text">Log out</span>
+    </div>
+  </div>
+
+  <!-- Main Content (Home) -->
+  <div class="main-content" id="home-content">
+    <img src="../assets/home_logo.png" alt="Home Logo" class="home-logo">
+    <img src="../assets/account_circle.svg" alt="User Icon" class="user-icon"> 
+    <div class="frame-container">
+      <img src="../assets/Frame 80.png" alt="Frame 80" class="main-image">
+      <div class="text-container">
+        <!-- Explicitly set font color to white -->
+        <p class="text-small" style="color: white;">Keep track of most affected areas in</p>
+        <p class="text-large" style="color: white;">Batangas</p>
+        <p class="text-medium" style="color: white;">Total Reports: 1128</p>
+      </div>
+    </div>
+
+    <!-- Scrollable Box Below Frame 80 -->
+    <div class="scrollable-box">
+      <div class="left-box">
+        <h3 class="header">Top Cities with Most Reports</h3>
+        <hr class="divider">
+        <div class="city-list">
+          <div class="city-row f0f0f0">
+            <span>Bauan</span><span>342</span>
+          </div>
+          <div class="city-row e7bb41">
+            <span>Alitagtag</span><span>100</span>
+          </div>
+          <div class="city-row f0f0f0">
+            <span>Lipa</span><span>45</span>
+          </div>
+          <div class="city-row e7bb41">
+            <span>Alitagtag</span><span>100</span>
+          </div>
+          <div class="city-row f0f0f0">
+            <span>Bauan</span><span>342</span>
+          </div>
+          <div class="city-row e7bb41">
+            <span>Alitagtag</span><span>100</span>
+          </div>
+          <div class="city-row f0f0f0">
+            <span>Lipa</span><span>45</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-box">
+        <h3 class="header">Total Cases</h3>
+        <div class="cases-container">
+          <div class="case-box catastrophic">
+            <div class="number">345</div>
+            <div class="severity">CATASTROPHIC</div>
+            <hr class="divider red-line">
+          </div>
+          <div class="case-box severe">
+            <div class="number">45</div>
+            <div class="severity">SEVERE</div>
+            <hr class="divider yellow-line">
+          </div>
+          <div class="case-box moderate">
+            <div class="number">103</div>
+            <div class="severity">MODERATE</div>
+            <hr class="divider yellow-line">
+          </div>
+          <div class="case-box minor">
+            <div class="number">453</div>
+            <div class="severity">MINOR</div>
+            <hr class="divider green-line">
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- User Profile Box (Pop-up) -->
+  <div id="user-profile-box" class="user-profile-box">
+    <div class="profile-header">
+      <img src="../assets/account_circle.svg" alt="User Icon" class="profile-icon">
+      <h3 class="profile-name">NAME</h3>
+      <p class="profile-email">email@gmail.com</p>
+      <button class="signout-btn" style="color: black;">Signout</button>
+    </div>
+  </div>
+  </div>
+
+  <!-- Recent Assessments Content -->
+  <div class="main-content" id="assessments-content" style="display: none;">
+    <img src="../assets/home_logo.png" alt="Home Logo" class="home-logo">
+    <div class="assessment-controls">
+      <img src="../assets/calendar.svg" alt="Calendar Icon" class="icon">
+      <input type="date" id="calendar-picker">
+      <img src="../assets/location.svg" alt="Location Icon" class="icon">
+      <select id="location-select">
+        <option value="all">ALL</option>
+        <option value="batangas">BATANGAS</option>
+        <!-- Add location options here -->
+      </select>
+      <img src="../assets/flag.svg" alt="Flag Icon" class="icon">
+      <select id="severity-select">
+        <option value="all">All</option>
+        <option value="catastrophic">Catastrophic</option>
+        <option value="severe">Severe</option>
+        <option value="moderate">Moderate</option>
+        <option value="minor">Minor</option>
+        <!-- Add more options here if needed -->
+      </select>
+    </div>
+      <!-- Divider in between-->
+    <hr class="divider">
+
+
+    <table class="assessment-table">
+      <thead>
+          <tr>
+              <th style="color: black;">Image</th>
+              <th style="color: black;">Flag</th>
+              <th style="color: black;">Calamity</th>
+              <th style="color: black;">Report From</th>
+              <th style="color: black;">Location</th>
+              <th style="color: black;">Status</th>
+              <th style="color: black;">Description</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td><img src="../assets/sample_image.jpg" alt="Report Image" class="report-image"></td>
+              <td>Catastrophic</td>
+              <td>Typhoon</td>
+              <td>Juan Dela Cruz</td>
+              <td>Red Street, San Mateo, San Pascual, Batangas</td>
+              <!-- Status changed to a dropdown -->
+              <td>
+                  <select name="status" class="status-dropdown">
+                      <option value="resolved" selected>Resolved</option>
+                      <option value="ongoing">Ongoing</option>
+                  </select>
+              </td>
+              <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</td>
+          </tr>
+          <!-- Additional rows here -->
+      </tbody>
+  </table>
+  
+  </div>
+
+  <!-- Profile Settings Content -->
+<div class="main-content" id="profile-settings-content" style="display: none;">
+  <div class="settings-header">
+      <!-- Logo at the top right corner -->
+      <img src="../assets/home_logo.png" alt="Logo" class="logo">
+      <!-- Account Settings Text -->
+      <h2 class="account-settings-title">Account Settings</h2>
+  </div>
+
+  <div class="profile-section">
+      <!-- Circular profile with pen icon to edit -->
+      <div class="profile-container">
+          <img src="../assets/profile_picture.svg" alt="Profile Picture" class="profile-picture">
+          <button class="edit-profile-btn">
+              <img src="../assets/edit.svg" alt="Edit Profile">
+          </button>
+      </div>
+      <!-- Line division -->
+      <hr class="divider">
+      
+      <div class="profile-info">
+        <div class="info-row">
+            <label for="name">Name</label>
+            <div class="info-text">
+                <p id="name">John Doe</p>
+                <button class="edit-btn">Edit Name</button>
+            </div>
+        </div>
+        <div class="divider"></div>
+    
+        <div class="info-row">
+            <label for="address">Address</label>
+            <div class="info-text">
+                <p id="address">123 Main St, Batangas</p>
+                <button class="edit-btn">Edit Location</button>
+            </div>
+        </div>
+        <div class="divider"></div>
+    
+        <div class="info-row">
+            <label for="email">Email</label>
+            <div class="info-text">
+                <p id="email">johndoe@example.com</p>
+                <button class="signout-btn">Signout</button>
+            </div>
+        </div>
+        <div class="divider"></div>
+    </div>
+    
+  <script src="../presenter/home.js"></script>
+</body>
+</html>

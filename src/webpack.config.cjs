@@ -10,7 +10,6 @@ module.exports = {
     }, 
     entry: {
         server: path.resolve(__dirname, './server/index.js'),
-        test: path.resolve(__dirname, './web/presenter/test.js'),
         landing: path.resolve(__dirname, './web/presenter/landing.js'),
         landingRequest: path.resolve(__dirname, './web/presenter/landingRequest.js')
     },
