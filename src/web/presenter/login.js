@@ -1,9 +1,64 @@
+import axios from "axios";
 
+var loggedInUid;
 const signinButton = document.getElementById('signin-button')
 
-signinButton.addEventListener('click', () => {
-    const p_emal = document.getElementById('signin-email').value 
-    const p_password = document.getElementById('signin-password').value
 
-    console.log(`Email: ${p_emal} Password: ${p_password}`)
-})
+signinButton.addEventListener('click', async () => {
+    const p_email = document.getElementById('signin-email').value;
+    const p_password = document.getElementById('signin-password').value;
+    const recaptchaToken = document.getElementById('g-recaptcha-response').value;
+
+    try {
+        const user = await signInUser(p_email, p_password, recaptchaToken);
+        
+        if (user.data.user.uid) {
+            loggedInUid = user.data.uid
+            console.log(user.data.user.uid)
+
+            const userCred = await getUserType(loggedInUid)
+            console.log('user cred: ', userCred)
+
+            if (userCred.data.userType == 'client') {
+                // open client home
+            } else {
+                // open admin home
+            }
+        }
+    } 
+    catch (error) {
+        const errorHolder = document.getElementById('error-message-holder');
+        errorHolder.textContent = `Error signing in: ${error.message}`;
+        errorHolder.style.display = 'block';
+    }
+});
+
+
+async function signInUser(p_email, p_password, recaptchaToken) {
+    try {
+        const response = await axios.post(
+            'http://localhost:5500/users/signin', 
+            { p_email, p_password, recaptchaToken, }, 
+            { headers: { 'Content-Type': 'application/json', }}
+        )
+
+        if (response.data && response.data.message) {
+            return response
+        }
+    } catch(error) { throw error }
+};
+
+async function getUserType(uid) {
+    try {
+        const response = await axios.get(
+            'http://localhost:5500/users/getUserType',  {
+                params: {
+                    uid: uid,
+                },
+                headers: {'Content-Type': 'application/json', },
+            }
+        )
+        return response
+    }
+    catch (error) { throw error}
+}

@@ -29,6 +29,11 @@ class UserController {
             res.status(400).json({error: error.message})
         }
     }
+
+    async getUserType(req, res) {
+        const response = this.#userAuth.getUserType(req.uid)
+        res.status(201).json(response)
+    }
 }
 
 export default new UserController()

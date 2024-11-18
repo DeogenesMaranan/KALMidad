@@ -51,6 +51,13 @@ class UserAuth {
         });
     }
 
+    getUserType(uid) {
+        if (uid == 'm5wP2OTHSSZRxLZr0gjYidgMKck1') {
+            return {userType: 'admin'}
+        }
+        return {userType: 'client'}
+    }
+
     signout() {
         return new Promise (async (resolve, reject) => {
             try {

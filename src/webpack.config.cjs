@@ -11,7 +11,9 @@ module.exports = {
     entry: {
         server: path.resolve(__dirname, './server/index.js'),
         landing: path.resolve(__dirname, './web/presenter/landing.js'),
-        landingRequest: path.resolve(__dirname, './web/presenter/landingRequest.js')
+        landingRequest: path.resolve(__dirname, './web/presenter/landingRequest.js'),
+        login: path.resolve(__dirname, './web/presenter/login.js'),
+        signup: path.resolve(__dirname, './web/presenter/signup.js')
     },
     output: {
         path: path.resolve(__dirname, 'dist'),

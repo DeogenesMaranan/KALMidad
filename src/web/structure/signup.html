@@ -13,6 +13,8 @@
 <body>
     <div class="signin-modal" id="signin-modal">
         <h2>Create your account</h2>
+
+        <p id="error-message-holder" style="display: none;">Error</p>
         <div class="form-group">
             <input type="email" id="signup-email" placeholder="Email Address">
         </div>
@@ -20,7 +22,9 @@
             <input type="password" id="signup-password" placeholder="Password">
         </div>
         <div class="signup-link">
-            <p>Already have an account? <a href="javascript:void(0);" id="signin-inside">Signin</a></p>
+            <p class="signup-link-content">Already have an account? 
+                <a href="javascript:void(0);" id="signup-inside">Sign in</a>
+            </p>
         </div>
         <div class="recaptcha-container">
             <div class="g-recaptcha"
@@ -35,7 +39,9 @@
         function onRecaptchaSuccess(token) {
           document.getElementById('signup-button').disabled = false;
         }
-      </script>
-    <script src="../presenter/signup.js"></script>
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <script src="../../dist/signup.bundle.js"></script>
 </body>
 </html>

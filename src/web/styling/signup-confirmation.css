@@ -33,7 +33,7 @@ body {
 .check-icon {
     width: 11rem;
     height: auto;
-    padding: 2.5rem 0rem;
+    margin: 1rem 0rem;
 }
 
 .text-bg {
@@ -46,4 +46,16 @@ body {
 .text-bg h3 {
     text-align: center;
     color: var(--clr--yellow-orange);
+}
+
+#continueButton {
+    width: 13rem;
+    height: 3rem;
+    border-width: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    background-color: #E7BB41;
+    font-family: 'Inter', sans-serif;
+    margin: 3rem 0 0 0;
 }
