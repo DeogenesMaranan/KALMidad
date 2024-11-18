@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+body::-webkit-scrollbar {
+    display: none; 
+}
+
+.header-container {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-bar-container {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 2,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.title-bar-container button {
+    border-width: 0;
+    background-color: white;
+}
+
+.title-bar-container button span {
+    font-size: 2.5rem;
+}
+
+.main-header-container {
+    width: 100%;
+    height: 21rem;
+    color: white;
+    padding: 3rem 4rem;
+    margin: 1rem 0 1.5rem 0;
+    border-radius: 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background-image: url('../assets/Frame\ 80.png');
+}
+
+.main-header-container h1 {
+    font-size: 5.5rem;
+    font-weight: 600;
+    line-height: 1rem;
+    margin: 1.7rem 0 2rem 0;
+    text-transform: uppercase;
+}
+
+.main-header-container p {
+    font-size: 1.3rem;
+    line-height: 0%;
+}
+
+.main-container {
+    width: 90%;
+    height: 100%;
+    padding: 0rem 1.5rem 1.3rem 1.5rem;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-radius: 0.4rem;
+    border-color: #D3D0CB;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-container .content {
+    width: 23.5%;
+    height: 21rem;
+    color: black;
+    padding: 1rem;
+    margin: 1.3rem 0rem 0 0;
+    box-sizing: border-box;
+    border-radius: 0.4rem;
+}
+
+#add-new-report-button {
+    background-color: #E7BB41;
+    border-width: 0;
+    font-size: 1.3rem;
+}
+
+#add-new-report-button span {
+    font-size: 6rem;
+    line-height: 1rem;
+    margin: 0;
+}
+
+#add-new-report-button p {
+    margin: 0;
+    line-height: 0%;
+}
+
+.main-container .report-holder {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F0F0F0;
+}
+
+.main-container .report-holder h3 {
+    font-size: 1.7rem;
+    line-height: 1rem;
+    margin: 1rem 0 0 0;
+    text-align: center;
+}
+
+.main-container #no-report-container p {
+    line-height: 1.4rem;
+    font-size: 1rem;
+    margin: 1rem 0 2rem 0;
+    text-align: center;
+}

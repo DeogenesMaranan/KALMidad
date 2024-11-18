@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Home</title>
+
+  <link rel="stylesheet" href="../styling/home-skeleton.css">
+</head>
+<body>
+  <div class="sidebar-container">
+    <div class="closed-sidebar-container" id="closed-sidebar-container">
+      <button id="open-sidebar-button">
+        <img src="../assets/menu.svg" alt="Menu">
+      </button>
+    </div>
+
+    <div class="opened-sidebar-container" id="opened-sidebar-container">
+      <div class="menu-items">
+        <div class="menu-item" id="home">
+          <img src="../assets/home.svg" alt="Home Icon">
+          <span>Home</span>
+        </div>
+        <div class="menu-item" id="recent-assessments">
+          <img src="../assets/scan.svg" alt="Recent Assessments Icon">
+          <span>Recent Assessments</span>
+        </div>
+        <div class="menu-item" id="profile-settings">
+          <img src="../assets/user.svg" alt="Profile Settings Icon">
+          <span>Support Request Form</span>
+        </div>
+      </div>
+      <!-- Logout Section -->
+      <div class="logout">
+        <img src="../assets/logout.svg" alt="Logout Icon" class="logout-icon">
+        <span class="logout-text">Log out</span>
+      </div>
+    </div>
+  </div>
+
+    <div class="main-container">
+        <iframe src="../structure/home-client.html" frameborder="0" id="page-content-container">
+
+        </iframe>
+    </div>
+
+    <script src="../presenter/home-skeleton.js"></script>
+</body>
+</html>
