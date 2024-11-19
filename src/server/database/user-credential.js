@@ -21,6 +21,7 @@ class UserCredential {
     constructor() {
         this.#firebaseApp = firebaseApp
     }
+    
     insertUserInfo(p_user, p_uid) {
         return new Promise(async (resolve, reject) => {
             try {

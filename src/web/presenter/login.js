@@ -1,8 +1,8 @@
+
 import axios from "axios";
 
-var loggedInUid;
-const signinButton = document.getElementById('signin-button')
 
+const signinButton = document.getElementById('signin-button')
 
 signinButton.addEventListener('click', async () => {
     const p_email = document.getElementById('signin-email').value;
@@ -13,14 +13,14 @@ signinButton.addEventListener('click', async () => {
         const user = await signInUser(p_email, p_password, recaptchaToken);
         
         if (user.data.user.uid) {
-            loggedInUid = user.data.uid
-            console.log(user.data.user.uid)
-
+            const loggedInUid = user.data.uid
             const userCred = await getUserType(loggedInUid)
-            console.log('user cred: ', userCred)
+            console.log('user type: ', userCred.data.userType)
 
             if (userCred.data.userType == 'client') {
-                // open client home
+                sessionStorage.setItem('uid', loggedInUid)
+                sessionStorage.setItem('userType', userCred.data.userType)
+                window.top.location.href = '../structure/home-skeleton.html'
             } else {
                 // open admin home
             }
@@ -32,7 +32,6 @@ signinButton.addEventListener('click', async () => {
         errorHolder.style.display = 'block';
     }
 });
-
 
 async function signInUser(p_email, p_password, recaptchaToken) {
     try {

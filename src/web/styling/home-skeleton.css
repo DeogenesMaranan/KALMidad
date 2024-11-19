@@ -20,7 +20,7 @@ body {
 .closed-sidebar-container {
     width: 7rem;
     height: 100%;
-    display: none;
+    display: flex;
     padding: 2rem 1rem;
     flex-direction: row;
     justify-content: center;
@@ -43,7 +43,7 @@ body {
 .opened-sidebar-container {
     width: 23rem;
     height: 100%;
-    display: flex;
+    display: none;
     color: white;
     font-size: 1.1rem;
     padding: 3rem 3.3rem;
