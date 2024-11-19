@@ -1,0 +1,152 @@
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    background-color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+body::-webkit-scrollbar {
+    display: none; 
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.element-container {
+    width: 100%;
+    height: 100%;
+    margin: 3rem 4rem;
+    flex-direction: row;
+}
+
+.left-container {
+    width: 33rem;
+    height: 95%;
+    box-sizing: border-box;
+}
+
+.design-container {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 7rem;
+    background-color: white;
+}
+
+.design-container img, 
+.design-container h3,
+.design-container p,
+.header-container h3,
+.header-container p {
+    margin: 0.1rem;
+    padding: 0;
+}
+
+.design-container h3,
+.right-container h3 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.right-container {
+    width: 100%;
+    height: 98%;
+    padding: 2.5rem;
+    border-radius: 0.01rem;
+    border-color: #E7BB41;
+    border-width: 0.1rem;
+    border-style: solid;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.name-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.name-container div,
+.calamity-container,
+.datetime-container,
+.address-container div div,
+.image-selector-container,
+.description-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 3rem;
+}
+
+.name-container div input,
+.calamity-container select,
+.datetime-container div input,
+.address-container div div select,
+.image-selector-container input,
+.description-container textarea {
+    border-color: #D3D0CB;
+    border-radius: 0.5rem;
+    border-width: 0.1rem;
+    border-style: solid;
+    font-size: 1.1rem;
+    color: black;
+    padding: 0.5rem;
+}
+
+.name-container div input,
+.datetime-container div input {
+    width: 18rem;
+    height: 2.4rem;
+}
+
+.name-container div label,
+.calamity-container label,
+.datetime-container label,
+.address-container label,
+.image-selector-container label,
+.description-container label {
+    color: #44BBA4;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.calamity-container select, 
+.address-container div div select {
+    width: 19rem;
+    padding: 1rem;
+}
+
+.datetime-container div input {
+    margin-right: 3rem;
+}
+
+.address-container div {
+    display: flex;
+    flex-direction: row;
+}
+
+.address-container div div {
+    justify-content: center;
+    align-items: center;
+}
+
+.address-container div div label {
+    color: black;
+    font-weight: 400;
+}
+
+.description-container textarea {
+    width: 45rem;
+    height: 9rem;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KALMidad - Support Request Page</title>
+
+    <link rel="stylesheet" href="../styling/add-report.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="element-container container">
+        <div class="left-container container">
+            <img src="../assets/home_logo.png" alt="KALMidad">
+
+            <div class="container design-container">
+                <img src="../assets/first-aid-kit.png" alt="">
+                <h3>Help is <span style="color: #E7BB41;">one</span> click away!</h3>
+                <p>Let us know your issue by filling up the form.</p>
+            </div>
+        </div>
+
+        <div class="right-container container">
+            <div class="header-container">
+                <h3>Support Request Form</h3>
+                <p>Please complete the form below detailing your request and a member of our support staff will respond as soon as possble.</p>
+            </div>
+
+            <div class="name-container">
+                <div>
+                    <label for="firstname-input">FIRST NAME <span style="color: #E21717;">*</span></label>
+                    <input type="text" name="firstname-input" id="firstname-input">
+                </div>
+                <div>
+                    <label for="lastname-input">LAST NAME <span style="color: #E21717;">*</span></label>
+                    <input type="text" name="lastname-input" id="lastname-input">
+                </div>
+            </div>
+
+            <div class="calamity-container">
+                <label for="calamity-dropdowm">WHAT TYPE OF CALAMITY AFFECTED YOU? <span style="color: #E21717;">*</span></label>
+                <select name="calamity-dropdowm" id="calamity-dropdowm">
+                    <option value="flood">Flood</option>
+                    <option value="typhoon">Typhoon</option>
+                    <option value="landslide">Landslide</option>
+                    <option value="earthquake">Earthquake</option>
+                </select>
+            </div>
+
+            <div class="datetime-container">
+                <label>WHEN DID THIS HAPPEN? <span style="color: #E21717;">*</span></label>
+                <div>
+                    <input type="date" id="date-input">
+                    <input type="time" id="time-input">
+                </div>
+            </div>
+
+            <div class="address-container">
+                <label>WHICH PART OF BATANGAS ARE YOU AT? <span style="color: #E21717;">*</span></label>
+                
+                <div>
+                    <div>
+                        <select name="city-dropdown" id="city-dropdown">
+                            <option value=""></option>
+                            <option value="San Pascual">San Pascual</option>
+                            <option value="Bauan">Bauan</option>
+                        </select>
+                        <label for="city-dropdown">City <span style="color: #E21717;">*</span></label>
+                    </div>
+
+                    <div>
+                        <select name="town-dropdown" id="town-dropdown">
+                            <option value=""></option>
+                            <option value="Bayanan">Bayanan</option>
+                            <option value="San Mateo">San Mateo</option>
+                        </select>
+                        <label for="town-dropdown">Town <span style="color: #E21717;">*</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-selector-container">
+                <label for="image-file-selector">ADD IMAGE OF THE DESTRUCTION THIS CALAMITY HAS CAUSED YOU <span style="color: #E21717;">*</span></label>
+                <input type="file" id="image-file-selector">
+            </div>
+
+            <div class="description-container">
+                <label for="description-input">ADD DETAILED EXPLANATION OF HOW THIS CALAMITY AFFECTED YOU <i style="color: #878C8E;">(optional)</i></label>
+                <textarea name="description-input" id="description-input"></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
