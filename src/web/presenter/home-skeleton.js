@@ -14,14 +14,14 @@ const openedSideBarContainer = document.getElementById('opened-sidebar-container
 
 
 function onContentContainer() {
-    // const userType = sessionStorage.getItem('userType')
+    const userType = sessionStorage.getItem('userType')
 
-    // if(userType === 'client'){
-    //     pageContentContainer.src = '../structure/home-client.html'
-    // } else {
-    //     pageContentContainer.src = ''
-    // }
-    pageContentContainer.src = '../structure/home-client.html'
+    if(userType === 'client'){
+        pageContentContainer.src = '../structure/home-client.html'
+    } else {
+        pageContentContainer.src = ''
+    }
+    // pageContentContainer.src = '../structure/home-client.html'
 }
 onContentContainer()
 
@@ -54,7 +54,7 @@ recentAssessmentButton.addEventListener('click', () => {
         recentAssessmentButton.style.backgroundColor = '#44BBA4'
         profileSettingButton.style.backgroundColor = '#393E41'
 
-        // pageContentContainer.src = '../structure/.html'
+        pageContentContainer.src = '../structure/recent-assessment.html'
     } else {
         recentAssessmentButtonClicked = false
         openedSideBarContainer.style.display = 'none'
