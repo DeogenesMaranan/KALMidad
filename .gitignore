@@ -7,7 +7,7 @@
 # IDE/Editor settings
 .vscode/
 .idea/
-
+*src/dist/
 
 # Cache
 .cache/
