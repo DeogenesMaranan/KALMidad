@@ -8,13 +8,16 @@ closeReportPopupButton.addEventListener('click', () => {
     popupBackground.style.display = 'none'
 })
 
-addNewReportButton.addEventListener('click', () => {
-    // if the user was new, show the setup account page.
-    const loggedInUid = sessionStorage.getItem('uid')
-    
-
-
-    // else, continue to the add report page.
+addNewReportButton.addEventListener('click', async () => {
+    try{
+        const loggedInUid = sessionStorage.getItem('uid')
+        const response = await getUserInfo(loggedInUid)
+        
+        window.location.href = '../structure/add-report.html'
+    }
+    catch(error) { 
+        popupBackground.style.display = 'flex'
+     }
 })
 
 async function getUserInfo(p_uid) {

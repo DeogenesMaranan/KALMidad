@@ -1,5 +1,8 @@
 
-var homeButtonClicked = false
+var homeButtonClicked = true
+var recentAssessmentButtonClicked= false
+var profileSettingButtonClicked = false
+
 
 const homeButton = document.getElementById('home')
 const openSidebarButton = document.getElementById('open-sidebar-button')
@@ -11,18 +14,16 @@ const openedSideBarContainer = document.getElementById('opened-sidebar-container
 
 
 function onContentContainer() {
-    const userType = sessionStorage.getItem('userType')
+    // const userType = sessionStorage.getItem('userType')
 
-    if(userType === 'client'){
-        console.log(userType)
-        pageContentContainer.src = '../structure/home-client.html'
-    }
-    else {
-        pageContentContainer.src = ''
-    }
+    // if(userType === 'client'){
+    //     pageContentContainer.src = '../structure/home-client.html'
+    // } else {
+    //     pageContentContainer.src = ''
+    // }
+    pageContentContainer.src = '../structure/home-client.html'
 }
 onContentContainer()
-
 
 openSidebarButton.addEventListener('click', () => {
     closedSideBarContainer.style.display = 'none'
@@ -30,7 +31,7 @@ openSidebarButton.addEventListener('click', () => {
 })
 
 homeButton.addEventListener('click', () => {
-    if(!homeButtonClicked) {
+    if (!homeButtonClicked) {
         homeButtonClicked = true
 
         homeButton.style.backgroundColor = '#44BBA4'
@@ -40,6 +41,38 @@ homeButton.addEventListener('click', () => {
         pageContentContainer.src = '../structure/home-client.html'
     } else {
         homeButtonClicked = false
+        openedSideBarContainer.style.display = 'none'
+        closedSideBarContainer.style.display = 'flex'
+    }
+})
+
+recentAssessmentButton.addEventListener('click', () => {
+    if (!recentAssessmentButtonClicked) {
+        recentAssessmentButtonClicked = true
+
+        homeButton.style.backgroundColor = '#393E41'
+        recentAssessmentButton.style.backgroundColor = '#44BBA4'
+        profileSettingButton.style.backgroundColor = '#393E41'
+
+        // pageContentContainer.src = '../structure/.html'
+    } else {
+        recentAssessmentButtonClicked = false
+        openedSideBarContainer.style.display = 'none'
+        closedSideBarContainer.style.display = 'flex'
+    }
+})
+
+profileSettingButton.addEventListener('click', () => {
+    if (!profileSettingButtonClicked) {
+        profileSettingButtonClicked = true
+
+        homeButton.style.backgroundColor = '#393E41'
+        recentAssessmentButton.style.backgroundColor = '#393E41'
+        profileSettingButton.style.backgroundColor = '#44BBA4'
+
+        // pageContentContainer.src = '../structure/.html'
+    } else {
+        profileSettingButton = false
         openedSideBarContainer.style.display = 'none'
         closedSideBarContainer.style.display = 'flex'
     }

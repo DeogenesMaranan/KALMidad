@@ -13,11 +13,12 @@ signinButton.addEventListener('click', async () => {
         const user = await signInUser(p_email, p_password, recaptchaToken);
         
         if (user.data.user.uid) {
-            const loggedInUid = user.data.uid
+            const loggedInUid = user.data.user.uid
             const userCred = await getUserType(loggedInUid)
-            console.log('user type: ', userCred.data.userType)
+            // console.log('user type: ', userCred)
 
             if (userCred.data.userType == 'client') {
+                console.log("USer:", loggedInUid)
                 sessionStorage.setItem('uid', loggedInUid)
                 sessionStorage.setItem('userType', userCred.data.userType)
                 window.top.location.href = '../structure/home-skeleton.html'
