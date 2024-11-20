@@ -1,0 +1,234 @@
+  body {
+    padding: 3rem 4rem;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  
+  /* Header styling */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .profile-icon {
+    margin-right: 1rem; /* Adds space between the icon and the right edge */
+  }
+  
+  .logo-section img {
+    width: 150px; /* Adjust logo size */
+    height: auto;
+  }
+  
+  .profile-icon {
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+  }
+  
+  .profile-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+  }
+  
+  
+  /* Banner Section */
+.banner {
+  position: relative;
+  height: 300px; /* Increased height of the banner image */
+  margin-bottom: 2rem;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 50%;
+  left: 20px; /* Align text to the left */
+  transform: translateY(-50%); /* Center vertically */
+  color: white;
+  width: 100%; /* Ensure overlay takes up full width */
+  
+}
+
+.banner-overlay h1 {
+  font-size: 3rem; /* Increased size of the h1 */
+  font-weight: bold;
+  margin-bottom: 0.25rem; 
+  margin-top: 0;
+}
+
+.banner-overlay p {
+  font-size: 1rem; 
+  margin-top: 0.25rem; 
+  margin-bottom: 0.25rem; 
+}
+
+.banner-overlay p:first-of-type {
+  margin-top: 0; 
+  margin-bottom: 0 
+}
+
+  .total-cases {
+    background-color: #F0F0F0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 550px;
+    margin: auto;
+  }
+  
+  .total-cases h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .cases-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    gap: 1rem;
+  }
+  
+  .case-item {
+    background-color: #F0F0F0;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .case-item .count {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .case-item .label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .line {
+    height: 10px;
+    width: 100%;
+    margin: 0.5rem auto 0;
+    border-radius: 0px;
+  }
+  
+  .red-line {
+    background-color: #E21717;
+  }
+  
+  .orange-line {
+    background-color: #E27C17;
+  }
+  
+  .yellow-line {
+    background-color: #E2E217;
+  }
+  
+  .green-line {
+    background-color: #17E217;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .cases-grid {
+      grid-template-columns: 1fr; /* Stacks in one column on smaller screens */
+    }
+  }
+
+  /* Top Cities Section */
+.top-cities {
+  flex: 1;
+  background-color: #ffffff; 
+  padding: 1.25rem; /* Adjusted padding to fit content better */
+  border: 1px solid #E7BB41; 
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  overflow: hidden; /* Prevent overflow issues */
+}
+
+.top-cities h3 {
+  font-size: 1.25rem; /* Reduced text size slightly */
+  font-weight: bold;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.top-cities h3::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #e6e6e6; /* Divider below title */
+  margin: 0.5rem auto 1rem;
+}
+
+.city-list {
+  width: 100%;
+}
+
+.city-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem; /* Adjusted padding for better fit */
+  background-color: #F0F0F0; 
+  margin-bottom: 0.5rem; /* Slight spacing between rows */
+  border-radius: 5px; 
+}
+
+.city-item:last-child {
+  margin-bottom: 0; /* Remove bottom margin for the last item */
+}
+
+.city-item span {
+  font-size: 0.9rem; 
+  font-weight: 500;
+  overflow: hidden; /* Prevents text overflow */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.city-item.alt-row {
+  background-color: #E7BB41; 
+}
+
+/* Stats Section */
+.stats-section {
+  display: flex; /* Aligns child boxes side by side */
+  justify-content: space-between; /* Adds space between the boxes */
+  gap: 1.5rem; /* Space between the boxes */
+  padding: 1.5rem;
+  background-color: #ffffff; 
+  border: 1px solid #D3D0CB;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  max-width: 1200px; /* Restricts the container width */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stats-section {
+    flex-direction: column; /* Stacks the boxes vertically on smaller screens */
+  }
+}
