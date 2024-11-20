@@ -40,14 +40,13 @@ class UserCredential {
             p_report.date = req.body.date
             p_report.time = req.body.time
             p_report.town = req.body.town
-            p_report.flag = req.body.flag
-            p_report.status = req.body.status
             p_report.calamity = req.body.calamity
+            p_report.lastname = req.body.lastname
+            p_report.firstname = req.body.firstname
             p_report.imageLink = req.body.imageLink
             p_report.description = req.body.description
-
+         
             await this.#userDb.insertNewReport(p_report, req.body.uid)
-
             res.status(201).json({ message: 'Report successfully submitted.'})
         }
         catch(error) { res.status(400).json({error: error.message }) }

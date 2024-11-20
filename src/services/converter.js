@@ -3,6 +3,19 @@ import ReportDetails from '../model/report-details.js'
 import UserCredential from '../model/user-credential.js';
 
 
+export function dateConverter(strDate) {
+    const date = new Date(strDate);
+
+    // Format the date as MM-DD-YYYY
+    const formattedDate = new Intl.DateTimeFormat("en-US", {
+        month: "2-digit",
+        day: "2-digit",
+        year: "numeric",
+    }).format(date)
+
+    return formattedDate.replace(/\//g, '-')
+}
+
 export function nameToFirestore(userInfo) {
     if (userInfo instanceof UserCredential) {
         return {
@@ -26,8 +39,9 @@ export function reportToFirebase(reportDetails) {
             flag: reportDetails.flag,
             town: reportDetails.town,
             flag: reportDetails.flag,
-            status: reportDetails.status,
             calamity: reportDetails.calamity,
+            lastname: reportDetails.lastname,
+            firstname: reportDetails.firstname,
             imageLink: reportDetails.imageLink,
             description: reportDetails.description
         }

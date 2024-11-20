@@ -4,6 +4,8 @@ import ReportModel from '../../model/report-details.js'
 
 
 var selectedImage
+const continueButton = document.getElementById('continue-button')
+const popupContainer = document.getElementById('popup-container')
 const addReportButton = document.getElementById('submit-report-button')
 const imageFileSelector = document.getElementById('image-file-selector')
 const selectedImageHolder = document.getElementById('selected-image-holder')
@@ -12,13 +14,15 @@ const selectedImageHolder = document.getElementById('selected-image-holder')
 addReportButton.addEventListener('click', async () => {
     try {
         const p_report = getUserInput()
+        const uid = sessionStorage.getItem('uid')
         const image = await uploadImage(selectedImage)
-        p_report.imageLink = image.data.data
-        
-        p_report.flag = await floodProcessor(selectedImageHolder)
-        // After this get the image's severity 
-        // post to db
 
+        p_report.imageLink = image.data.data        
+        p_report.flag = await floodProcessor(selectedImageHolder)
+        
+        const response = await insertReport(p_report, uid)
+
+        popupContainer.style.display = 'flex'
     } 
     catch(error) { console.error(error) }
 })
@@ -32,7 +36,11 @@ imageFileSelector.addEventListener('change', (e) => {
         selectedImageHolder.style.display = 'block'
     }
     reader.readAsDataURL(selectedImage)
-});
+})
+
+continueButton.addEventListener('click', () => {
+    window.top.location.href = '../structure/home-skeleton.html'
+})
 
 
 function getUserInput() {
@@ -63,4 +71,27 @@ async function uploadImage() {
         return response
     } 
     catch (error) { throw error }
+}
+
+async function insertReport(p_report, p_uid) {
+    try {
+        const response = await axios.post(
+            'http://localhost:5500/data/insertReport', {
+                uid: p_uid,
+                city: p_report.city,
+                flag: p_report.flag,
+                date: p_report.date,
+                time: p_report.time,
+                town: p_report.town,
+                calamity: p_report.calamity,
+                lastname: p_report.lastname,
+                firstname: p_report.firstname, 
+                imageLink: p_report.imageLink,
+                description: p_report.description,
+            },
+            { headers: { 'Content-Type': 'application/json', }}
+        )
+        return response
+    }
+    catch(error) { throw error }
 }
