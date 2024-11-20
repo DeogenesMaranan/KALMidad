@@ -1,10 +1,12 @@
 
 import axios from 'axios'
 import ReportModel from '../../model/report-details.js'
+import { fileURLToPath } from 'url'
 
 var selectedImage
 const addReportButton = document.getElementById('submit-report-button')
 const imageFileSelector = document.getElementById('image-file-selector')
+const selectedImageHolder = document.getElementById('selected-image-holder')
 
 
 addReportButton.addEventListener('click', async () => {
@@ -12,7 +14,7 @@ addReportButton.addEventListener('click', async () => {
         const p_report = getUserInput()
         const image = await uploadImage(selectedImage)
         p_report.imageLink = image.data.data
-        console.log(p_report.imageLink)
+        
         // After this get the image's severity 
         // post to db
 
@@ -21,14 +23,16 @@ addReportButton.addEventListener('click', async () => {
 })
 
 imageFileSelector.addEventListener('change', (e) => {
-    const file = e.target.files[0]
-    if (file && file.type.startsWith('image/')) {
-        selectedImage = file
-        console.log('Selected image:', selectedImage)
-    } else {
-        console.error('Invalid file. Please select an image.')
+    selectedImage = e.target.files[0]
+
+    const reader = new FileReader()
+    reader.onload = function(e) {
+        selectedImageHolder.src = e.target.result
+        selectedImageHolder.style.display = 'block'
     }
-})
+    reader.readAsDataURL(selectedImage)
+});
+
 
 function getUserInput() {
     const newReport = new ReportModel()

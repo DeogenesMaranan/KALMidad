@@ -162,3 +162,11 @@ body::-webkit-scrollbar {
     border-radius: 0.3rem;
     background-color: #E7BB41;
 }
+
+.image-selector-container div img {
+    width: auto;
+    height: 5rem;
+    display: none;
+    margin: 0.3rem;
+    border-radius: 0.5rem;
+}
