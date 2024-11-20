@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 import ReportModel from '../../model/report-details.js'
-import { fileURLToPath } from 'url'
+
 
 var selectedImage
 const addReportButton = document.getElementById('submit-report-button')
@@ -15,6 +15,7 @@ addReportButton.addEventListener('click', async () => {
         const image = await uploadImage(selectedImage)
         p_report.imageLink = image.data.data
         
+        p_report.flag = await floodProcessor(selectedImageHolder)
         // After this get the image's severity 
         // post to db
 
@@ -49,7 +50,6 @@ function getUserInput() {
 
     return newReport
 }
-
 
 async function uploadImage() {
     try {

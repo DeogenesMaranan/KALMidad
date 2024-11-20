@@ -40,6 +40,7 @@ class UserCredential {
             p_report.date = req.body.date
             p_report.time = req.body.time
             p_report.town = req.body.town
+            p_report.flag = req.body.flag
             p_report.status = req.body.status
             p_report.calamity = req.body.calamity
             p_report.imageLink = req.body.imageLink

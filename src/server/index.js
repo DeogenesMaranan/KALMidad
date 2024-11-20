@@ -5,6 +5,7 @@ import bodyParser from 'body-parser'
 import userRoute from './route/user-route.js'
 import dataRoute from './route/data-route.js'
 
+
 env.config()
 const app = express()
 const PORT = process.env.PORT
