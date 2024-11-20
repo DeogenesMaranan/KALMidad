@@ -37,10 +37,11 @@ class UserCredential {
             const p_report = new ReportDetails()
             p_report.city = req.body.city
             p_report.flag = req.body.flag
+            p_report.date = req.body.date
+            p_report.time = req.body.time
+            p_report.town = req.body.town
             p_report.status = req.body.status
             p_report.calamity = req.body.calamity
-            p_report.dateTime = req.body.dateTime
-            p_report.location = req.body.location
             p_report.imageLink = req.body.imageLink
             p_report.description = req.body.description
 

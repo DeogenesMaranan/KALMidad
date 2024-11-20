@@ -10,12 +10,13 @@ module.exports = {
     }, 
     entry: {
         server: path.resolve(__dirname, './server/index.js'),
-        landing: path.resolve(__dirname, './web/presenter/landing.js'),
-        landingRequest: path.resolve(__dirname, './web/presenter/landingRequest.js'),
         login: path.resolve(__dirname, './web/presenter/login.js'),
         signup: path.resolve(__dirname, './web/presenter/signup.js'),
+        landing: path.resolve(__dirname, './web/presenter/landing.js'),
+        addReport: path.resolve(__dirname, './web/presenter/add-report.js'),
+        homeClient: path.resolve(__dirname, './web/presenter/home-client.js'),
         homeSkeleton: path.resolve(__dirname, './web/presenter/home-skeleton.js'),
-        homeClient: path.resolve(__dirname, './web/presenter/home-client.js')
+        landingRequest: path.resolve(__dirname, './web/presenter/landingRequest.js')
     },
     output: {
         path: path.resolve(__dirname, 'dist'),

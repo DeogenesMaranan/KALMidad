@@ -21,11 +21,12 @@ export function reportToFirebase(reportDetails) {
     if (reportDetails instanceof ReportDetails) {
         return {
             city: reportDetails.city,
+            date: reportDetails.date,
+            time: reportDetails.time,
             flag: reportDetails.flag,
+            town: reportDetails.town,
             status: reportDetails.status,
             calamity: reportDetails.calamity,
-            dateTime: reportDetails.dateTime,
-            location: reportDetails.location,
             imageLink: reportDetails.imageLink,
             description: reportDetails.description
         }

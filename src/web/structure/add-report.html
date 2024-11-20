@@ -30,17 +30,18 @@
             <div class="name-container">
                 <div>
                     <label for="firstname-input">FIRST NAME <span style="color: #E21717;">*</span></label>
-                    <input type="text" name="firstname-input" id="firstname-input">
+                    <input type="text" name="firstname-input" id="firstname-input" required>
                 </div>
                 <div>
                     <label for="lastname-input">LAST NAME <span style="color: #E21717;">*</span></label>
-                    <input type="text" name="lastname-input" id="lastname-input">
+                    <input type="text" name="lastname-input" id="lastname-input" required>
                 </div>
             </div>
 
             <div class="calamity-container">
-                <label for="calamity-dropdowm">WHAT TYPE OF CALAMITY AFFECTED YOU? <span style="color: #E21717;">*</span></label>
-                <select name="calamity-dropdowm" id="calamity-dropdowm">
+                <label for="calamity-dropdown">WHAT TYPE OF CALAMITY AFFECTED YOU? <span style="color: #E21717;">*</span></label>
+                <select name="calamity-dropdown" id="calamity-dropdown">
+                    <option value=""></option>
                     <option value="flood">Flood</option>
                     <option value="typhoon">Typhoon</option>
                     <option value="landslide">Landslide</option>
@@ -51,8 +52,8 @@
             <div class="datetime-container">
                 <label>WHEN DID THIS HAPPEN? <span style="color: #E21717;">*</span></label>
                 <div>
-                    <input type="date" id="date-input">
-                    <input type="time" id="time-input">
+                    <input type="date" id="date-input" required>
+                    <input type="time" id="time-input" required>
                 </div>
             </div>
 
@@ -61,7 +62,7 @@
                 
                 <div>
                     <div>
-                        <select name="city-dropdown" id="city-dropdown">
+                        <select name="city-dropdown" id="city-dropdown" required>
                             <option value=""></option>
                             <option value="San Pascual">San Pascual</option>
                             <option value="Bauan">Bauan</option>
@@ -70,7 +71,7 @@
                     </div>
 
                     <div>
-                        <select name="town-dropdown" id="town-dropdown">
+                        <select name="town-dropdown" id="town-dropdown" required>
                             <option value=""></option>
                             <option value="Bayanan">Bayanan</option>
                             <option value="San Mateo">San Mateo</option>
@@ -82,14 +83,19 @@
 
             <div class="image-selector-container">
                 <label for="image-file-selector">ADD IMAGE OF THE DESTRUCTION THIS CALAMITY HAS CAUSED YOU <span style="color: #E21717;">*</span></label>
-                <input type="file" id="image-file-selector">
+                <input type="file" id="image-file-selector" required>
             </div>
 
             <div class="description-container">
                 <label for="description-input">ADD DETAILED EXPLANATION OF HOW THIS CALAMITY AFFECTED YOU <i style="color: #878C8E;">(optional)</i></label>
                 <textarea name="description-input" id="description-input"></textarea>
             </div>
+
+            <button id="submit-report-button">Submit</button>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <script src="../../dist/addReport.bundle.js"></script>
 </body>
 </html>

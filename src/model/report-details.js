@@ -1,42 +1,46 @@
 
 class ReportDetails {
     #city
-    #flag
-    #status
+    #date
+    #time
+    #town
     #calamity
-    #dateTime
-    #location
+    #lastname
+    #firstname
     #imageLink
     #description
 
-    constructor(calamity, city, dateTime, description, flag,
-                imageLink, location, status
+    constructor(calamity, city, date, time, description,
+                lastname, imageLink, town, firstname
     ) {
         this.#city = city
-        this.#flag = flag
-        this.#status = status
+        this.#time = time
+        this.#date = date
+        this.#town = town
         this.#calamity = calamity
-        this.#dateTime = dateTime
-        this.#location = location
+        this.#lastname = lastname
+        this.#firstname = firstname
         this.#imageLink = imageLink
         this.#description = description
     }
 
     get city() { return this.#city }
-    get flag() { return this.#flag }
-    get status() { return this.#status}
+    get date() { return this.#date }
+    get time() { return this.#time }
+    get town() { return this.#town }
     get calamity() { return this.#calamity }
-    get dateTime() { return this.#dateTime }
-    get location() { return this.#location }
+    get lastname() { return this.#lastname }
+    get firstname() { return this.#firstname }
     get imageLink() { return this.#imageLink }
     get description() { return this.#description }
     
     set city(city) { this.#city = city }
-    set flag(flag) { this.#flag = flag }
-    set status(status) { this.#status = status }
-    set calamity(calamity) { this.calamity = calamity }
-    set dateTime(dateTime) { thie.#dateTime = dateTime }
-    set location(location) { this.#location = location }
+    set date(date) { this.#date = date }
+    set time(time) { this.#time = time }
+    set town(town) { this.#town = town }
+    set calamity(calamity) { this.#calamity = calamity }
+    set lastname(lastname) { this.#lastname = lastname }
+    set firstname(firstname) { this.#firstname = firstname }
     set imageLink(imageLink) { this.#imageLink = imageLink }
     set description(description) { this.#description = description }
 }
