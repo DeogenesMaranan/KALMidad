@@ -17,6 +17,10 @@ route.post('/insertReport', (req, res) => {
     UserCredentialController.insertNewReport(req, res)
 })
 
+route.get('/getAllUserReports', (req, res) => {
+    UserCredentialController.getAllUserReports(req, res)
+})
+
 route.post('/uploadImage', upload.single('image'), (req, res) => {
     ImageServerController.uploadImage(req, res)
 })

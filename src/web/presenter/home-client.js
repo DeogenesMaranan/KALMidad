@@ -2,8 +2,24 @@ import UserCredential  from "../../model/user-credential.js"
 
 const submitInfoButton = document.getElementById('submit-button')
 const popupBackground = document.getElementById('popup-container')
+const noReportDisplay = document.getElementById('no-report-container')
 const addNewReportButton = document.getElementById('add-new-report-button')
 const closeReportPopupButton = document.getElementById('close-report-popup')
+
+
+onPageLoad()
+async function onPageLoad() {
+    try {
+        const uid = sessionStorage.getItem('uid')
+        const userReports = await getAllUserReport(uid)
+
+        console.log('Reports:', userReports.data.data[0].imageLink)
+        displayReports(userReports.data.data)
+    }
+    catch (error) {
+        noReportDisplay.style.display = 'flex'
+    }
+}
 
 closeReportPopupButton.addEventListener('click', () => {
     popupBackground.style.display = 'none'
@@ -38,6 +54,35 @@ submitInfoButton.addEventListener('click', async () => {
     catch(error) {console.error(error) }
 })
 
+function displayReports(reportList) {
+    const mainContainer = document.querySelector('.main-container')
+    const reportHolder = document.createElement('div')
+    // const imageElement = document.createElement('img')
+    
+    reportHolder.innerHTML = `
+        <img src="${reportList[0].imageLink}">
+        <p><span class="report-label">Status:</span> ${capitalize(reportList[0].status)} </p>
+        <p><span class="report-label">Calamity:</span> ${capitalize(reportList[0].calamity)} </p>
+        <p><span class="report-label">Date:</span> ${formatDate(reportList[0].date)} </p>
+    `
+
+    reportHolder.className = 'content report-holder'
+    mainContainer.appendChild(reportHolder)
+}
+
+
+///// MOVE THIS TO SERVICES
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+}
+/////////
+
 async function getUserInfo(p_uid) {
     try {
         const response = await axios.get(
@@ -69,4 +114,20 @@ async function insertUserInfo(p_user, p_uid) {
         )
         return response
     } catch(error) { throw error }
+}
+
+async function getAllUserReport(p_uid) {
+    try {
+        const response = await axios.get(
+            'http://localhost:5500/data/getAllUserReports', {
+                params: {
+                    document: 'report',
+                    uid: p_uid,
+                    subcollection: 'userReport',
+                },
+            },
+        )
+        return response
+    }
+    catch(error) { throw error }
 }

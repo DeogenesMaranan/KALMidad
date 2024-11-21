@@ -5,12 +5,12 @@ import axios from "axios";
 const signinButton = document.getElementById('signin-button')
 
 signinButton.addEventListener('click', async () => {
-    const p_email = document.getElementById('signin-email').value;
-    const p_password = document.getElementById('signin-password').value;
-    const recaptchaToken = document.getElementById('g-recaptcha-response').value;
+    const p_email = document.getElementById('signin-email').value
+    const p_password = document.getElementById('signin-password').value
+    const recaptchaToken = document.getElementById('g-recaptcha-response').value
 
     try {
-        const user = await signInUser(p_email, p_password, recaptchaToken);
+        const user = await signInUser(p_email, p_password, recaptchaToken)
         
         if (user.data.user.emailVerified) {
             const loggedInUid = user.data.user.uid
@@ -28,8 +28,8 @@ signinButton.addEventListener('click', async () => {
         }
     } 
     catch (error) {
-        const errorHolder = document.getElementById('error-message-holder');
-        errorHolder.textContent = `Error signing in: ${error.message}`;
+        const errorHolder = document.getElementById('error-message-holder')
+        errorHolder.textContent = `Error signing in: ${error.message}`
         errorHolder.style.display = 'block';
     }
 });

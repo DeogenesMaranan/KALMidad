@@ -53,8 +53,6 @@ function getUserInput() {
     newReport.time = document.getElementById('time-input').value 
     newReport.city = document.getElementById('city-dropdown').value
     newReport.town = document.getElementById('town-dropdown').value
-    newReport.lastname = document.getElementById('lastname-input').value 
-    newReport.firstname = document.getElementById('firstname-input').value 
     newReport.calamity = document.getElementById('calamity-dropdown').value 
     newReport.description = document.getElementById('description-input').value 
 
@@ -85,9 +83,8 @@ async function insertReport(p_report, p_uid) {
                 date: p_report.date,
                 time: p_report.time,
                 town: p_report.town,
+                status: 'pending',
                 calamity: p_report.calamity,
-                lastname: p_report.lastname,
-                firstname: p_report.firstname, 
                 imageLink: p_report.imageLink,
                 description: p_report.description,
             },

@@ -119,7 +119,6 @@ class UserCredential {
     // Major/Severe
     // Moderate
     // Minor/Mild
-
     getCount(p_field) {
         return new Promise(async (resolve, reject) => {
             try {
@@ -137,6 +136,28 @@ class UserCredential {
             }
             catch(error) { reject(error) }
         })
+    }
+
+    getAllUserReports(p_document, p_uid, subcollection) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const db = getFirestore()
+                const ref = collection(db, p_document, p_uid, subcollection)
+                const snapshot = await getDocs(ref)
+
+                if (snapshot.empty) {
+                    throw new Error(`No reports found for user ${p_uid}`)
+                }
+
+                const data = snapshot.docs.map(doc => ({
+                    id: doc.id, ...doc.data()    
+                }));
+
+                resolve(data)
+            } catch (error) {
+                reject(error)
+            }
+        });
     }
 }
 

@@ -39,9 +39,8 @@ export function reportToFirebase(reportDetails) {
             flag: reportDetails.flag,
             town: reportDetails.town,
             flag: reportDetails.flag,
+            status: reportDetails.status,
             calamity: reportDetails.calamity,
-            lastname: reportDetails.lastname,
-            firstname: reportDetails.firstname,
             imageLink: reportDetails.imageLink,
             description: reportDetails.description
         }

@@ -40,9 +40,8 @@ class UserCredential {
             p_report.date = req.body.date
             p_report.time = req.body.time
             p_report.town = req.body.town
+            p_report.status = req.body.status
             p_report.calamity = req.body.calamity
-            p_report.lastname = req.body.lastname
-            p_report.firstname = req.body.firstname
             p_report.imageLink = req.body.imageLink
             p_report.description = req.body.description
          
@@ -110,6 +109,22 @@ class UserCredential {
             })
         }
         catch(error) { res.status(400).json({ error: error.message }) }
+    }
+
+    async getAllUserReports(req, res) {
+        try {
+            const uid = req.query.uid
+            const document = req.query.document
+            const subcollection = req.query.subcollection
+
+            const response = await this.#userDb.getAllUserReports(document, uid, subcollection)
+
+            res.status(201).json({
+                message: 'Fetching successful.',
+                data: response
+            })
+        }
+        catch(error) { res.status(400).json({ message: error.message }) }
     }
 }
 
