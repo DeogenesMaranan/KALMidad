@@ -22,7 +22,9 @@ addReportButton.addEventListener('click', async () => {
         
         const response = await insertReport(p_report, uid)
 
-        popupContainer.style.display = 'flex'
+        if(response) {
+            popupContainer.style.display = 'flex'
+        }
     } 
     catch(error) { console.error(error) }
 })

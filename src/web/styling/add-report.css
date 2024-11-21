@@ -175,7 +175,7 @@ body::-webkit-scrollbar {
     width: 100%;
     height: inherit;
     position: absolute;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     background-color: #00000096;

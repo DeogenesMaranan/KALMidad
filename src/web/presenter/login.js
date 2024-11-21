@@ -12,19 +12,19 @@ signinButton.addEventListener('click', async () => {
     try {
         const user = await signInUser(p_email, p_password, recaptchaToken);
         
-        if (user.data.user.uid) {
+        if (user.data.user.emailVerified) {
             const loggedInUid = user.data.user.uid
             const userCred = await getUserType(loggedInUid)
-            // console.log('user type: ', userCred)
 
             if (userCred.data.userType == 'client') {
-                console.log("USer:", loggedInUid)
                 sessionStorage.setItem('uid', loggedInUid)
                 sessionStorage.setItem('userType', userCred.data.userType)
                 window.top.location.href = '../structure/home-skeleton.html'
             } else {
                 // open admin home
             }
+        } else {
+            throw new Error('Please verify your account first.')
         }
     } 
     catch (error) {

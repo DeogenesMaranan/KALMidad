@@ -15,8 +15,7 @@ module.exports = {
         landing: path.resolve(__dirname, './web/presenter/landing.js'),
         addReport: path.resolve(__dirname, './web/presenter/add-report.js'),
         homeClient: path.resolve(__dirname, './web/presenter/home-client.js'),
-        homeSkeleton: path.resolve(__dirname, './web/presenter/home-skeleton.js'),
-        landingRequest: path.resolve(__dirname, './web/presenter/landingRequest.js')
+        homeSkeleton: path.resolve(__dirname, './web/presenter/home-skeleton.js')
     },
     output: {
         path: path.resolve(__dirname, 'dist'),

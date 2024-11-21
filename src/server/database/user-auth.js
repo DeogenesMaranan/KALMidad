@@ -5,9 +5,8 @@ import {
     browserSessionPersistence,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
-    sendEmailVerification, 
+    sendEmailVerification,
 } from 'firebase/auth'
-
 import firebaseApp from './firebase-config.js'
 import StringValidator from '../../services/string-validator.js'
 
