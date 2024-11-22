@@ -23,7 +23,10 @@ class ImageServer {
                 const imageUrl = cloudinary.url(results.public_id, {
                     transformation: [{
                         quality: 'auto',
-                        fetch_format: 'auto'
+                        fetch_format: 'auto',
+                        crop: 'crop', 
+                        aspect_ratio: '16:9',
+                        gravity: 'center'
                     }]
                 })
                 resolve(imageUrl)

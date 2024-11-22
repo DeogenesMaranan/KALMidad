@@ -147,6 +147,13 @@ body::-webkit-scrollbar {
     text-align: center;
 }
 
+.main-container #no-report-container {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .main-container #no-report-container p {
     line-height: 1.4rem;
     font-size: 1rem;
@@ -154,7 +161,7 @@ body::-webkit-scrollbar {
     text-align: center;
 }
 
-.main-container .report-holder img {
+.main-container .report-image {
     width: 100%;
     height: auto;
     margin-bottom: 0.3rem;

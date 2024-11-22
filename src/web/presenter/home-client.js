@@ -55,19 +55,20 @@ submitInfoButton.addEventListener('click', async () => {
 })
 
 function displayReports(reportList) {
-    const mainContainer = document.querySelector('.main-container')
-    const reportHolder = document.createElement('div')
-    // const imageElement = document.createElement('img')
+    reportList.forEach((report) => {
+        const mainContainer = document.querySelector('.main-container')
+        const reportHolder = document.createElement('div')
+        
+        reportHolder.innerHTML = (`
+            <img class="report-image" src="${report.imageLink}">
+            <p><span class="report-label">Status:</span> ${capitalize(report.status)} </p>
+            <p><span class="report-label">Calamity:</span> ${capitalize(report.calamity)} </p>
+            <p><span class="report-label">Date:</span> ${formatDate(report.date)} </p>
+        `)
     
-    reportHolder.innerHTML = `
-        <img src="${reportList[0].imageLink}">
-        <p><span class="report-label">Status:</span> ${capitalize(reportList[0].status)} </p>
-        <p><span class="report-label">Calamity:</span> ${capitalize(reportList[0].calamity)} </p>
-        <p><span class="report-label">Date:</span> ${formatDate(reportList[0].date)} </p>
-    `
-
-    reportHolder.className = 'content report-holder'
-    mainContainer.appendChild(reportHolder)
+        reportHolder.className = 'content report-holder'
+        mainContainer.appendChild(reportHolder)
+    })
 }
 
 
