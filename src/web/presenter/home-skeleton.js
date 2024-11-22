@@ -5,6 +5,7 @@ var profileSettingButtonClicked = false
 
 
 const homeButton = document.getElementById('home')
+const signoutButton = document.getElementById('signout-button')
 const openSidebarButton = document.getElementById('open-sidebar-button')
 const recentAssessmentButton = document.getElementById('recent-assessments')
 const profileSettingButton = document.getElementById('profile-settings')
@@ -13,6 +14,7 @@ const closedSideBarContainer = document.getElementById('closed-sidebar-container
 const openedSideBarContainer = document.getElementById('opened-sidebar-container')
 
 
+onContentContainer()
 function onContentContainer() {
     const userType = sessionStorage.getItem('userType')
 
@@ -21,9 +23,8 @@ function onContentContainer() {
     } else {
         pageContentContainer.src = ''
     }
-    // pageContentContainer.src = '../structure/home-client.html'
+    // pageContentContainer.src = '../structure/home-admin.html'
 }
-onContentContainer()
 
 openSidebarButton.addEventListener('click', () => {
     closedSideBarContainer.style.display = 'none'
@@ -33,6 +34,8 @@ openSidebarButton.addEventListener('click', () => {
 homeButton.addEventListener('click', () => {
     if (!homeButtonClicked) {
         homeButtonClicked = true
+        recentAssessmentButtonClicked = false
+        profileSettingButtonClicked = false
 
         homeButton.style.backgroundColor = '#44BBA4'
         recentAssessmentButton.style.backgroundColor = '#393E41'
@@ -48,7 +51,9 @@ homeButton.addEventListener('click', () => {
 
 recentAssessmentButton.addEventListener('click', () => {
     if (!recentAssessmentButtonClicked) {
+        homeButtonClicked = false
         recentAssessmentButtonClicked = true
+        profileSettingButtonClicked = false
 
         homeButton.style.backgroundColor = '#393E41'
         recentAssessmentButton.style.backgroundColor = '#44BBA4'
@@ -64,6 +69,8 @@ recentAssessmentButton.addEventListener('click', () => {
 
 profileSettingButton.addEventListener('click', () => {
     if (!profileSettingButtonClicked) {
+        homeButtonClicked = false
+        recentAssessmentButtonClicked = false
         profileSettingButtonClicked = true
 
         homeButton.style.backgroundColor = '#393E41'
@@ -76,4 +83,8 @@ profileSettingButton.addEventListener('click', () => {
         openedSideBarContainer.style.display = 'none'
         closedSideBarContainer.style.display = 'flex'
     }
+})
+
+signoutButton.addEventListener('click', async () => {
+    window.location.replace('./landing.html')
 })

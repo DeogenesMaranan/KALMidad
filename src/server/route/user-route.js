@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import UserController from '../controller/user-controller.js'
 import UserCredentialController from '../controller/user-credential-controller.js'
+import userController from '../controller/user-controller.js'
 
 
 const route = Router()

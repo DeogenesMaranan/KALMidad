@@ -1,4 +1,6 @@
 import UserCredential  from "../../model/user-credential.js"
+import { UsToLongDateConverter, capitalize } from "../../services/converter.js"
+
 
 const submitInfoButton = document.getElementById('submit-button')
 const popupBackground = document.getElementById('popup-container')
@@ -28,8 +30,8 @@ closeReportPopupButton.addEventListener('click', () => {
 addNewReportButton.addEventListener('click', async () => {
     try{
         const loggedInUid = sessionStorage.getItem('uid')
-        const response = await getUserInfo(loggedInUid)
-        
+        await getUserInfo(loggedInUid)
+
         window.location.href = '../structure/add-report.html'
     }
     catch(error) { 
@@ -63,7 +65,7 @@ function displayReports(reportList) {
             <img class="report-image" src="${report.imageLink}">
             <p><span class="report-label">Status:</span> ${capitalize(report.status)} </p>
             <p><span class="report-label">Calamity:</span> ${capitalize(report.calamity)} </p>
-            <p><span class="report-label">Date:</span> ${formatDate(report.date)} </p>
+            <p><span class="report-label">Date:</span> ${UsToLongDateConverter(report.date)} </p>
         `)
     
         reportHolder.className = 'content report-holder'
@@ -71,18 +73,6 @@ function displayReports(reportList) {
     })
 }
 
-
-///// MOVE THIS TO SERVICES
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-}
-
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
-}
-/////////
 
 async function getUserInfo(p_uid) {
     try {

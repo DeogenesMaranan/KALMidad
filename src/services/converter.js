@@ -3,7 +3,7 @@ import ReportDetails from '../model/report-details.js'
 import UserCredential from '../model/user-credential.js';
 
 
-export function dateConverter(strDate) {
+export function LongToUsDateConverter(strDate) {
     const date = new Date(strDate);
 
     // Format the date as MM-DD-YYYY
@@ -45,4 +45,14 @@ export function reportToFirebase(reportDetails) {
             description: reportDetails.description
         }
     }
+}
+
+export function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+export function UsToLongDateConverter(dateString) {
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
 }

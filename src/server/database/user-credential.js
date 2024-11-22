@@ -10,7 +10,7 @@ import {
 } from 'firebase/firestore'
 import firebaseApp from './firebase-config.js'
 import { 
-    dateConverter,
+    LongToUsDateConverter,
     nameToFirestore, 
     reportToFirebase 
 } from '../../services/converter.js'
@@ -40,7 +40,7 @@ class UserCredential {
     insertNewReport(p_reportDetails, p_uid) {
         return new Promise(async (resolve, reject) => {
             try {
-                const date = dateConverter(p_reportDetails.date)
+                const date = LongToUsDateConverter(p_reportDetails.date)
         
                 const db = getFirestore()
                 const ref = doc(db, `report/${p_uid}/userReport/${date}`)

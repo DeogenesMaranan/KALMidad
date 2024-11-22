@@ -56,18 +56,6 @@ class UserAuth {
         }
         return {userType: 'client'}
     }
-
-    signout() {
-        return new Promise (async (resolve, reject) => {
-            try {
-                await signOut(this.#auth)
-                resolve('Signout successful.')
-            } 
-            catch (error) {
-                reject('Error signing out.')
-            }
-        })
-    }
     
     #constraintPassword(p_password) {
         if (!StringValidator.containsLowercaseLetter(p_password)){
