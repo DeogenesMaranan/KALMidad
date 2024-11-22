@@ -59,7 +59,7 @@ recentAssessmentButton.addEventListener('click', () => {
         recentAssessmentButton.style.backgroundColor = '#44BBA4'
         profileSettingButton.style.backgroundColor = '#393E41'
 
-        pageContentContainer.src = '../structure/recent-assessment.html'
+        pageContentContainer.src = '../structure/recent-assessment-client.html'
     } else {
         recentAssessmentButtonClicked = false
         openedSideBarContainer.style.display = 'none'

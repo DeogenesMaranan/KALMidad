@@ -91,24 +91,43 @@ body::-webkit-scrollbar {
 
 .main-container {
     width: 90%;
-    height: 100%;
-    padding: 0rem 0rem 1.3rem 1.5rem;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
     border-style: solid;
     border-width: 0.1rem;
     border-radius: 0.4rem;
     border-color: #D3D0CB;
+    padding: 1.2rem 0rem 1.3rem 1.2rem;
+}
+
+.main-container h3 {
+    margin: 0 0 0.9rem 0;
+    line-height: 1rem;
+}
+
+.report-container {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
+    overflow-y: scroll;
+    box-sizing: border-box;
 }
 
-.main-container .content {
-    width: 23.5%;
-    height: 21rem;
+.report-container::-webkit-scrollbar {
+    display: none; 
+}
+
+.report-container .content,
+.hover-buttons {
+    width: 17.4rem;
+    height: 19rem;
     color: black;
-    margin: 1.3rem 1.5rem 0 0;
+    margin: 0rem 1.5rem 1.3rem 0;
     box-sizing: border-box;
     border-radius: 0.4rem;
 }
@@ -130,7 +149,7 @@ body::-webkit-scrollbar {
     line-height: 0%;
 }
 
-.main-container .report-holder {
+.report-container .report-holder {
     font-size: 1rem;
     display: flex;
     padding: 1rem;
@@ -138,36 +157,37 @@ body::-webkit-scrollbar {
     justify-content: flex-start;
     align-items: flex-start;
     background-color: #F0F0F0;
+    position: relative;
 }
 
-.main-container .report-holder h3 {
+.report-container .report-holder h3 {
     font-size: 1.7rem;
     line-height: 1rem;
     margin: 1rem 0 0 0;
     text-align: center;
 }
 
-.main-container #no-report-container {
+.report-container #no-report-container {
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.main-container #no-report-container p {
+.report-container #no-report-container p {
     line-height: 1.4rem;
     font-size: 1rem;
     margin: 1rem 0 2rem 0;
     text-align: center;
 }
 
-.main-container .report-image {
+.report-container .report-image {
     width: 100%;
     height: auto;
     margin-bottom: 0.3rem;
 }
 
-.main-container .report-holder p {
+.report-container .report-holder p {
     margin: 1.1rem 0 0 1rem;
 }
 
@@ -177,3 +197,44 @@ body::-webkit-scrollbar {
     border-radius: 0.3rem;
     background-color: #44BBA4;
 }
+
+#edit-button, #delete-button {
+    width: 5rem;
+    height: 5rem;
+    border: none;
+    border-radius: 100%;
+    font-size: 18px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#edit-button:hover, #delete-button:hover {
+    background-color: #E7BB41;
+    transform: scale(1.1);
+}
+    
+.hover-buttons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; 
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+} 
+
+.reports:hover .hover-buttons{
+    opacity: 1;
+} 

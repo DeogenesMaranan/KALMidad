@@ -41,9 +41,10 @@ class UserCredential {
         return new Promise(async (resolve, reject) => {
             try {
                 const date = LongToUsDateConverter(p_reportDetails.date)
+                const subcollection = `${date} ${p_reportDetails.time}`
         
                 const db = getFirestore()
-                const ref = doc(db, `report/${p_uid}/userReport/${date}`)
+                const ref = doc(db, `report/${p_uid}/userReport/${subcollection}`)
                 const jsonReport = reportToFirebase(p_reportDetails)
                 const reportId = await setDoc(ref, jsonReport)
 

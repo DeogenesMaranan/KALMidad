@@ -57,19 +57,33 @@ submitInfoButton.addEventListener('click', async () => {
 })
 
 function displayReports(reportList) {
+    reportList.reverse()
+
     reportList.forEach((report) => {
-        const mainContainer = document.querySelector('.main-container')
+        const hoverButtons = document.querySelector('.hover-buttons')
+        const reportContainer = document.querySelector('.report-container')
         const reportHolder = document.createElement('div')
         
         reportHolder.innerHTML = (`
-            <img class="report-image" src="${report.imageLink}">
-            <p><span class="report-label">Status:</span> ${capitalize(report.status)} </p>
-            <p><span class="report-label">Calamity:</span> ${capitalize(report.calamity)} </p>
-            <p><span class="report-label">Date:</span> ${UsToLongDateConverter(report.date)} </p>
+            <div>
+                <img class="report-image" src="${report.imageLink}">
+                <p><span class="report-label">Status:</span> ${capitalize(report.status)} </p>
+                <p><span class="report-label">Calamity:</span> ${capitalize(report.calamity)} </p>
+                <p><span class="report-label">Date:</span> ${UsToLongDateConverter(report.date)} </p>
+            </div>
+
+            <div class="hover-buttons">
+                <button id="edit-button">
+                    <span class="material-symbols-outlined">edit</span>
+                </button>
+                <button id="delete-button">
+                    <span class="material-symbols-outlined">delete</span>
+                </button>
+            </div>
         `)
     
-        reportHolder.className = 'content report-holder'
-        mainContainer.appendChild(reportHolder)
+        reportHolder.className = 'content report-holder reports'
+        reportContainer.appendChild(reportHolder)
     })
 }
 
