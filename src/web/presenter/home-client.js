@@ -1,7 +1,13 @@
 import UserCredential  from "../../model/user-credential.js"
 import { UsToLongDateConverter, capitalize } from "../../services/converter.js"
+import {
+    getUserInfo,
+    insertUserInfo,
+    getAllUserReport
+} from '../../services/request.js'
 
 
+var userReports
 const submitInfoButton = document.getElementById('submit-button')
 const popupBackground = document.getElementById('popup-container')
 const noReportDisplay = document.getElementById('no-report-container')
@@ -9,19 +15,18 @@ const addNewReportButton = document.getElementById('add-new-report-button')
 const closeReportPopupButton = document.getElementById('close-report-popup')
 
 
-onPageLoad()
-async function onPageLoad() {
+document.addEventListener('DOMContentLoaded', async () => {
     try {
         const uid = sessionStorage.getItem('uid')
-        const userReports = await getAllUserReport(uid)
+        const response = await getAllUserReport(uid)
+        userReports = response.data.data
 
-        console.log('Reports:', userReports.data.data[0].imageLink)
-        displayReports(userReports.data.data)
+        displayReports(userReports)
     }
     catch (error) {
         noReportDisplay.style.display = 'flex'
     }
-}
+})
 
 closeReportPopupButton.addEventListener('click', () => {
     popupBackground.style.display = 'none'
@@ -32,6 +37,7 @@ addNewReportButton.addEventListener('click', async () => {
         const loggedInUid = sessionStorage.getItem('uid')
         await getUserInfo(loggedInUid)
 
+        sessionStorage.setItem('client-report-request', 'add')
         window.location.href = '../structure/add-report.html'
     }
     catch(error) { 
@@ -60,12 +66,13 @@ function displayReports(reportList) {
     reportList.reverse()
 
     reportList.forEach((report) => {
-        const hoverButtons = document.querySelector('.hover-buttons')
         const reportContainer = document.querySelector('.report-container')
         const reportHolder = document.createElement('div')
         
+        reportHolder.setAttribute('data-id', report.id)
         reportHolder.innerHTML = (`
             <div>
+                <p style="display: none;">${report.id}</p>
                 <img class="report-image" src="${report.imageLink}">
                 <p><span class="report-label">Status:</span> ${capitalize(report.status)} </p>
                 <p><span class="report-label">Calamity:</span> ${capitalize(report.calamity)} </p>
@@ -73,66 +80,44 @@ function displayReports(reportList) {
             </div>
 
             <div class="hover-buttons">
-                <button id="edit-button">
+                <button class="edit-button">
                     <span class="material-symbols-outlined">edit</span>
                 </button>
-                <button id="delete-button">
+                <button class="delete-button">
                     <span class="material-symbols-outlined">delete</span>
                 </button>
             </div>
         `)
-    
+
         reportHolder.className = 'content report-holder reports'
         reportContainer.appendChild(reportHolder)
     })
 }
 
-
-async function getUserInfo(p_uid) {
-    try {
-        const response = await axios.get(
-            'http://localhost:5500/users/getUserInfoById', {
-                params: {
-                    document: 'users-credential',
-                    uid: p_uid,
-                },
-                headers: { 'Content-Type': 'application/json' },
-            }
-        )
-        return response
-    } catch(error) { throw error }
-}
-
-async function insertUserInfo(p_user, p_uid) {
-    try {
-        const response = await axios.post(
-            'http://localhost:5500/users/insertUserInfo', {
-                uid: p_uid,
-                firstname: p_user.firstname, 
-                middlename: p_user.middlename, 
-                lastname: p_user.lastname,
-                town: p_user.town,
-                city: p_user.city,
-                userType: p_user.userType,
-            },
-            { headers: { 'Content-Type': 'application/json' },}
-        )
-        return response
-    } catch(error) { throw error }
-}
-
-async function getAllUserReport(p_uid) {
-    try {
-        const response = await axios.get(
-            'http://localhost:5500/data/getAllUserReports', {
-                params: {
-                    document: 'report',
-                    uid: p_uid,
-                    subcollection: 'userReport',
-                },
-            },
-        )
-        return response
+const reportContainer = document.querySelector('.report-container')
+reportContainer.addEventListener('click', (e) => {
+    if (e.target.closest('.edit-button')) {
+        handleEdit(e)
     }
-    catch(error) { throw error }
+    if (e.target.closest('.delete-button')) {
+        handleDelete(e)
+    }
+})
+
+function handleEdit(e) {
+    const reportHolder = e.target.closest('.report-holder')
+    const reportId = reportHolder.getAttribute('data-id') 
+
+    sessionStorage.setItem('update-report-id', reportId)
+    sessionStorage.setItem('client-report-request', 'update')
+    window.location.href = '../structure/add-report.html'
 }
+
+function handleDelete(e) {
+    const reportHolder = e.target.closest('.report-holder')
+    const reportId = reportHolder.getAttribute('data-id')
+
+    console.log('Delete:', reportId);
+}
+
+

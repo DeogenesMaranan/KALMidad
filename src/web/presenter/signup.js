@@ -1,6 +1,8 @@
 
-var loggedInUid
+import { signupUser } from '../../services/request.js'
 
+
+var loggedInUid
 
 if(document.getElementById('signup-button')) {
     const signupButton = document.getElementById('signup-button')
@@ -36,14 +38,4 @@ if(document.getElementById('continueButton')) {
     })
 }
 
-async function signupUser(p_email, p_password, recaptchaToken) {
-    try {
-        const response = await axios.post(
-            'http://localhost:5500/users/signup',
-            { p_email, p_password, recaptchaToken },
-            { headers: { 'Content-Type': 'application/json' }}
-        ) 
-        return response 
-    } catch (error) { throw error }
-}
 

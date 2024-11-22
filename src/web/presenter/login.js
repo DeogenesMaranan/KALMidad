@@ -1,5 +1,8 @@
 
-import axios from "axios";
+import {
+    signInUser,
+    getUserType
+} from '../../services/request.js'
 
 
 const signinButton = document.getElementById('signin-button')
@@ -34,31 +37,3 @@ signinButton.addEventListener('click', async () => {
     }
 });
 
-async function signInUser(p_email, p_password, recaptchaToken) {
-    try {
-        const response = await axios.post(
-            'http://localhost:5500/users/signin', 
-            { p_email, p_password, recaptchaToken, }, 
-            { headers: { 'Content-Type': 'application/json', }}
-        )
-
-        if (response.data && response.data.message) {
-            return response
-        }
-    } catch(error) { throw error }
-};
-
-async function getUserType(uid) {
-    try {
-        const response = await axios.get(
-            'http://localhost:5500/users/getUserType',  {
-                params: {
-                    uid: uid,
-                },
-                headers: {'Content-Type': 'application/json', },
-            }
-        )
-        return response
-    }
-    catch (error) { throw error}
-}

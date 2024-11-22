@@ -23,7 +23,7 @@
 
         <div class="right-container container">
             <div class="header-container">
-                <h3>Support Request Form</h3>
+                <h3 id="report-form-header"> Support Request Form</h3>
                 <p>Please complete the form below detailing your request and a member of our support staff will respond as soon as possble.</p>
             </div>
 
@@ -81,14 +81,15 @@
                 <textarea name="description-input" id="description-input"></textarea>
             </div>
 
-            <button id="submit-report-button">Submit</button>
+            <button id="submit-report-button" style="display: none;">Submit</button>
+            <button id="update-report-button" style="display: none;">Update</button>
         </div>
     </div>
 
     <div class="popup-container" id="popup-container">
         <div class="popup">
             <img src="../assets/icons8-check-64.png" alt="">
-            <h3>Successfully poster your report!</h3>
+            <h3>Successfully posted your report!</h3>
             <p>Please wait for our team to review your report.</p>
 
             <button id="continue-button">Continue</button>

@@ -151,7 +151,8 @@ body::-webkit-scrollbar {
     height: 9rem;
 }
 
-#submit-report-button {
+#submit-report-button,
+#update-report-button {
     width: 13rem;
     height: 3.5rem;
     color: black;

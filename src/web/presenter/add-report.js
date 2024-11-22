@@ -1,20 +1,50 @@
 
-import axios from 'axios'
 import ReportModel from '../../model/report-details.js'
+import {
+    uploadImage, 
+    insertReport,
+    getAllUserReport
+} from '../../services/request.js'
 
 
-var selectedImage
+var selectedImage, userReports, uid, reportId
+
 const continueButton = document.getElementById('continue-button')
 const popupContainer = document.getElementById('popup-container')
+const reportFormHeader = document.getElementById('report-form-header')
 const addReportButton = document.getElementById('submit-report-button')
 const imageFileSelector = document.getElementById('image-file-selector')
+const updateReportButton = document.getElementById('update-report-button')
 const selectedImageHolder = document.getElementById('selected-image-holder')
 
 
+document.addEventListener('DOMContentLoaded', async () => {
+    const requestType = sessionStorage.getItem('client-report-request')
+    uid = sessionStorage.getItem('uid')
+
+    if (requestType === 'add') {
+        addReportButton.style.display = 'block'
+    } 
+    else if (requestType === 'update') {
+        updateReportButton.style.display = 'block'
+        reportFormHeader.textContent = 'Update Request Form'
+
+        const response = await getAllUserReport(uid)
+        reportId = sessionStorage.getItem('update-report-id')
+
+        userReports = response.data.data
+        const [ reportData ] = userReports.filter(report => report.id === reportId)
+
+        displayReportRecords(reportData)
+        document.querySelector('.datetime-container').style.display = 'none'
+        document.querySelector('.image-selector-container').style.display = 'none'
+        document.querySelector('.right-container').style.height = '60%'
+    }
+})
+
 addReportButton.addEventListener('click', async () => {
     try {
-        const p_report = getUserInput()
-        const uid = sessionStorage.getItem('uid')
+        const p_report = getUserInputAdd()
         const image = await uploadImage(selectedImage)
 
         p_report.imageLink = image.data.data        
@@ -26,6 +56,20 @@ addReportButton.addEventListener('click', async () => {
             popupContainer.style.display = 'flex'
         }
     } 
+    catch(error) { console.error(error) }
+})
+
+updateReportButton.addEventListener('click', async () => {
+    try {
+        const [ reportData ] = userReports.filter(report => report.id === reportId)
+        
+        const p_report = getUserInputUpdate(reportData)
+        const response = await insertReport(p_report, uid)
+
+        if(response) {
+            popupContainer.style.display = 'flex'
+        }
+    }
     catch(error) { console.error(error) }
 })
 
@@ -45,9 +89,10 @@ continueButton.addEventListener('click', () => {
 })
 
 
-function getUserInput() {
+function getUserInputAdd() {
     const newReport = new ReportModel()
 
+    newReport.status = 'pending'
     newReport.imageLink = selectedImage
     newReport.date = document.getElementById('date-input').value
     newReport.time = document.getElementById('time-input').value 
@@ -56,41 +101,34 @@ function getUserInput() {
     newReport.calamity = document.getElementById('calamity-dropdown').value 
     newReport.description = document.getElementById('description-input').value 
 
+    if(newReport.description == "") { newReport.description = 'n/a'}
+
     return newReport
 }
 
-async function uploadImage() {
-    try {
-        const formData = new FormData()
-        formData.append('image', selectedImage)
+function getUserInputUpdate(reports) {
+    const newReport = new ReportModel()
+    newReport.imageLink = reports.imageLink
+    newReport.date = reports.date
+    newReport.time = reports.time
+    newReport.flag = reports.flag
+    newReport.status = reports.status
+    newReport.city = document.getElementById('city-dropdown').value
+    newReport.town = document.getElementById('town-dropdown').value
+    newReport.calamity = document.getElementById('calamity-dropdown').value 
+    newReport.description = document.getElementById('description-input').value 
 
-        const response = await axios.post(
-            'http://localhost:5500/data/uploadImage', formData,
-            { headers: { 'Content-Type': 'multipart/form-data', }}
-        )
-        return response
-    } 
-    catch (error) { throw error }
+    if(newReport.description == "") { newReport.description = 'n/a'}
+
+    return newReport
 }
 
-async function insertReport(p_report, p_uid) {
-    try {
-        const response = await axios.post(
-            'http://localhost:5500/data/insertReport', {
-                uid: p_uid,
-                city: p_report.city,
-                flag: p_report.flag,
-                date: p_report.date,
-                time: p_report.time,
-                town: p_report.town,
-                status: 'pending',
-                calamity: p_report.calamity,
-                imageLink: p_report.imageLink,
-                description: p_report.description,
-            },
-            { headers: { 'Content-Type': 'application/json', }}
-        )
-        return response
-    }
-    catch(error) { throw error }
+
+function displayReportRecords(reportData) {
+    document.getElementById('date-input').value = reportData.date
+    document.getElementById('time-input').value = reportData.time
+    document.getElementById('city-dropdown').value = reportData.city
+    document.getElementById('town-dropdown').value = reportData.town
+    document.getElementById('calamity-dropdown').value = reportData.calamity
+    document.getElementById('description-input').value = reportData.description
 }
