@@ -135,7 +135,7 @@ class UserCredential {
             const subcollection = req.body.subcollection
 
             const imageServer = new ImageServer()
-            await imageServer.deleteImageFromCloudinary(imageLink)
+            imageServer.deleteImageFromCloudinary(imageLink)
             const response = await this.#userDb.deleteReport(subcollection, uid)
 
             res.status(201).json({ message: response })

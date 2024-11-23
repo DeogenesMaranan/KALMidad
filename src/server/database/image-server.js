@@ -39,13 +39,13 @@ class ImageServer {
         const publicId = url.split('/').pop().split('?')[0]
       
         cloudinary.uploader.destroy(publicId, (error, result) => {
-          if (error) {
-            throw new Error("Error deleting image:", error)
-          } else {
-            return ("Image deleted successfully:", result)
-          }
+            if (error) {
+                throw new Error("Error deleting image:", error)
+            } else {
+                return ("Image deleted successfully:", result)
+            }
         })
-      }
+    }
 }
 
 export default ImageServer

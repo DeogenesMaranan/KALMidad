@@ -17,6 +17,7 @@ const addNewReportButton = document.getElementById('add-new-report-button')
 const confirmDeleteButton = document.getElementById('confirm-delete-button')
 const closeReportPopupButton = document.getElementById('close-report-popup')
 
+
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         uid = sessionStorage.getItem('uid')
@@ -143,7 +144,6 @@ function handleDeleteEvent(reportId, imageLink) {
     confirmDeleteButton.addEventListener('click', async () => {
         try {
             const response = await deleteReport(uid, imageLink, reportId)
-            
             if (response) window.location.reload()
         }
         catch(error) { throw ('Delete error:', error) }
