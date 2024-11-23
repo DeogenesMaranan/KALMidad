@@ -43,7 +43,7 @@ body::-webkit-scrollbar {
 }
 
 .main-container table {
-    max-height: 44rem;
+    max-height: 46rem;
     display: block;
     border: 0.1rem solid black;
     border-collapse: collapse;
@@ -55,8 +55,14 @@ body::-webkit-scrollbar {
 }
 
 .empty-rows {
-    height: 15rem;
+    height: 42rem;
     color: #878C8E;
+    text-align: center;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 0.1rem solid black;
 }
 
 .main-container table thead th {
@@ -70,17 +76,17 @@ body::-webkit-scrollbar {
     width: 70rem;
     position: sticky;
     top: 0;
-    background: #44BBA4;
+    background: #E7BB41;
   }
 
 .main-container table thead th {
     border: 0;
     height: 3rem;
     font-size: 1.1rem;
-    background-color: #44BBA4;
+    background-color: #E7BB41;
 }
 
-.main-container table tbody td {
+.main-container table tbody tr td {
     padding: 0.5rem 1.5rem;
     font-size: 1rem;
     text-align: center;
@@ -100,6 +106,14 @@ body::-webkit-scrollbar {
 
 .main-container table tr .location-column {
     width: 13rem;
+}
+
+.main-container table tr .image-column {
+    min-width: 16rem;
+}
+
+.main-container table tr .column {
+    min-width: 11rem;
 }
 
 .main-container table tr select {
