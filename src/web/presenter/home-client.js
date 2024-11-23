@@ -2,22 +2,24 @@ import UserCredential  from "../../model/user-credential.js"
 import { UsToLongDateConverter, capitalize } from "../../services/converter.js"
 import {
     getUserInfo,
+    deleteReport,
     insertUserInfo,
     getAllUserReport
 } from '../../services/request.js'
 
 
-var userReports
+var userReports, uid 
 const submitInfoButton = document.getElementById('submit-button')
 const popupBackground = document.getElementById('popup-container')
 const noReportDisplay = document.getElementById('no-report-container')
+const cancelDeleteButton = document.getElementById('cancel-delete-button')
 const addNewReportButton = document.getElementById('add-new-report-button')
+const confirmDeleteButton = document.getElementById('confirm-delete-button')
 const closeReportPopupButton = document.getElementById('close-report-popup')
-
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const uid = sessionStorage.getItem('uid')
+        uid = sessionStorage.getItem('uid')
         const response = await getAllUserReport(uid)
         userReports = response.data.data
 
@@ -70,6 +72,7 @@ function displayReports(reportList) {
         const reportHolder = document.createElement('div')
         
         reportHolder.setAttribute('data-id', report.id)
+        reportHolder.setAttribute('image-link', report.imageLink)
         reportHolder.innerHTML = (`
             <div>
                 <p style="display: none;">${report.id}</p>
@@ -114,10 +117,35 @@ function handleEdit(e) {
 }
 
 function handleDelete(e) {
-    const reportHolder = e.target.closest('.report-holder')
-    const reportId = reportHolder.getAttribute('data-id')
+    try {
+        const reportHolder = e.target.closest('.report-holder')
+        const reportId = reportHolder.getAttribute('data-id')
+        const imageLink = reportHolder.getAttribute('image-link')
+        
+        document.querySelector('#delete-container').style.display = 'flex'
+        const elements = document.getElementsByClassName('hover-buttons')
 
-    console.log('Delete:', reportId);
+        Array.from(elements).forEach((element) => {
+            element.style.display = 'none'
+        })        
+
+        handleDeleteEvent(reportId, imageLink)
+    }
+    catch(error) { console.error(error) }
 }
 
+function handleDeleteEvent(reportId, imageLink) {
+    cancelDeleteButton.addEventListener('click', () => {
+        document.querySelector('#delete-container').style.display = 'none'
+        window.location.reload()
+    })
 
+    confirmDeleteButton.addEventListener('click', async () => {
+        try {
+            const response = await deleteReport(uid, imageLink, reportId)
+            
+            if (response) window.location.reload()
+        }
+        catch(error) { throw ('Delete error:', error) }
+    })
+}

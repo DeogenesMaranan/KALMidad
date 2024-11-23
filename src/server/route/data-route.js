@@ -25,4 +25,10 @@ route.post('/uploadImage', upload.single('image'), (req, res) => {
     ImageServerController.uploadImage(req, res)
 })
 
+
+
+route.delete('/deleteReport', (req, res) => {
+    UserCredentialController.deleteReport(req, res)
+})
+
 export default route

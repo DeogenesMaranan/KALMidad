@@ -124,3 +124,24 @@ export async function getUserType(uid) {
     }
     catch (error) { throw error}
 }
+
+export async function deleteReport(p_uid, p_imageLink, p_subcollection) {
+    try {
+        const response = await axios.delete(
+            'http://localhost:5500/data/deleteReport', 
+            {
+                headers: { 'Content-Type': 'application/json' },
+                data: {
+                    uid: p_uid,
+                    imageLink: p_imageLink,
+                    subcollection: p_subcollection,
+                },
+            }
+        );
+        return response;
+    } catch (error) {
+        console.error("Error in deleteReport:", error);
+        throw error;
+    }
+}
+

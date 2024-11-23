@@ -6,7 +6,8 @@ import {
     query,
     collection,
     getCountFromServer,
-    where
+    where,
+    deleteDoc
 } from 'firebase/firestore'
 import firebaseApp from './firebase-config.js'
 import { 
@@ -158,7 +159,19 @@ class UserCredential {
             } catch (error) {
                 reject(error)
             }
-        });
+        })
+    }
+
+    deleteReport(p_subcollection, p_uid) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const db = getFirestore(this.#firebaseApp)
+                const ref = doc(db, `report/${p_uid}/userReport/${p_subcollection}`)
+
+                await deleteDoc(ref)
+                resolve('Report deleted successfully.')
+            } catch(error) { reject('Failed to delete report.') }
+        })
     }
 }
 

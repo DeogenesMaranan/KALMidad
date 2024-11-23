@@ -2,6 +2,7 @@
 import UserDb from '../database/user-credential.js'
 import UserInfoModel from '../../model/user-credential.js'
 import ReportDetails from '../../model/report-details.js'
+import ImageServer from '../database/image-server.js'
 
 
 class UserCredential {
@@ -125,6 +126,21 @@ class UserCredential {
             })
         }
         catch(error) { res.status(400).json({ message: error.message }) }
+    }
+
+    async deleteReport(req, res) {
+        try {
+            const uid = req.body.uid
+            const imageLink = req.body.imageLink
+            const subcollection = req.body.subcollection
+
+            const imageServer = new ImageServer()
+            await imageServer.deleteImageFromCloudinary(imageLink)
+            const response = await this.#userDb.deleteReport(subcollection, uid)
+
+            res.status(201).json({ message: response })
+        }
+        catch(error) { res.status(400).json({ message: error }) }
     }
 }
 
