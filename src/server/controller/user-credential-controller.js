@@ -3,7 +3,7 @@ import UserDb from '../database/user-credential.js'
 import UserInfoModel from '../../model/user-credential.js'
 import ReportDetails from '../../model/report-details.js'
 import ImageServer from '../database/image-server.js'
-
+import { jsonConverter } from '../../services/converter.js'
 
 class UserCredential {
 
@@ -138,6 +138,17 @@ class UserCredential {
             imageServer.deleteImageFromCloudinary(imageLink)
             const response = await this.#userDb.deleteReport(subcollection, uid)
 
+            res.status(201).json({ message: response })
+        }
+        catch(error) { res.status(400).json({ message: error }) }
+    }
+
+    async updateUserInfo(req, res) {
+        try {
+            const uid = req.body.uid
+            const fields = jsonConverter(req.body)
+
+            const response = await this.#userDb.updateUserInfo(fields, uid)
             res.status(201).json({ message: response })
         }
         catch(error) { res.status(400).json({ message: error }) }

@@ -109,7 +109,6 @@ export async function signupUser(p_email, p_password, recaptchaToken) {
     } catch (error) { throw error }
 }
 
-
 export async function getUserType(uid) {
     try {
         const response = await axios.get(
@@ -145,3 +144,16 @@ export async function deleteReport(p_uid, p_imageLink, p_subcollection) {
     }
 }
 
+export async function updateUserInfo(data) {
+    try {
+        const response = await axios.patch( 
+            'http://localhost:5500/users/updateUserInfo',
+            data,
+            { headers: { 'Content-Type': 'application/json' }, } 
+        )
+        return response
+    }
+    catch(error) {
+        throw new Error('Error updating data:', error)
+    }
+}

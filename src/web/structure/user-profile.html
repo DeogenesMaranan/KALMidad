@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KALMidad - User Profile</title>
+
+    <link rel="stylesheet" href="../styling/user-profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <header>
+        <img src="../assets/home_logo.png" alt="KALMidad">
+    </header>
+
+    <main>
+        <h1>Account Settings</h1>
+
+        <div class="user-image-holder">
+            <img id="user-profile-button" src="../assets/user-profile-photo.png" alt="User Profile Picture">
+
+            <label for="user-picture-selector">
+                <span class="material-symbols-outlined">edit</span>
+            </label>
+            <input type="file" id="user-picture-selector" accept=".png, .jpg, .jpeg" style="display: none;">
+        </div>
+
+        <div class="name-holder">
+            <div>
+                <h4>Name</h4>
+                <p id="fullname-holder">Juan Dela Cruz</p>
+
+                <div class="edit-name-holder">
+                    <label for="firstname-input">First Name:</label>
+                    <input type="text" id="firstname-input" disabled>
+    
+                    <label for="middlename-input">Middle Name:</label>
+                    <input type="text" id="middlename-input" disabled>
+    
+                    <label for="lastname-input">Last Name:</label>
+                    <input type="text" id="lastname-input" disabled>
+                </div>
+            </div>
+            <button class="button-styling" id="edit-name-button">Edit Name</button>
+        </div>
+
+        <div class="address-holder">
+            <div>
+                <h4>Address</h4>
+                <label for="town-input">Town:</label>
+                <select id="town-input" name="town" disabled>
+                    <option value="">Not set</option>
+                    <option value="town1">Town 1</option>
+                    <option value="town2">Town 2</option>
+                </select>
+
+                <br>
+                <label for="city-input">City:</label>
+                <select id="city-input" name="city" disabled>
+                    <option value="">Not set</option>
+                    <option value="city1">San Pascual</option>
+                    <option value="city2">Bauan</option>
+                </select>
+            </div>
+            <button class="button-styling" id="change-address-button">Change Address</button>
+        </div>
+
+        <div class="email-holder">
+            <div>
+                <h4>Email</h4>
+                <input type="email" id="email-input" disabled>
+            </div>
+            <button class="button-styling" id="signout-button">Sign out</button>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <script src="../../dist/userProfile.bundle.js"></script>
+</body>
+</html>

@@ -24,6 +24,10 @@ route.post('/insertUserInfo', (req, res) => {
     UserCredentialController.insertUserInfo(req, res)
 })
 
+route.patch('/updateUserInfo', (req, res) => {
+    UserCredentialController.updateUserInfo(req, res)
+})
+
 route.get('/getUserInfoById', (req, res) => {
     UserCredentialController.getUserInfoById(req, res)
 })

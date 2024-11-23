@@ -21,6 +21,7 @@ signinButton.addEventListener('click', async () => {
 
             if (userCred.data.userType == 'client') {
                 sessionStorage.setItem('uid', loggedInUid)
+                sessionStorage.setItem('email', user.data.user.email)
                 sessionStorage.setItem('userType', userCred.data.userType)
                 window.top.location.href = '../structure/home-skeleton.html'
             } else {

@@ -7,7 +7,8 @@ import {
     collection,
     getCountFromServer,
     where,
-    deleteDoc
+    deleteDoc,
+    updateDoc
 } from 'firebase/firestore'
 import firebaseApp from './firebase-config.js'
 import { 
@@ -86,6 +87,19 @@ class UserCredential {
                 } else {
                     throw new Error('Fetching failed. No information was found.')
                 }
+            }
+            catch(error) { reject(error) }
+        })
+    }
+
+    updateUserInfo(p_fields, p_uid) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const db = getFirestore(this.#firebaseApp)
+                const ref = doc(db, 'users-credential', p_uid)
+
+                const response = await updateDoc(ref, p_fields)
+                resolve(response)
             }
             catch(error) { reject(error) }
         })

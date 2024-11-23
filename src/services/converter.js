@@ -47,6 +47,16 @@ export function reportToFirebase(reportDetails) {
     }
 }
 
+export function jsonConverter(p_object) {
+    const newObject = {}
+
+    for(const [key, value] of Object.entries(p_object)) {
+        if (key === 'uid') { continue }
+        newObject[key] = value
+    }
+    return newObject
+}
+
 export function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
