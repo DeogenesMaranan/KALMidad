@@ -18,14 +18,16 @@ signinButton.addEventListener('click', async () => {
         if (user.data.user.emailVerified) {
             const loggedInUid = user.data.user.uid
             const userCred = await getUserType(loggedInUid)
+            console.log('uid', loggedInUid)
 
-            if (userCred.data.userType == 'client') {
+            if (userCred.data.userType === 'client') {
                 sessionStorage.setItem('uid', loggedInUid)
                 sessionStorage.setItem('email', user.data.user.email)
                 sessionStorage.setItem('userType', userCred.data.userType)
                 window.top.location.href = '../structure/home-skeleton.html'
             } else {
-                // open admin home
+                sessionStorage.setItem('userType', userCred.data.userType)
+                window.top.location.href = '../structure/home-skeleton.html'
             }
         } else {
             throw new Error('Please verify your account first.')
@@ -33,7 +35,7 @@ signinButton.addEventListener('click', async () => {
     } 
     catch (error) {
         const errorHolder = document.getElementById('error-message-holder')
-        errorHolder.textContent = `Error signing in: ${error.message}`
+        errorHolder.textContent = `Error signing in: Ensure all information is correct.`
         errorHolder.style.display = 'block';
     }
 });

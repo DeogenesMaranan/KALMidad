@@ -14,11 +14,10 @@ const closedSideBarContainer = document.getElementById('closed-sidebar-container
 const openedSideBarContainer = document.getElementById('opened-sidebar-container')
 
 
-onContentContainer()
-function onContentContainer() {
+document.addEventListener('DOMContentLoaded', () => {
     userType = sessionStorage.getItem('userType')
     openHomeBasedOnUserType(userType)
-}
+}) 
 
 openSidebarButton.addEventListener('click', () => {
     closedSideBarContainer.style.display = 'none'
@@ -88,7 +87,7 @@ function openHomeBasedOnUserType(userType) {
     if(userType === 'client'){
         pageContentContainer.src = '../structure/home-client.html'
     } else {
-        pageContentContainer.src = ''
+        pageContentContainer.src = '../structure/home-admin.html'
     }
 }
 

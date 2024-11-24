@@ -2,8 +2,6 @@
 import { signupUser } from '../../services/request.js'
 
 
-var loggedInUid
-
 if(document.getElementById('signup-button')) {
     const signupButton = document.getElementById('signup-button')
 
@@ -16,25 +14,26 @@ if(document.getElementById('signup-button')) {
             const response = await signupUser(p_email, p_password, recaptchaToken)
     
             if (response.data.user.uid) {
-                loggedInUid = response.data.user.uid 
+                sessionStorage.setItem('uid', response.data.user.uid) 
                 window.open('../structure/signup-confirmation.html', '_self')
             }
         }
         catch(error) {
             const errorHolder = document.getElementById('error-message-holder')
-            errorHolder.textContent = `Error signing up: ${error.message}`
+            errorHolder.textContent = `Error signing up: Ensure email is active.`
             errorHolder.style.display = 'block'
         }
     })
 }
 
-if(document.getElementById('continueButton')) {
-    const continueButton = document.getElementById('continueButton')
+if(document.getElementById('continue-button')) {
+    const continueButton = document.getElementById('continue-button')
 
-    continueButton.addEventListener('click', () => {
-        sessionStorage.setItem('uid', loggedInUid)
-        sessionStorage.setItem('userType', 'client')
-        window.open('../structure/login.html', '_self')
+    continueButton.addEventListener('click', async () => {
+        try {
+            window.location.href = '../structure/login.html'
+        }
+        catch(error) { console.error(error) }
     })
 }
 

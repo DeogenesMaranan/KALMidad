@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home - KALMidad</title>
+
+    <link rel="stylesheet" href="../styling/home-admin.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="header-container">
+        <div class="title-container">
+            <img src="../assets/home_logo.png" alt="KALMidad">
+
+            <button id="user-profile-button">
+                <span class="material-symbols-outlined">account_circle</span>
+            </button>
+        </div>
+
+        <div class="main-header-container">
+            <p>Keep track of most affected areas in</p>
+            <h1>Batangas</h1>
+            <h2>Total Reports: <span id="report-total-number-container">1232</span></h2>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <div class="top-cities-container">
+            <h3>Top Cities with Most Reports</h3>
+            <div class="top-cities-list-container">
+                <div class="city-info-container first">
+                    <p id="city">Bauan</p>
+                    <p id="count">45748</p>
+                </div>
+                <div class="city-info-container second">
+                    <p id="city">Alitagtag</p>
+                    <p id="count">45</p>
+                </div>
+                <div class="city-info-container first">
+                    <p id="city">Bauan</p>
+                    <p id="count">45748</p>
+                </div>
+                <div class="city-info-container second">
+                    <p id="city">Alitagtag</p>
+                    <p id="count">45</p>
+                </div>
+                <div class="city-info-container first">
+                    <p id="city">Bauan</p>
+                    <p id="count">45748</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="total-cases-per-classification">
+            <h2>Total Cases</h2>
+
+            <div class="cases-container">
+                <div class="case">
+                    <h2 id="catastrophic-case">454</h2>
+                    <p>CATASTROPHIC</p>
+                    <div style="background-color: #E21717;"></div>
+                </div>
+
+                <div class="case">
+                    <h2 id="severe-case">23</h2>
+                    <p>SEVERE</p>
+                    <div style="background-color: #E27C17;"></div>
+                </div>
+
+                <div class="case">
+                    <h2 id="moderate-case">232</h2>
+                    <p>MODERATE</p>
+                    <div style="background-color: #E2E217;"></div>
+                </div>
+
+                <div class="case">
+                    <h2 id="minor-case">34</h2>
+                    <p>MINOR</p>
+                    <div style="background-color: #17E217;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

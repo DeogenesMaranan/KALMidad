@@ -48,7 +48,7 @@ body {
     color: var(--clr--yellow-orange);
 }
 
-#continueButton {
+#continue-button {
     width: 13rem;
     height: 3rem;
     border-width: 0;
