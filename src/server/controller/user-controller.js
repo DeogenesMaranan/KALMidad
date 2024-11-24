@@ -31,7 +31,7 @@ class UserController {
     }
 
     async getUserType(req, res) {
-        const response = this.#userAuth.getUserType(req.uid)
+        const response = this.#userAuth.getUserType(req.query.uid)
         res.status(201).json(response)
     }
 }

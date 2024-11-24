@@ -51,7 +51,7 @@ class UserAuth {
     }
 
     getUserType(uid) {
-        if (uid == 'm5wP2OTHSSZRxLZr0gjYidgMKck1') {
+        if (uid === 'bDETodKfQpZ9zvKWLs4SCVFmFbi1') {
             return {userType: 'admin'}
         }
         return {userType: 'client'}
