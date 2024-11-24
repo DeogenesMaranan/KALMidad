@@ -47,11 +47,16 @@ body::-webkit-scrollbar {
     display: block;
     border: 0.1rem solid black;
     border-collapse: collapse;
-    overflow-y: scroll;
+    overflow: scroll;
 }
 
 .main-container table::-webkit-scrollbar {
-    display: none; 
+    height: 0.5rem;
+    width: 0rem;
+}
+
+.main-container table::-webkit-scrollbar-thumb {
+    background-color: #6DDCCF;
 }
 
 .empty-rows {
@@ -100,12 +105,8 @@ body::-webkit-scrollbar {
 }
 
 .main-container table tr .description-column {
-    width: 35rem;
+    min-width: 20rem;
     text-align: justify;
-}
-
-.main-container table tr .location-column {
-    width: 13rem;
 }
 
 .main-container table tr .image-column {
@@ -113,7 +114,7 @@ body::-webkit-scrollbar {
 }
 
 .main-container table tr .column {
-    min-width: 11rem;
+    min-width: 13rem;
 }
 
 .main-container table tr select {
