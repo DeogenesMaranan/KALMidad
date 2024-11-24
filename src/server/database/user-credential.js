@@ -56,6 +56,21 @@ class UserCredential {
         })
     }
 
+    insertNewUser(p_uid) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const db = getFirestore(this.#firebaseApp)
+                const ref = doc(db, 'admin', 'user-list')
+                let fields = { }
+                fields['user'+p_uid] = p_uid
+                
+                await updateDoc(ref, fields)
+                resolve('User successfully added.')
+            }
+            catch (error) { reject(error) }
+        })
+    }
+
     // can be applied for reporter's name, admin cred, report details
     getUserInfoById(p_document, p_uid) {
         return new Promise(async (resolve, reject) => {
@@ -87,6 +102,55 @@ class UserCredential {
                 } else {
                     throw new Error('Fetching failed. No information was found.')
                 }
+            }
+            catch(error) { reject(error) }
+        })
+    }
+
+    // used in getAllReportsSubcollection
+    getAllUsersinAdmin() {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const db = getFirestore()
+                const request = query(collection(db, 'admin'))
+                const snapshot = await getDocs(request)
+
+                if(!snapshot.empty) {
+                    const valuesArray = []
+
+                    snapshot.forEach((doc) => {
+                        const data = doc.data()
+                        Object.values(data).forEach((value) => {
+                            valuesArray.push(value)
+                        })
+                    })
+                    resolve(valuesArray)
+                } else {
+                    throw new Error('Fetching failed. No information was found.')
+                }
+            }
+            catch (error) { reject(error) }
+        })
+    }
+
+    getAllReportsSubcollection() {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const userList = await this.getAllUsersinAdmin()
+
+                const allReportList = []
+                for(const uid of userList) {
+                    const userName = await this.getUserInfoById('users-credential', uid)
+                    const userReport = await this.getAllUserReports('report', uid, 'userReport')
+
+                    Object.values(userReport).forEach((value) => {
+                        const userData = { ...userName, ...value }
+                        allReportList.push(userData)
+                    })
+                    // const userData = { ...userName, ...userReport }
+                }
+
+                resolve(allReportList)
             }
             catch(error) { reject(error) }
         })
@@ -167,8 +231,7 @@ class UserCredential {
 
                 const data = snapshot.docs.map(doc => ({
                     id: doc.id, ...doc.data()    
-                }));
-
+                }))
                 resolve(data)
             } catch (error) {
                 reject(error)

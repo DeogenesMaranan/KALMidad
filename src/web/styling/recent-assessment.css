@@ -43,7 +43,7 @@ body::-webkit-scrollbar {
 }
 
 .main-container table {
-    max-height: 46rem;
+    max-height: 43rem;
     display: block;
     border: 0.1rem solid black;
     border-collapse: collapse;
@@ -55,7 +55,7 @@ body::-webkit-scrollbar {
 }
 
 .empty-rows {
-    height: 42rem;
+    height: 40rem;
     color: #878C8E;
     text-align: center;
     font-size: 1.1rem;

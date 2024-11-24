@@ -84,6 +84,19 @@ export async function insertReport(p_report, p_uid) {
     catch(error) { throw error }
 }
 
+export async function insertNewUser(p_uid) {
+    try {
+        const response = await axios.patch(
+            'http://localhost:5500/users/insertNewUser', {
+                uid: p_uid,
+            },
+            { headers: { 'Content-Type': 'application/json', }}
+        )
+        return response
+    }
+    catch(error) { throw error }
+}
+
 export async function signInUser(p_email, p_password, recaptchaToken) {
     try {
         const response = await axios.post(
@@ -156,4 +169,15 @@ export async function updateUserInfo(data) {
     catch(error) {
         throw new Error('Error updating data:', error)
     }
+}
+
+export async function getAllReportsSubcollection() {
+    try {
+        const response = await axios.get(
+            'http://localhost:5500/data/getAllReportsSubcollection',
+            { headers: { 'Content-Type': 'applicatio/json' }, }
+        )
+        return response
+    }
+    catch(error) { throw error }
 }

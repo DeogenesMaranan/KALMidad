@@ -52,7 +52,8 @@ recentAssessmentButton.addEventListener('click', () => {
         recentAssessmentButton.style.backgroundColor = '#44BBA4'
         profileSettingButton.style.backgroundColor = '#393E41'
 
-        openAssessmentBasedOnUserType(userType)
+        //  sessionStorage.setItem('userType', userType)
+        pageContentContainer.src = '../structure/recent-assessment.html'
     } else {
         recentAssessmentButtonClicked = false
         openedSideBarContainer.style.display = 'none'
@@ -88,14 +89,5 @@ function openHomeBasedOnUserType(userType) {
         pageContentContainer.src = '../structure/home-client.html'
     } else {
         pageContentContainer.src = '../structure/home-admin.html'
-    }
-}
-
-function openAssessmentBasedOnUserType(userType) {
-    if(userType === 'client') {
-        pageContentContainer.src = '../structure/recent-assessment-client.html'
-    }
-    else {
-        pageContentContainer.src = ''
     }
 }

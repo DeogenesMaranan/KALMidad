@@ -21,11 +21,13 @@ route.get('/getAllUserReports', (req, res) => {
     UserCredentialController.getAllUserReports(req, res)
 })
 
+route.get('/getAllReportsSubcollection', (req, res) => {
+    UserCredentialController.getAllReportsSubcollection(req, res)
+})
+
 route.post('/uploadImage', upload.single('image'), (req, res) => {
     ImageServerController.uploadImage(req, res)
 })
-
-
 
 route.delete('/deleteReport', (req, res) => {
     UserCredentialController.deleteReport(req, res)

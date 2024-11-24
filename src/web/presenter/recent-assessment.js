@@ -1,6 +1,7 @@
 
 import {
-    getAllUserReport
+    getAllUserReport,
+    getAllReportsSubcollection
 } from '../../services/request.js'
 import { 
     capitalize,
@@ -8,24 +9,31 @@ import {
 } from '../../services/converter.js'
 
 
-var uid
+var uid, userType
 
 document.addEventListener('DOMContentLoaded', async () => {
+    userType = sessionStorage.getItem('userType')
+    
     try{
-        uid = sessionStorage.getItem('uid')
-        console.log('uid', uid)
-        const reponse = await getAllUserReport(uid)
-
-        displayTabularReports(reponse.data.data)
+        if (userType === 'client') {
+            uid = sessionStorage.getItem('uid')
+            const reponse = await getAllUserReport(uid)
+            displayTabularReports(reponse.data.data)
+        }
+        else if (userType === 'admin') {
+            const response = await getAllReportsSubcollection()
+            const userData = response.data.data
+            console.log('response', userData)
+        }
     }
     catch(error) { 
-    const mainContainer = document.querySelector('.main-container')
-    const emptyTableIndicator = document.createElement('div')
+        const mainContainer = document.querySelector('.main-container')
+        const emptyTableIndicator = document.createElement('div')
 
-    emptyTableIndicator.className = 'empty-rows'
-    emptyTableIndicator.innerHTML = '<i>Your report history appears here</i>'
+        emptyTableIndicator.className = 'empty-rows'
+        emptyTableIndicator.innerHTML = '<i>Your report history appears here</i>'
 
-    mainContainer.appendChild(emptyTableIndicator)
+        mainContainer.appendChild(emptyTableIndicator)
     }
 })
 

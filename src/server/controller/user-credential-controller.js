@@ -52,6 +52,18 @@ class UserCredential {
         catch(error) { res.status(400).json({error: error.message }) }
     }
 
+    async insertNewUser(req, res) {
+        try{
+            const uid = req.body.uid 
+
+            const response = this.#userDb.insertNewUser(uid)
+            res.status(201).json({ message: response })
+        }
+        catch(error) {
+            res.status(400).json({ message: error })
+        }
+    }
+
     async getUserInfoById(req, res) {
         try {
             const { document: p_document, uid: p_uid } = req.query;
@@ -66,6 +78,19 @@ class UserCredential {
             res.status(200).json(response)
         }
         catch(error) { res.status(400).json({ error: error.message }) }
+    }
+
+    async getAllReportsSubcollection(req, res) {
+        try {
+            const response = await this.#userDb.getAllReportsSubcollection()
+            res.status(201).json({
+                message: 'Fetching successful.',
+                data: response
+            })
+        }
+        catch(error) {
+            res.status(400).json({ error: error })
+        }
     }
 
     // the Following codes, are still pending to be fix.

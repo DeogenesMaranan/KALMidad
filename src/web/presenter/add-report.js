@@ -3,11 +3,12 @@ import ReportModel from '../../model/report-details.js'
 import {
     uploadImage, 
     insertReport,
-    getAllUserReport
+    getAllUserReport,
+    insertNewUser
 } from '../../services/request.js'
 
 
-var selectedImage, userReports, uid, reportId
+var selectedImage, userReports, uid, reportId, email
 
 const continueButton = document.getElementById('continue-button')
 const popupContainer = document.getElementById('popup-container')
@@ -21,6 +22,7 @@ const selectedImageHolder = document.getElementById('selected-image-holder')
 document.addEventListener('DOMContentLoaded', async () => {
     const requestType = sessionStorage.getItem('client-report-request')
     uid = sessionStorage.getItem('uid')
+    email = sessionStorage.getItem('email')
 
     if (requestType === 'add') {
         addReportButton.style.display = 'block'
@@ -51,8 +53,9 @@ addReportButton.addEventListener('click', async () => {
         p_report.flag = await floodProcessor(selectedImageHolder)
         
         const response = await insertReport(p_report, uid)
+        const res = await insertNewUser(uid)
 
-        if(response) {
+        if(response && res) {
             popupContainer.style.display = 'flex'
         }
     } 
