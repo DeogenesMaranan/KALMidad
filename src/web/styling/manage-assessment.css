@@ -34,7 +34,6 @@ h2 {
     flex-direction: row;
     border-radius: 0.5rem;
     align-items: flex-start;
-    /* border: 0.1rem solid #D3D0CB; */
 }
 
 .report-button {
@@ -94,4 +93,47 @@ h2 {
 .report-button:hover {
     transform: scale(0.95);
     background-color: #e7bb411e;
+}
+
+.status-options-buttons {
+    width: 7rem;
+    height: 7rem;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1.5rem 0 0 1rem;
+    border-radius: 0.3rem;
+    background-color: rgba(51, 51, 51, 0.537);
+    visibility:hidden;
+}
+
+.status-options-buttons h5 {
+    margin: 0 0 0.5rem 0;
+    line-height: 1rem;
+    color: #dddbdb;
+}
+
+.status-options-buttons button {
+    width: 7rem;
+    height: 2rem;
+    border: none;
+    display: flex;
+    color: #dddbdb;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: transparent;
+}
+
+.holder-report {
+    position: relative;
+}
+
+.holder-report:hover .status-options-buttons {
+    visibility: visible;
+}
+
+.status-options-buttons button:hover {
+    background-color: #5a5a5a;
 }
