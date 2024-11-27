@@ -16,32 +16,43 @@
     </header>
 
     <main>
-        <h1>Account Settings</h1>
-
-        <div class="user-image-holder">
-            <img id="user-profile-button" src="../assets/user-profile-photo.png" alt="User Profile Picture">
-
+        <div class="user-profile-image-holder">
+            <div class="sub-container">
+                <img id="profile-image-holder" src="../assets/user-default-profile-image.svg" alt="">
+            </div>
             <label for="user-picture-selector">
                 <span class="material-symbols-outlined">edit</span>
             </label>
             <input type="file" id="user-picture-selector" accept=".png, .jpg, .jpeg" style="display: none;">
         </div>
 
+        <div class="header-buttons">
+            <button id="view-personal-info-button">
+                <p><span class="material-symbols-outlined">person</span></p>
+                <h3>Personal Information</h3>
+            </button>
+
+            <button id="signout-button">
+                <p><span class="material-symbols-outlined">login</span></p>
+                <h3>Sign out</h3>
+            </button>
+        </div>
+
+        <h2>Personal Information</h2>
         <div class="name-holder">
             <div>
-                <h4>Name</h4>
-                <p id="fullname-holder">Not Set</p>
+                <label for="firstname-input">First Name:</label>
+                <input type="text" id="firstname-input" disabled>
+            </div>
 
-                <div class="edit-name-holder">
-                    <label for="firstname-input">First Name:</label>
-                    <input type="text" id="firstname-input" disabled>
-    
-                    <label for="middlename-input">Middle Name:</label>
-                    <input type="text" id="middlename-input" disabled>
-    
-                    <label for="lastname-input">Last Name:</label>
-                    <input type="text" id="lastname-input" disabled>
-                </div>
+            <div>
+                <label for="middlename-input">Middle Name:</label>
+                <input type="text" id="middlename-input" disabled>
+            </div>
+
+            <div>
+                <label for="lastname-input">Last Name:</label>
+                <input type="text" id="lastname-input" disabled>
             </div>
             <button class="button-styling" id="edit-name-button">Edit Name</button>
         </div>

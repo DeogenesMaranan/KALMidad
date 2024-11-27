@@ -18,111 +18,80 @@ body::-webkit-scrollbar {
 
 main {
     margin-top: 2.5rem;
+    border-radius: 1rem;
+    border: 0.1rem solid black;
 }
 
 main h1 {
     font-weight: 700;
 }
 
-.user-image-holder {
+main img {
     width: 100%;
-    height: 14rem;
-    padding: 0 1.7rem;
-    display: block;
-    border-bottom: 0.1rem solid #D3D0CB;
+    height: 10rem;
 }
 
-.user-image-holder img {
-    width: 12rem;
-    border-radius: 100%;
-    background-color: white;
+.user-profile-image-holder {
+    width: 100%;
+    height: 10rem;
+    position: relative;
+    border-radius: 1rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../assets/user-profile-header.jpg');
 }
 
-.user-image-holder label {
-    margin-left: -2rem;
-}
-
-.user-image-holder label span {
-    font-size: 2rem;
-    color: #909090;
-}
-
-.name-holder p {
-    font-size: 1.3rem;
-    margin: 0;
-    color: black;
-    font-weight: 400;
-    text-transform: uppercase;
-}
-
-.name-holder,
-.name-holder div input {
+.user-profile-image-holder .sub-container {
     width: 10rem;
-    color: #9e9e9e;
-    padding-right: 1rem;
-}
-
-.name-holder,
-.address-holder,
-.email-holder {
-    width: 100%;
-    height: max-content;
+    height: 10rem;
     display: flex;
-    padding: 2rem 2.5rem;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    box-sizing: border-box;
-    justify-content: space-between;
-    border-bottom: 0.1rem solid #D3D0CB;
+    position: absolute;
+    margin: 4rem;
+    border-radius: 50%;
+    background-color: #E7BB41;
 }
 
-.name-holder div h4,
-.address-holder div h4,
-.email-holder h4 {
-    font-size: 1.3rem;
-    color: black;
-    line-height: 1rem;
-    margin: 0 0 1rem 0;
+.sub-container #profile-image-holder {
+    width: 8rem;
+    height: 8rem;
 }
 
-.name-holder div label,
-.address-holder div label,
-.email-holder label {
-    font-size: 1.1rem;
-    margin-right: 0.2rem
+.header-buttons {
+    margin: 7rem 5rem 0 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
-.address-holder div select {
-    width: 10rem;
-}
-
-.address-holder div select,
-.email-holder input {
-    color: black;
-}
-
-.name-holder div input,
-.address-holder div select,
-.email-holder input {
-    border: none;
-    font-size: 1.1rem;
-    margin: 0.3rem 0 0 0;
-    background-color: white;
-}
-
-.email-holder input {
-    width: 30rem;
-}
-
-.button-styling {
-    width: 10rem;
+.header-buttons button {
+    width: 20rem;
     height: 3rem;
-    font-size: 1.1rem;
-    border-radius: 0.6rem;
-    background-color: white;
-    border: 0.1rem solid #909090;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    border-radius: 5rem;
+    border: none;
 }
 
-.button-styling:hover {
-    background-color: #eaeaea;
+.header-buttons #view-personal-info-button {
+    color: black;
+    margin-right: 2rem;
+    background-color: #FAF1D9;
 }
+
+.header-buttons #signout-button {
+    color: #878C8E;
+    background-color: white;
+}
+
+main h2 {
+    margin: 2rem 6rem;
+    font-weight: bold;
+}
+

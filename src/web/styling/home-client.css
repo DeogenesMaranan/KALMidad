@@ -24,8 +24,14 @@ body::-webkit-scrollbar {
     flex-direction: column;
     background-color: white;
     justify-content: flex-start;
-    padding: 3rem 4rem;
+    padding: 3rem 4rem 10rem 4rem;
     box-sizing: border-box;
+    overflow-y: scroll;
+}
+
+.home-container h3 {
+    align-self: flex-start;
+    margin-left: 2rem;
 }
 
 .header-container {
@@ -63,7 +69,7 @@ body::-webkit-scrollbar {
 
 .main-header-container {
     width: 100%;
-    height: 21rem;
+    height: 13rem;
     color: white;
     padding: 3rem 4rem;
     margin: 1rem 0 1.5rem 0;
@@ -90,15 +96,15 @@ body::-webkit-scrollbar {
 }
 
 .main-container {
-    width: 90%;
-    height: 45%;
+    width: 95%;
+    height: max-content;
     display: flex;
     flex-direction: column;
     border-style: solid;
     border-width: 0.1rem;
     border-radius: 0.4rem;
     border-color: #D3D0CB;
-    padding: 1.2rem 0rem 1.3rem 1.2rem;
+    padding: 1.2rem 0rem 0rem 1.2rem;
 }
 
 .main-container h3 {
@@ -122,8 +128,7 @@ body::-webkit-scrollbar {
     display: none; 
 }
 
-.report-container .content,
-.hover-buttons {
+.report-container .content {
     width: 17.4rem;
     height: 19rem;
     color: black;
@@ -156,8 +161,8 @@ body::-webkit-scrollbar {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    background-color: #F0F0F0;
     position: relative;
+    border: 0.1rem solid black;
 }
 
 .report-container .report-holder h3 {
@@ -199,8 +204,8 @@ body::-webkit-scrollbar {
 }
 
 .edit-button, .delete-button {
-    width: 5rem;
-    height: 5rem;
+    width: 3rem;
+    height: 3rem;
     border: none;
     border-radius: 100%;
     font-size: 18px;
@@ -220,20 +225,29 @@ body::-webkit-scrollbar {
 }
     
 .hover-buttons {
+    width: 15rem;
+    height: 4rem;
+    color: black;
+    margin: 0rem 0rem 1rem 0rem;
+    box-sizing: border-box;
+    border-radius: 0.4rem;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    left: 1;
     bottom: 0; 
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 1;
 } 
+
+.reports:hover {
+    transform: scale(0.95);
+    background-color: #e7bb411e;
+}
 
 .reports:hover .hover-buttons{
     opacity: 1;

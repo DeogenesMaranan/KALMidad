@@ -10,8 +10,6 @@ async function floodProcessor(p_image) {
     return getLargest(prediction)
 }
 
-
-
 function getLargest(array) {
     var largest = 0
     var name = ''

@@ -87,24 +87,10 @@ function displayTabularReportsAdmin(reportList) {
         const image = document.createElement('img')
         image.src = report.imageLink
 
-        // const statusOption = ['Pending', 'In Process', 'Resolved']
-        // const statusSelect = document.createElement('select')
-        // statusSelect.id = 'status-select'
-
-        // statusOption.forEach((option) => {
-        //     const selectOpt = document.createElement('option')
-        //     selectOpt.textContent = option
-        //     selectOpt.value = option
-
-        //     statusSelect.appendChild(selectOpt)
-        // })
-
         imageRow.appendChild(image)
-        // statusRow.appendChild(statusSelect)
         
         flagRow.textContent = report.flag
         statusRow.textContent = capitalize(report.status)
-        // statusSelect.value = capitalize(report.status)
         calamityRow.textContent = capitalize(report.calamity)
         locationRow.textContent = `${report.town}, ${report.city}`
         descriptionRow.textContent = capitalize(report.description)
