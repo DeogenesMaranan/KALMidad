@@ -10,7 +10,6 @@ var editCount = 0, changeCount = 0
 const signoutButton       = document.getElementById('signout-button')
 const editNameButton      = document.getElementById('edit-name-button')
 const changeAddressButton = document.getElementById('change-address-button')
-const fullnameHolder      = document.getElementById('fullname-holder')
 const firstnameInput      = document.getElementById('firstname-input')
 const middlenameInput     = document.getElementById('middlename-input')
 const lastnameInput       = document.getElementById('lastname-input')
@@ -53,9 +52,6 @@ editNameButton.addEventListener('click', async () => {
             const fields = { uid, firstname, middlename, lastname }
             await updateUserInfo(fields)
 
-            fullnameHolder.textContent = `${firstname} `
-                                       + `${middlename} `
-                                       + `${lastname}`
             editCount = 0
             enableNameInput(false)
             editNameButton.textContent = 'Edit Name'
@@ -101,9 +97,6 @@ function enableAddressInput(enable) {
 }
 
 function displayUserInfo(userData, email) {
-    fullnameHolder.textContent = `${userData.firstname} `
-                               + `${userData.middlename} `
-                               + `${userData.lastname}`
     firstnameInput.value = userData.firstname
     middlenameInput.value = userData.middlename
     lastnameInput.value = userData.lastname
