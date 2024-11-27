@@ -70,6 +70,11 @@ profileSettingButton.addEventListener('click', () => {
 manageReportsButton.addEventListener('click', () => {
     if(!manageReportsButtonClicked) {
         setActiveButton('REPORTS')
+        pageContentContainer.src = '../structure/manage-reports.html'
+    } else {
+        manageReportsButtonClicked = false
+        openedSideBarContainer.style.display = 'none'
+        closedSideBarContainer.style.display = 'flex'
     }
 })
 

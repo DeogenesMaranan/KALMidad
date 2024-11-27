@@ -34,12 +34,11 @@ h2 {
     flex-direction: row;
     border-radius: 0.5rem;
     align-items: flex-start;
-    border: 0.1rem solid #D3D0CB;
+    /* border: 0.1rem solid #D3D0CB; */
 }
 
 .report-button {
-    min-width: 35rem;
-    /* max-width: 45rem; */
+    width: 30rem;
     flex-grow: 1;
     height: 10rem;
     display: flex;
@@ -51,6 +50,7 @@ h2 {
     flex-direction: row;
     border: 0.1rem solid black;
     background-color: white;
+    transition: transform 0.3s ease;
 }
 
 .report-button img {
@@ -64,8 +64,7 @@ h2 {
     height: max-content;
     align-self: flex-start;
 }
-.report-button div span {
-    color: #E21717;
+.report-button .flag-icon-container span {
     font-size: 2rem;
 }
 
@@ -90,9 +89,9 @@ h2 {
     color: white;
     padding: 0.2rem 0.4rem;
     border-radius: 0.2rem;
-    background-color: #E21717;
 }
 
 .report-button:hover {
+    transform: scale(0.95);
     background-color: #e7bb411e;
 }
