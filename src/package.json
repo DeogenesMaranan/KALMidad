@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node ./server/index.js",
-    "build": "webpack"
+    "build": "webpack && node ./server/index.js"
   },
   "keywords": [],
   "author": "",

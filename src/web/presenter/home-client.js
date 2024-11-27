@@ -38,7 +38,11 @@ closeReportPopupButton.addEventListener('click', () => {
 addNewReportButton.addEventListener('click', async () => {
     try{
         const loggedInUid = sessionStorage.getItem('uid')
-        await getUserInfo(loggedInUid)
+        const userInfo = await getUserInfo(loggedInUid)
+
+        if(userInfo.data.firstname === 'Not Set') {
+            throw new Error('Set up your information first.')
+        }
 
         sessionStorage.setItem('client-report-request', 'add')
         window.location.href = '../structure/add-report.html'

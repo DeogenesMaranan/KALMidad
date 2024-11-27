@@ -1,0 +1,98 @@
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    font-family:  'Inter', sans-serif;
+}
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin: 2rem 0 0.5rem 0.3rem;
+    text-transform: uppercase;
+}
+
+.reports-container {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    padding: 0rem 0 1rem 1rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border-radius: 0.5rem;
+    align-items: flex-start;
+    border: 0.1rem solid #D3D0CB;
+}
+
+.report-button {
+    min-width: 35rem;
+    /* max-width: 45rem; */
+    flex-grow: 1;
+    height: 10rem;
+    display: flex;
+    padding: 0.5rem;
+    margin: 1rem 1rem 0 0;
+    border-radius: 0.5rem;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    border: 0.1rem solid black;
+    background-color: white;
+}
+
+.report-button img {
+    width: auto;
+    height: 8.9rem;
+    border-radius: 0.3rem;
+}
+
+.report-button div {
+    width: max-content;
+    height: max-content;
+    align-self: flex-start;
+}
+.report-button div span {
+    color: #E21717;
+    font-size: 2rem;
+}
+
+.report-button .report-details-container {
+    width: 90%;
+    height: 9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.report-button .report-details-container p {
+    margin: 0.3rem 1rem;
+    line-height: 1rem;
+    font-size: 1rem;
+    text-align: start;
+    font-family:  'Inter', sans-serif;
+}
+
+.report-button .report-details-container .flag-container {
+    color: white;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.2rem;
+    background-color: #E21717;
+}
+
+.report-button:hover {
+    background-color: #e7bb411e;
+}

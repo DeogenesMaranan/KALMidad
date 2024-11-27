@@ -8,10 +8,6 @@ const route = Router()
 
 route.get('/', () => console.log('users'))
 
-route.get('/getUserType', (req, res) => {
-    UserController.getUserType(req, res)
-})
-
 route.post('/signin', (req, res) => {
     UserController.signin(req, res)
 })

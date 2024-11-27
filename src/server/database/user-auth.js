@@ -49,13 +49,6 @@ class UserAuth {
             }
         });
     }
-
-    getUserType(uid) {
-        if (uid === 'bDETodKfQpZ9zvKWLs4SCVFmFbi1') {
-            return {userType: 'admin'}
-        }
-        return {userType: 'client'}
-    }
     
     #constraintPassword(p_password) {
         if (!StringValidator.containsLowercaseLetter(p_password)){

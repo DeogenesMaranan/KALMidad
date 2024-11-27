@@ -76,11 +76,11 @@ changeAddressButton.addEventListener('click', async () => {
         else {
             const town = townInput.value
             const city = cityInput.value
-
+            
             const fields = { uid, town, city }
             await updateUserInfo(fields)
 
-            editCount = 0
+            changeCount = 0
             enableAddressInput(false)
             changeAddressButton.textContent = 'Change Address'
         }

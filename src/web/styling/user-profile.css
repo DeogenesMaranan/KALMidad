@@ -110,6 +110,10 @@ main h1 {
     background-color: white;
 }
 
+.email-holder input {
+    width: 30rem;
+}
+
 .button-styling {
     width: 10rem;
     height: 3rem;

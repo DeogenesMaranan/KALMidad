@@ -126,7 +126,6 @@ function getUserInputUpdate(reports) {
     return newReport
 }
 
-
 function displayReportRecords(reportData) {
     document.getElementById('date-input').value = reportData.date
     document.getElementById('time-input').value = reportData.time
