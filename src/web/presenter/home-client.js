@@ -11,6 +11,7 @@ import {
 var userReports, uid 
 const submitInfoButton = document.getElementById('submit-button')
 const popupBackground = document.getElementById('popup-container')
+const reportContainer = document.querySelector('.report-container')
 const noReportDisplay = document.getElementById('no-report-container')
 const cancelDeleteButton = document.getElementById('cancel-delete-button')
 const addNewReportButton = document.getElementById('add-new-report-button')
@@ -102,7 +103,6 @@ function displayReports(reportList) {
     })
 }
 
-const reportContainer = document.querySelector('.report-container')
 reportContainer.addEventListener('click', (e) => {
     if (e.target.closest('.edit-button')) {
         handleEdit(e)

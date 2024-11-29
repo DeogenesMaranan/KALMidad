@@ -38,7 +38,7 @@ signinButton.addEventListener('click', async () => {
         errorHolder.textContent = `Error signing in: Ensure all information is correct.`
         errorHolder.style.display = 'block';
     }
-});
+})
 
 async function getUserType(uid) {
     try {

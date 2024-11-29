@@ -8,7 +8,7 @@ import {
 } from '../../services/request.js'
 
 
-var selectedImage, userReports, uid, reportId, email
+var selectedImage, userReports, uid, reportId
 
 const continueButton = document.getElementById('continue-button')
 const popupContainer = document.getElementById('popup-container')
