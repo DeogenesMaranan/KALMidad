@@ -178,6 +178,20 @@ class UserCredential {
         }
         catch(error) { res.status(400).json({ message: error }) }
     }
+
+    async updateReportStatus(req, res) {
+        try {
+            const p_uid = req.body.uid
+            const p_status = req.body.status
+            const p_reportId = req.body.reportId
+
+            const response = await this.#userDb.updateReportStatus(p_uid, p_reportId, p_status)
+            res.status(201).json(response)
+        }
+        catch(error) {
+            res.status(400).json({ error: error })
+        }
+    }
 }
 
 

@@ -24,6 +24,18 @@ class UserCredential {
     constructor() {
         this.#firebaseApp = firebaseApp
     }
+
+    deleteReport(p_subcollection, p_uid) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const db = getFirestore(this.#firebaseApp)
+                const ref = doc(db, `report/${p_uid}/userReport/${p_subcollection}`)
+
+                await deleteDoc(ref)
+                resolve('Report deleted successfully.')
+            } catch(error) { reject('Failed to delete report.') }
+        })
+    }
     
     insertUserInfo(p_user, p_uid) {
         return new Promise(async (resolve, reject) => {
@@ -144,26 +156,12 @@ class UserCredential {
                     const userReport = await this.getAllUserReports('report', uid, 'userReport')
 
                     Object.values(userReport).forEach((value) => {
-                        const userData = { ...userName, ...value }
+                        const userData = { uid, ...userName, ...value }
                         allReportList.push(userData)
                     })
-                    // const userData = { ...userName, ...userReport }
                 }
 
                 resolve(allReportList)
-            }
-            catch(error) { reject(error) }
-        })
-    }
-
-    updateUserInfo(p_fields, p_uid) {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const db = getFirestore(this.#firebaseApp)
-                const ref = doc(db, 'users-credential', p_uid)
-
-                const response = await updateDoc(ref, p_fields)
-                resolve(response)
             }
             catch(error) { reject(error) }
         })
@@ -239,15 +237,30 @@ class UserCredential {
         })
     }
 
-    deleteReport(p_subcollection, p_uid) {
+    updateUserInfo(p_fields, p_uid) {
         return new Promise(async (resolve, reject) => {
             try {
                 const db = getFirestore(this.#firebaseApp)
-                const ref = doc(db, `report/${p_uid}/userReport/${p_subcollection}`)
+                const ref = doc(db, 'users-credential', p_uid)
 
-                await deleteDoc(ref)
-                resolve('Report deleted successfully.')
-            } catch(error) { reject('Failed to delete report.') }
+                const response = await updateDoc(ref, p_fields)
+                resolve(response)
+            }
+            catch(error) { reject(error) }
+        })
+    }
+
+    updateReportStatus(p_uid, p_reportId, p_status) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const db = getFirestore()
+                const ref = doc(db, `report/${p_uid}/userReport/${p_reportId}`)
+                const jsonReport = { status: p_status }
+                
+                await updateDoc(ref, jsonReport)
+                resolve(`Report successfully submitted: ${p_reportId}`)
+            } 
+            catch(error) { reject(`Failed to update report. ${error}`) }
         })
     }
 }

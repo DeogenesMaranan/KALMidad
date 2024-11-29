@@ -29,6 +29,10 @@ route.post('/uploadImage', upload.single('image'), (req, res) => {
     ImageServerController.uploadImage(req, res)
 })
 
+route.patch('/updateReportStatus', (req, res) => {
+    UserCredentialController.updateReportStatus(req, res)
+})
+
 route.delete('/deleteReport', (req, res) => {
     UserCredentialController.deleteReport(req, res)
 })

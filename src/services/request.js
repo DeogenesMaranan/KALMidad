@@ -171,6 +171,19 @@ export async function updateUserInfo(data) {
     }
 }
 
+export async function updateReportStatus(uid, reportId, status) {
+    try {
+        const response = axios.patch(
+            'http://localhost:5500/data/updateReportStatus', {
+                uid, reportId, status,
+            },
+            { header: { 'Content-Type': 'application/json' }, }
+        )
+        return response
+    }
+    catch (error) { throw error }
+}
+
 export async function getAllReportsSubcollection() {
     try {
         const response = await axios.get(
