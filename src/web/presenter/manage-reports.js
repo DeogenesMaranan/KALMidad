@@ -1,6 +1,7 @@
 
 import { getAllReportsSubcollection } from "../../services/request.js"
 
+
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const reportList = await getAllReportsSubcollection()
@@ -14,6 +15,7 @@ function loadReportButton(reportList) {
 
     reportList.forEach(report => {
         const reportImage = document.createElement('img')
+        const holderReport = document.createElement('div')
         const reportButton = document.createElement('button')
         const flagIconContainer = document.createElement('div')
 
@@ -23,15 +25,19 @@ function loadReportButton(reportList) {
         flagIconContainer.innerHTML = (`
             <span class="material-symbols-outlined" style="color: ${flag.color};">flag</span>
         `) 
+        const hoverMenuOption = displayReportHoverOptions()
         
         reportButton.className = 'report-button'
+        holderReport.className = 'holder-report'
         flagIconContainer.className = 'flag-icon-container'
         reportDetailsContainer.className = 'report-details-container'
     
         reportButton.appendChild(reportImage)
         reportButton.appendChild(reportDetailsContainer)
         reportButton.appendChild(flagIconContainer)
-        reportsContainer.appendChild(reportButton)
+        holderReport.appendChild(reportButton)
+        holderReport.appendChild(hoverMenuOption)
+        reportsContainer.appendChild(holderReport)
     })
 }
 
@@ -49,6 +55,26 @@ function displayReportDetails(report, flag) {
     `)
 
     return reportDetailsContainer
+}
+
+function displayReportHoverOptions() {
+    const optionMenu = document.createElement('div')
+
+    optionMenu.innerHTML = (`
+        <div class="status-options-buttons">
+            <h5>Mark as</h5>
+            <button>
+                <p><span class="material-symbols-outlined">task_alt</span></p>
+                <p>Resolved</p>
+            </button>
+            <button>
+                <p><span class="material-symbols-outlined">clock_loader_40</span></p>
+                <p>In Progress</p>
+            </button>
+        </div>
+    `)
+
+    return optionMenu
 }
 
 function getFlagColor(flagLabel) {
@@ -74,3 +100,4 @@ function getFlagColor(flagLabel) {
     }
     return flag
 }
+

@@ -37,19 +37,17 @@ h2 {
 }
 
 .report-button {
-    width: 30rem;
-    flex-grow: 1;
-    height: 10rem;
+    width: 100%;
+    height: 100%;
     display: flex;
+    position: relative;
     padding: 0.5rem;
-    margin: 1rem 1rem 0 0;
     border-radius: 0.5rem;
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
     border: 0.1rem solid black;
     background-color: white;
-    transition: transform 0.3s ease;
 }
 
 .report-button img {
@@ -102,9 +100,9 @@ h2 {
     position: absolute;
     top: 0;
     left: 0;
-    margin: 1.5rem 0 0 1rem;
+    margin: 0.5rem 0 0 1.5rem;
     border-radius: 0.3rem;
-    background-color: rgba(51, 51, 51, 0.537);
+    background-color: rgba(17, 17, 17, 0.537);
     visibility:hidden;
 }
 
@@ -127,7 +125,14 @@ h2 {
 }
 
 .holder-report {
+    width: 30rem;
+    flex-grow: 1;
+    height: 10rem;
+    display: flex;
     position: relative;
+    margin: 1rem 1rem 0 0;
+    flex-direction: column;
+    transition: transform 0.3s ease;
 }
 
 .holder-report:hover .status-options-buttons {
@@ -135,5 +140,5 @@ h2 {
 }
 
 .status-options-buttons button:hover {
-    background-color: #5a5a5a;
+    background-color: #707070;
 }
