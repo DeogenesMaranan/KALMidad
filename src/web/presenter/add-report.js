@@ -22,7 +22,8 @@ const selectedImageHolder = document.getElementById('selected-image-holder')
 document.addEventListener('DOMContentLoaded', async () => {
     const requestType = sessionStorage.getItem('client-report-request')
     uid = sessionStorage.getItem('uid')
-    email = sessionStorage.getItem('email')
+
+    console.log(requestType);
 
     if (requestType === 'add') {
         addReportButton.style.display = 'block'
@@ -47,17 +48,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 addReportButton.addEventListener('click', async () => {
     try {
         const p_report = getUserInputAdd()
-        console.log('add-1')
         const image = await uploadImage(selectedImage)
-        console.log('add-2')
 
-        p_report.imageLink = image.data.data   
-        console.log('add-2.5')     
+        p_report.imageLink = image.data.data       
         p_report.flag = await floodProcessor(selectedImageHolder)
-        console.log('add-3')
         
         const response = await insertReport(p_report, uid)
-        console.log('add-4')
         const res = await insertNewUser(uid)
 
         if(response && res) {

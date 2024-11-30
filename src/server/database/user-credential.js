@@ -18,13 +18,17 @@ import {
     nameToFirestore, 
     reportToFirebase 
 } from '../../services/converter.js'
-
+import Cipher from '../../services/cipher.js'
 
 class UserCredential {
     #firebaseApp
+    #cipher
+    #key
 
     constructor() {
         this.#firebaseApp = firebaseApp
+        this.#key = ''
+        this.#cipher = new Cipher(this.#key)
     }
 
     deleteReport(p_subcollection, p_uid) {
@@ -62,7 +66,8 @@ class UserCredential {
                 const db = getFirestore()
                 const ref = doc(db, `report/${p_uid}/userReport/${subcollection}`)
                 const jsonReport = reportToFirebase(p_reportDetails)
-                const reportId = await setDoc(ref, jsonReport)
+                const encryptedJson = this.#cipher.encryptJson(jsonReport)
+                const reportId = await setDoc(ref, encryptedJson)
 
                 resolve(`Report successfully submitted: ${reportId}`)
             } 
@@ -85,7 +90,6 @@ class UserCredential {
         })
     }
 
-    // can be applied for reporter's name, admin cred, report details
     getUserInfoById(p_document, p_uid) {
         return new Promise(async (resolve, reject) => {
             try{
@@ -121,7 +125,6 @@ class UserCredential {
         })
     }
 
-    // used in getAllReportsSubcollection
     getAllUsersinAdmin() {
         return new Promise(async (resolve, reject) => {
             try {
@@ -169,10 +172,6 @@ class UserCredential {
         })
     }
 
-    // getall:
-    // by city (newest first)
-    // get report history where status = resolved 
-    // note: for report history, filter by flag in the request, after getting all resolved reports
     getAllByConstraint(p_field, p_constraint) {
         return new Promise( async (resolve, reject) => {
             try {
@@ -183,8 +182,8 @@ class UserCredential {
                 const snapshot = await getDocs(request)
 
                 if (!snapshot.empty) {
-                    const results = snapshot.docs.map(doc => doc.data());
-                    resolve(results);
+                    const results = snapshot.docs.map(doc => doc.data())
+                    resolve(results)
                 } else {
                     throw new Error(`Fetching failed. No information found.`)
                 }
@@ -193,12 +192,6 @@ class UserCredential {
         })
     }
 
-    // getCount
-    // total
-    // castrophic
-    // Major/Severe
-    // Moderate
-    // Minor/Mild
     getCount(p_field) {
         return new Promise(async (resolve, reject) => {
             try {
@@ -213,6 +206,7 @@ class UserCredential {
 
                 const snapshot = await getCountFromServer(request)
                 resolve(snapshot.data().count)
+
             } catch (error) {
                 reject(error)
             }
@@ -231,9 +225,11 @@ class UserCredential {
                     throw new Error(`No reports found for user ${p_uid}`)
                 }
 
-                const data = snapshot.docs.map(doc => ({
-                    id: doc.id, ...doc.data()    
-                }))
+                const data = snapshot.docs.map(doc => {
+                    const decryptedData = this.#cipher.decryptJson(doc.data())
+                    return { id: doc.id, ...decryptedData }
+                })
+
                 resolve(data)
             } catch (error) {
                 reject(error)
