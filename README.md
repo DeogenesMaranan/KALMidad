@@ -13,7 +13,7 @@
 	<b>CS-3102</b><br>
 	<a href="https://github.com/JeserylMae">Jeseryl Mae D. Comia</a><br>
 	<a href="https://github.com/chustinecantal">Chustine Mae B. Cantal</a><br>
-	<a href="https://github.com/John-Yumul">John Yumul</a><br>
+	<a href="https://github.com/John-Yumul">John Angelo Yumul</a><br>
 </p>
 <hr>
 
