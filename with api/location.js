@@ -1,38 +1,53 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const citySelects = document.querySelectorAll("#city-input, #city");
-    const townSelects = document.querySelectorAll("#town-input, #town");
+const citySelects = document.querySelector("#city-input");
+const townSelects = document.querySelector("#town-input");
 
-    // API endpoints
-    const cityApiUrl = "https://psgc.cloud/api/provinces/0401000000/municipalities";
-    const townApiUrl = "https://psgc.cloud/api/provinces/0401000000/barangays";
+var selectedCityId, cityIdCollection = {}
+const cityApiUrl = "https://psgc.cloud/api/provinces/0401000000/municipalities";
+const townApiUrl = "https://psgc.cloud/api/provinces/0401000000/barangays";
 
-    // Fetch and populate dropdown
-    const fetchAndPopulate = async (url, dropdowns) => {
-        try {
-            const response = await axios.get(url);
-            const data = response.data;
 
-            // Clear existing options and add "Not set" option
-            dropdowns.forEach((dropdown) => {
-                dropdown.innerHTML = '<option value="">Not set</option>';
-                data.forEach((item) => {
-                    const option = document.createElement("option");
-                    option.value = item.code || item.id || item.name;
-                    option.textContent = item.name;
-                    dropdown.appendChild(option);
-                });
-            });
-        } catch (error) {
-            console.error("Error fetching data:", error);
+document.addEventListener('DOMContentLoaded', async () => {
+    const cityList = await fetchLocation(cityApiUrl)
+    displayLocations(cityList.data, citySelects, true)
+})
+
+
+async function fetchLocation(url) {
+    return await axios.get(url) 
+}
+
+async function displayLocations(dataList, dropdown, isCity=false) {
+    try {
+        let data
+
+        if(isCity) { data = dataList }
+        else {
+            data = dataList.map(item => { 
+                return item.city_municipality_id == selectedCityId
+                    ? item : null
+            }).filter(item => item !== null);
         }
-    };
 
-    // Populate cities and towns on dropdown focus
-    citySelects.forEach((citySelect) =>
-        citySelect.addEventListener("focus", () => fetchAndPopulate(cityApiUrl, citySelects))
-    );
+        dropdown.innerHTML = '<option value="">Not set</option>';
+        for(let item of data) {
+            const option = document.createElement("option");
+            option.value = item.name;
+            option.textContent = item.name;
+            dropdown.appendChild(option);
+    
+            if (isCity){
+                cityIdCollection[item.name] = item.id
+            }
+        }
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+};
 
-    townSelects.forEach((townSelect) =>
-        townSelect.addEventListener("focus", () => fetchAndPopulate(townApiUrl, townSelects))
-    );
-});
+citySelects.addEventListener('change', async () => {
+    const city = citySelects.value
+    selectedCityId = cityIdCollection[city]
+    
+    const townLists = await fetchLocation(townApiUrl)
+    displayLocations(townLists.data, townSelects)
+})

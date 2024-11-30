@@ -61,8 +61,8 @@ submitInfoButton.addEventListener('click', async () => {
         p_userInfo.firstname = document.getElementById('first-name').value
         p_userInfo.middlename = document.getElementById('middle-name').value
         p_userInfo.lastname = document.getElementById('last-name').value
-        p_userInfo.town = document.getElementById('town').value
-        p_userInfo.city = document.getElementById('city').value
+        p_userInfo.town = document.getElementById('town-input').value
+        p_userInfo.city = document.getElementById('city-input').value
         p_userInfo.userType = sessionStorage.getItem('userType')
 
         await insertUserInfo(p_userInfo, p_uid)

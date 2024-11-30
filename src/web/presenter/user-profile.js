@@ -101,8 +101,14 @@ function displayUserInfo(userData, email) {
     middlenameInput.value = userData.middlename
     lastnameInput.value = userData.lastname
 
-    townInput.value = userData.town
     cityInput.value = userData.city 
+    // cityInput.dispatchEvent(new Event("change", {
+    //     detail: { 
+    //         selectedCityName: userData.city,
+    //         selectedTownName: userData.town
+    //     }
+    // }))
+    townInput.value = userData.town
 
     emailInput.value = email 
 }
