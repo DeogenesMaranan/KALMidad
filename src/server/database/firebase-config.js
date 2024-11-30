@@ -1,13 +1,16 @@
 import { initializeApp } from "firebase/app";
+import env from 'dotenv'
 
+
+env.config()
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDUjD3bPsXooNWGXDwXotLh79uQSpt3V0U",
+    apiKey: process.env.FIRESTORE_API_KEY,
     authDomain: "kalmidad-project-server.firebaseapp.com",
     projectId: "kalmidad-project-server",
     storageBucket: "kalmidad-project-server.firebasestorage.app",
-    messagingSenderId: "911925663451",
-    appId: "1:911925663451:web:9b354d2c927d6b31245efe"
+    messagingSenderId: process.env.FIRESTORE_MESSAGING_ID,
+    appId: process.env.FIRESTORE_APP_ID
 };
 
 export default initializeApp(firebaseConfig);

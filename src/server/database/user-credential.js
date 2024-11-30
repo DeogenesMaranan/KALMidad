@@ -1,3 +1,4 @@
+
 import { 
     doc, setDoc,
     getFirestore,
@@ -19,6 +20,8 @@ import {
     reportToFirebase 
 } from '../../services/converter.js'
 import Cipher from '../../services/cipher.js'
+import env from 'dotenv'
+
 
 class UserCredential {
     #firebaseApp
@@ -26,8 +29,10 @@ class UserCredential {
     #key
 
     constructor() {
+        env.config()
+
         this.#firebaseApp = firebaseApp
-        this.#key = ''
+        this.#key = process.env.ENCRYPTION_KEY
         this.#cipher = new Cipher(this.#key)
     }
 
@@ -49,8 +54,9 @@ class UserCredential {
                 const db = getFirestore(this.#firebaseApp)
                 const ref = doc(db, 'users-credential', p_uid)
                 const jsonName = nameToFirestore(p_user)
+                const encryptedJson = this.#cipher.encryptJson(jsonName)
                 
-                await setDoc(ref, jsonName)
+                await setDoc(ref, encryptedJson)
                 resolve('User\'s info added successfully')
             } 
             catch(error) { reject(error) }
@@ -65,8 +71,10 @@ class UserCredential {
         
                 const db = getFirestore()
                 const ref = doc(db, `report/${p_uid}/userReport/${subcollection}`)
+
                 const jsonReport = reportToFirebase(p_reportDetails)
                 const encryptedJson = this.#cipher.encryptJson(jsonReport)
+
                 const reportId = await setDoc(ref, encryptedJson)
 
                 resolve(`Report successfully submitted: ${reportId}`)
@@ -82,9 +90,28 @@ class UserCredential {
                 const ref = doc(db, 'admin', 'user-list')
                 let fields = { }
                 fields['user'+p_uid] = p_uid
+                const encryptedJson = this.#cipher.encryptJson(fields)
                 
-                await updateDoc(ref, fields)
+                await updateDoc(ref, encryptedJson)
                 resolve('User successfully added.')
+            }
+            catch (error) { reject(error) }
+        })
+    }
+
+    getAllStringUids() {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const querySnapshot = await getDocs(collectionGroup(db, "admin"))
+                const stringUids = []
+                
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data()
+                    if (data.p_uid) {
+                        stringUids.push(data.p_uid)
+                    }
+                })
+                resolve(stringUids)
             }
             catch (error) { reject(error) }
         })
@@ -98,7 +125,8 @@ class UserCredential {
                 const snapshot = await getDoc(ref)
 
                 if (snapshot.exists()) {
-                    resolve(snapshot.data())
+                    const decryptedData = this.#cipher.decryptJson(snapshot.data())
+                    resolve(decryptedData)
                 } else {
                     throw new Error(`Fetching failed. No information found.`)
                 }
@@ -115,7 +143,9 @@ class UserCredential {
                 const snapshot = await getDocs(request)
 
                 if(!snapshot.empty) {
-                    const results = snapshot.docs.map(doc => doc.data())
+                    const results = snapshot.docs.map(doc => {
+                        return this.#cipher.decryptJson(doc.data())
+                    })
                     resolve(results)
                 } else {
                     throw new Error('Fetching failed. No information was found.')
@@ -136,7 +166,7 @@ class UserCredential {
                     const valuesArray = []
 
                     snapshot.forEach((doc) => {
-                        const data = doc.data()
+                        const data = this.#cipher.decryptJson(doc.data())
                         Object.values(data).forEach((value) => {
                             valuesArray.push(value)
                         })
@@ -182,7 +212,9 @@ class UserCredential {
                 const snapshot = await getDocs(request)
 
                 if (!snapshot.empty) {
-                    const results = snapshot.docs.map(doc => doc.data())
+                    const results = snapshot.docs.map(doc => { 
+                        return this.#cipher.decryptJson(doc.data())
+                    })
                     resolve(results)
                 } else {
                     throw new Error(`Fetching failed. No information found.`)
@@ -242,8 +274,9 @@ class UserCredential {
             try {
                 const db = getFirestore(this.#firebaseApp)
                 const ref = doc(db, 'users-credential', p_uid)
+                const encryptedJson = this.#cipher.encryptJson(p_fields)
 
-                const response = await updateDoc(ref, p_fields)
+                const response = await updateDoc(ref, encryptedJson)
                 resolve(response)
             }
             catch(error) { reject(error) }
@@ -255,9 +288,9 @@ class UserCredential {
             try {
                 const db = getFirestore()
                 const ref = doc(db, `report/${p_uid}/userReport/${p_reportId}`)
-                const jsonReport = { status: p_status }
+                const encryptedJson = this.#cipher.encryptJson( { status: p_status } )
                 
-                await updateDoc(ref, jsonReport)
+                await updateDoc(ref, encryptedJson)
                 resolve(`Report successfully submitted: ${p_reportId}`)
             } 
             catch(error) { reject(`Failed to update report. ${error}`) }
