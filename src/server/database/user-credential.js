@@ -9,7 +9,8 @@ import {
     where,
     deleteDoc,
     updateDoc,
-    collectionGroup
+    collectionGroup,
+    orderBy
 } from 'firebase/firestore'
 import firebaseApp from './firebase-config.js'
 import { 
@@ -207,13 +208,12 @@ class UserCredential {
                 if (p_field === 'ALL') {
                     request = query(collectionGroup(db, 'userReport'))
                 } else {
-                    request = query(collectionGroup(db, 'userReport'), where('flag', '==', p_field))
+                    request = query(collectionGroup(db, 'userReport'), where('flag', '==', p_field), orderBy('date', 'asc'))
                 }
 
                 const snapshot = await getCountFromServer(request)
                 resolve(snapshot.data().count)
             } catch (error) {
-                console.log(error)
                 reject(error)
             }
         });
