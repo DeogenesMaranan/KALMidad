@@ -13,6 +13,7 @@ module.exports = {
         login: path.resolve(__dirname, './web/presenter/login.js'),
         signup: path.resolve(__dirname, './web/presenter/signup.js'),
         landing: path.resolve(__dirname, './web/presenter/landing.js'),
+        homeAdmin: path.resolve(__dirname, './web/presenter/home-admin.js'),
         addReport: path.resolve(__dirname, './web/presenter/add-report.js'),
         homeClient: path.resolve(__dirname, './web/presenter/home-client.js'),
         userProfile: path.resolve(__dirname, './web/presenter/user-profile.js'),

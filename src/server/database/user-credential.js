@@ -8,7 +8,8 @@ import {
     getCountFromServer,
     where,
     deleteDoc,
-    updateDoc
+    updateDoc,
+    collectionGroup
 } from 'firebase/firestore'
 import firebaseApp from './firebase-config.js'
 import { 
@@ -200,21 +201,24 @@ class UserCredential {
     getCount(p_field) {
         return new Promise(async (resolve, reject) => {
             try {
-                const db = getFirestore()
+                const db = getFirestore(this.#firebaseApp)
                 let request
-                
-                if (p_field == undefined) {
-                    request = query(collection(db, 'report'))
-                } else{
-                    request = query(collection(db, 'report'), where('flag', '==', p_field))
+
+                if (p_field === 'ALL') {
+                    request = query(collectionGroup(db, 'userReport'))
+                } else {
+                    request = query(collectionGroup(db, 'userReport'), where('flag', '==', p_field))
                 }
 
                 const snapshot = await getCountFromServer(request)
                 resolve(snapshot.data().count)
+            } catch (error) {
+                console.log(error)
+                reject(error)
             }
-            catch(error) { reject(error) }
-        })
+        });
     }
+
 
     getAllUserReports(p_document, p_uid, subcollection) {
         return new Promise(async (resolve, reject) => {

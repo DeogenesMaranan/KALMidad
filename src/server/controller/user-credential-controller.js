@@ -126,7 +126,7 @@ class UserCredential {
 
     async getCount(req, res) {
         try {
-            const { field: p_field } = req.body;
+            const p_field = req.query.field
 
             const response = await this.#userDb.getCount(p_field)
             res.status(200).json({

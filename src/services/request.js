@@ -194,3 +194,18 @@ export async function getAllReportsSubcollection() {
     }
     catch(error) { throw error }
 }
+
+export async function getCount(field) {
+    try {
+        const response = await axios.get(
+            'http://localhost:5500/data/getCount', 
+            {
+                params: { field: field, },
+                header: { 'Content-Type': 'application/json', },
+            }
+        )
+
+        return response
+    }
+    catch(error) { throw error }
+}
