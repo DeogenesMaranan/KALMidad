@@ -9,13 +9,9 @@ const townApiUrl = "https://psgc.cloud/api/provinces/0401000000/barangays";
 document.addEventListener('DOMContentLoaded', async () => {
     townSelects.disabled = true 
 
-    const townList = await fetchLocation(townApiUrl)
     const cityList = await fetchLocation(cityApiUrl)
-
-    displayLocations(townList.data, townSelects, true)
     displayLocations(cityList.data, citySelects, true)
 })
-
 
 async function fetchLocation(url) {
     return await axios.get(url) 
@@ -30,34 +26,36 @@ async function displayLocations(dataList, dropdown, isCity=false) {
             data = dataList.map(item => { 
                 return item.city_municipality_id == selectedCityId
                     ? item : null
-            }).filter(item => item !== null);
+            }).filter(item => item !== null)
         }
 
-        console.log(data)
-
-        dropdown.innerHTML = '<option value="">Not set</option>';
+        dropdown.innerHTML = '<option value="">Not set</option>'
         for(let item of data) {
-            const option = document.createElement("option");
-            option.value = item.name;
-            option.textContent = item.name;
-            dropdown.appendChild(option);
+            const option = document.createElement("option")
+            option.value = item.name
+            option.textContent = item.name
+            dropdown.appendChild(option)
     
             if (isCity){
                 cityIdCollection[item.name] = item.id
             }
         }
+        if (!isCity){
+            const event = new Event('optionsLoaded')
+            townSelects.dispatchEvent(event);    
+        }
     } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching data:", error)
     }
-};
+}
 
 citySelects.addEventListener('change', async () => {
-    const city = citySelects.value;
+    const city = citySelects.value
    
-    selectedCityId = cityIdCollection[city];
+    selectedCityId = cityIdCollection[city]
 
-    const townLists = await fetchLocation(townApiUrl);
-    displayLocations(townLists.data, townSelects);
+    const townLists = await fetchLocation(townApiUrl)
+    displayLocations(townLists.data, townSelects)
 
     townSelects.disabled = false
 });

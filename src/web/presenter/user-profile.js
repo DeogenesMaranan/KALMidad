@@ -101,14 +101,15 @@ function displayUserInfo(userData, email) {
     middlenameInput.value = userData.middlename
     lastnameInput.value = userData.lastname
 
+    
     cityInput.value = userData.city 
-    // cityInput.dispatchEvent(new Event("change", {
-    //     detail: { 
-    //         selectedCityName: userData.city,
-    //         selectedTownName: userData.town
-    //     }
-    // }))
-    townInput.value = userData.town
+    const changeEvent = new Event('change');
+    cityInput.dispatchEvent(changeEvent)
+
+    townInput.addEventListener('optionsLoaded', () => {
+        townInput.value = userData.town
+        townInput.disabled = true
+    })
 
     emailInput.value = email 
 }
