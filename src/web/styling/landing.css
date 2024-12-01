@@ -19,6 +19,10 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     background-size: cover;
     background-position: center;
     background-image: url('../assets/landing-background.png');

@@ -100,8 +100,8 @@ function getUserInputAdd() {
     newReport.imageLink = selectedImage
     newReport.date = document.getElementById('date-input').value
     newReport.time = document.getElementById('time-input').value 
-    newReport.city = document.getElementById('city-dropdown').value
-    newReport.town = document.getElementById('town-dropdown').value
+    newReport.city = document.getElementById('city-input').value
+    newReport.town = document.getElementById('town-input').value
     newReport.calamity = document.getElementById('calamity-dropdown').value 
     newReport.description = document.getElementById('description-input').value 
 
@@ -130,8 +130,8 @@ function getUserInputUpdate(reports) {
 function displayReportRecords(reportData) {
     document.getElementById('date-input').value = reportData.date
     document.getElementById('time-input').value = reportData.time
-    document.getElementById('city-dropdown').value = reportData.city
-    document.getElementById('town-dropdown').value = reportData.town
+    document.getElementById('city-input').value = reportData.city
+    document.getElementById('town-input').value = reportData.town
     document.getElementById('calamity-dropdown').value = reportData.calamity
     document.getElementById('description-input').value = reportData.description
 }

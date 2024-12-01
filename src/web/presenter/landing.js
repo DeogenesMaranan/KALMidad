@@ -4,6 +4,7 @@ const openSignup = document.getElementById('register-btn')
 
 
 openSignin.addEventListener('click', () => {
+    console.log('sds')
     const popupHolder = document.getElementById('popup-frame')
 
     popupHolder.src = '../structure/login.html'
