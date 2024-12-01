@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,17 +7,21 @@
 }
 
 body {
+    height: min-content;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.landing-container {
+    margin: 0;
+    padding: 0;
     height: 100vh;
-    background-image: url('../assets/Untitled\ design\ 2.png');
     background-size: cover;
     background-position: center;
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* justify-content: center;
-    align-items: center; */
-    padding: 0;
+    background-image: url('../assets/landing-background.png');
 }
 
 header {
@@ -113,4 +119,127 @@ nav ul li a:hover {
     background-color: #ffffff;
     border-radius: 1rem;
     display: none;
+}
+
+#about-us-container {
+    width: auto;
+    height: 100vh;
+    margin: 0;
+    padding: 5rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-image: url('../assets/about-us-services.png');
+}
+
+.about-us-content {
+    width: 55rem;
+    height: 15rem;
+}
+
+.our-mission-content {
+    width: 40rem;
+    height: auto;
+    margin: 1.5rem 0;
+    text-align: center;
+    margin-right: 45rem;
+}
+
+.our-developers-content {
+    width: 40rem;
+    height: 13rem;
+    margin-right: 15rem;
+}
+
+.about-us-content,
+.our-mission-content,
+.our-developers-content {
+    padding: 3rem 4rem;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    border: 0.3rem solid white;
+    background-color: rgba(0, 0, 0, 0.338);
+}
+
+.about-us-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.our-mission-content h3,
+.our-developers-content h3,
+.wwd-container h3, 
+.wk-container h3,
+.join-container h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.our-developers-content table tr .title {
+    border-right: 0.1rem solid white;
+}
+
+.our-developers-content table tr td {
+    padding: 0.1rem 1rem;
+}
+
+#services-container {
+    width: auto;
+    height: 100vh;
+    display: flex;
+    padding: 2rem 33%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../assets/services-background.png');
+}
+
+.wwd-container,
+.wk-container,
+.join-container {
+    width: 100%;
+    height: auto;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wwd-container p,
+.wwd-container ul,
+.wk-container p,
+.join-container p {
+    font-size: 1.1rem;
+    font-weight: 350;
+    margin-top: 0.5rem;
+}
+
+.wk-container h3 i {
+    font-weight: 400;
+}
+
+.wwd-container p i span,
+.wk-container h3 i span,
+.join-container p i span {
+    color: #E7BB41;
+    font-weight: 700;
+}
+
+.wwd-container ul {
+    margin-left: 2rem;
+}
+
+.wwd-container ul li span {
+    color: #44BBA4;
+    font-weight: 700;
 }

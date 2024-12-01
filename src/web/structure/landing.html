@@ -11,27 +11,107 @@
 </head>
 
 <body>
-    <header>
-        <nav><ul>
-            <li><a href="#about-us">About Us</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="javascript:void(0);" id="signin-header">Signin</a></li>
-        </ul></nav>
-    </header>
-    <div class="content-container">
-        <div class="left-side">
-            <img src="../assets/KALMidad.png" alt="Logo" class="logo">
-            <p class="intro-text">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-            </p>
-            <button class="register-button" id="register-btn">Register</button>
+    <div class="landing-container">
+        <header>
+            <nav><ul>
+                <li><a href="#about-us-container">About Us</a></li>
+                <li><a href="#services-container">Services</a></li>
+                <li><a href="javascript:void(0);" id="signin-header">Signin</a></li>
+            </ul></nav>
+        </header>
+        <div class="content-container">
+            <div class="left-side">
+                <img src="../assets/KALMidad.png" alt="Logo" class="logo">
+                <p class="intro-text">
+                    Your safety and voice matter. <br>
+                    KALMidad is your partner in resilience, a platform designed to empower 
+                    communities by collecting and sharing vital information during calamities. 
+                    Our mission is to create a space where you can document the impacts of 
+                    disasters on your life, whether it's the loss of property, access to 
+                    resources, or critical infrastructure damage.
+                </p>
+                <button class="register-button" id="register-btn">Register</button>
+            </div>
+            <div class="right-side"></div>
         </div>
-        <div class="right-side"></div>
+        
+        <div class="popup-container">
+            <iframe src="" frameborder="0" class="popup-frame" id="popup-frame" scrolling="yes">
+            </iframe>
+        </div>
     </div>
 
-    <div class="popup-container">
-        <iframe src="" frameborder="0" class="popup-frame" id="popup-frame" scrolling="yes">
-        </iframe>
+    <div id="about-us-container">
+        <div class="about-us-content">
+            <h2>ABOUT US</h2>
+            <p>
+                At KALMidad, we believe in the power of community and the importance of collective 
+                action during times of crisis. Our platform serves as a vital bridge between 
+                individuals affected by calamities and the organizations that provide aid and relief.
+            </p>
+        </div>
+
+        <div class="our-mission-content">
+            <h3>OUR MISSION</h3>
+            <p>
+                To empower individuals and communities to share their experiences during calamities, 
+                enabling faster, more effective disaster response and relief coordination.
+            </p>
+        </div>
+
+        <div class="our-developers-content">
+            <h3>OUR DEVELOPERS</h3>
+            <table>
+                <tr>
+                    <td class="title">Fullstack Developer</td>
+                    <td>John Angelo M. Yumul</td>
+                </tr>
+                <tr>
+                    <td class="title">Frontend Developer</td>
+                    <td>Chustine Mae B. Cantal</td>
+                </tr>
+                <tr>
+                    <td class="title">Backend Developer</td>
+                    <td>Jeseryl Mae D. Comia</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="services-container">
+        <div class="wwd-container">
+            <h3>WHAT WE DO?</h3>
+            <p><i><span>KALM</span>idad </i> is a calamity report collector designed to document 
+                and visualize the impacts of natural and man-made disasters. We provide users with 
+                an intuitive platform to:</p>
+            <ul>
+                <li><span>Submit Reports:</span> Share detailed accounts of destruction, including 
+                    photos and descriptions of the damage.</li>
+                <li><span>Visualize Data:</span> Aggregate reports to highlight the most severely 
+                    affected areas.</li>
+                <li>
+                    <span>Connect with Help: </span>Ensure that relief agencies receive accurate 
+                    and timely information to prioritize aid delivery.
+                </li>
+            </ul>
+        </div>
+
+        <div class="wk-container">
+            <h3>WHY <i><span>KALM</span>idad </i>?</h3>
+            <p>Disasters can leave people feeling isolated and unheard. KALMidad ensures every story 
+                matters by turning your reports into actionable insights for first responders, relief 
+                organizations, and community planners. Together, we can minimize the impact of 
+                disasters and work toward recovery.</p>
+        </div>
+
+        <div class="join-container">
+            <h3>Join Us in Making a Difference</h3>
+            <p>By using <i><span>KALM</span>idad </i>, you're not only sharing your story but also 
+                contributing to a safer, more prepared world. Join us in our journey to strengthen 
+                disaster resilience and recovery efforts for everyone.
+                <br><br>
+                Let's stay strong, stay connected, and rebuild together.</p>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
