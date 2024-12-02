@@ -101,15 +101,11 @@ function displayUserInfo(userData, email) {
     middlenameInput.value = userData.middlename
     lastnameInput.value = userData.lastname
 
-    
-    cityInput.value = userData.city 
-    const changeEvent = new Event('change');
-    cityInput.dispatchEvent(changeEvent)
+    sessionStorage.setItem('city', userData.city)
+    sessionStorage.setItem('town', userData.town)
 
-    townInput.addEventListener('optionsLoaded', () => {
-        townInput.value = userData.town
-        townInput.disabled = true
-    })
+    townInput.value = userData.town
+    townInput.disabled = true
 
     emailInput.value = email 
 }

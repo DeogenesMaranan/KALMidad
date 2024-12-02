@@ -1,13 +1,18 @@
+
+
 const citySelects = document.querySelector("#city-input");
 const townSelects = document.querySelector("#town-input");
 
-var selectedCityId, cityIdCollection = {}
+var selectedCityId, townLists, cityIdCollection = {}
 const cityApiUrl = "https://psgc.cloud/api/provinces/0401000000/municipalities";
 const townApiUrl = "https://psgc.cloud/api/provinces/0401000000/barangays";
 
 
 document.addEventListener('DOMContentLoaded', async () => {
     townSelects.disabled = true 
+
+    const towns = await fetchLocation(townApiUrl)
+    townLists = towns.data
 
     const cityList = await fetchLocation(cityApiUrl)
     displayLocations(cityList.data, citySelects, true)
@@ -17,18 +22,8 @@ async function fetchLocation(url) {
     return await axios.get(url) 
 }
 
-async function displayLocations(dataList, dropdown, isCity=false) {
+function displayLocations(data, dropdown, isCity=false) {
     try {
-        let data
-
-        if(isCity) { data = dataList }
-        else {
-            data = dataList.map(item => { 
-                return item.city_municipality_id == selectedCityId
-                    ? item : null
-            }).filter(item => item !== null)
-        }
-
         dropdown.innerHTML = '<option value="">Not set</option>'
         for(let item of data) {
             const option = document.createElement("option")
@@ -40,22 +35,43 @@ async function displayLocations(dataList, dropdown, isCity=false) {
                 cityIdCollection[item.name] = item.id
             }
         }
-        if (!isCity){
-            const event = new Event('optionsLoaded')
-            townSelects.dispatchEvent(event);    
-        }
+        setInitLocationValue(isCity)
+        
     } catch (error) {
         console.error("Error fetching data:", error)
     }
 }
 
-citySelects.addEventListener('change', async () => {
+citySelects.addEventListener('change', () => {
+    console.log('change');
     const city = citySelects.value
    
     selectedCityId = cityIdCollection[city]
 
-    const townLists = await fetchLocation(townApiUrl)
-    displayLocations(townLists.data, townSelects)
+    const data = townLists.map(item => { 
+        return item.city_municipality_id == selectedCityId
+            ? item : null
+    }).filter(item => item !== null)
+   
+    displayLocations(data, townSelects)
+})
 
-    townSelects.disabled = false
-});
+function setInitLocationValue(isCity){
+    if(isCity) {
+        const selectedCity = sessionStorage.getItem('city')
+        const city = selectedCity == null? '' : selectedCity
+        citySelects.value = city
+
+        const change = new Event('change')
+        citySelects.dispatchEvent(change)
+    } 
+    else {
+        const town = sessionStorage.getItem('town')
+
+        if (town != null) {
+            townSelects.value = town
+        } else {
+            townSelects.disabled = false
+        }
+    }
+}

@@ -23,8 +23,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const requestType = sessionStorage.getItem('client-report-request')
     uid = sessionStorage.getItem('uid')
 
-    console.log(requestType);
-
     if (requestType === 'add') {
         addReportButton.style.display = 'block'
     } 
@@ -42,6 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.querySelector('.datetime-container').style.display = 'none'
         document.querySelector('.image-selector-container').style.display = 'none'
         document.querySelector('.right-container').style.height = '60%'
+        document.querySelector('#town-input').disabled = false
     }
 })
 
@@ -117,8 +116,8 @@ function getUserInputUpdate(reports) {
     newReport.time = reports.time
     newReport.flag = reports.flag
     newReport.status = reports.status
-    newReport.city = document.getElementById('city-dropdown').value
-    newReport.town = document.getElementById('town-dropdown').value
+    newReport.city = document.getElementById('city-input').value
+    newReport.town = document.getElementById('town-input').value
     newReport.calamity = document.getElementById('calamity-dropdown').value 
     newReport.description = document.getElementById('description-input').value 
 
@@ -128,6 +127,9 @@ function getUserInputUpdate(reports) {
 }
 
 function displayReportRecords(reportData) {
+    sessionStorage.setItem('city', reportData.city)
+    sessionStorage.setItem('town', reportData.town)
+
     document.getElementById('date-input').value = reportData.date
     document.getElementById('time-input').value = reportData.time
     document.getElementById('city-input').value = reportData.city
