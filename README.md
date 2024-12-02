@@ -103,6 +103,12 @@ To set up and run **KALMidad**, ensure you have the necessary tools and framewor
 
 ### 🔧 Installation
 
+Install the required frameworks and libraries using the following commands. You can copy-paste them directly into your terminal:
+
+1. **Express**:
+   ```bash
+   npm i --save express@^4.21.1
+
 ### 🤖 Running KALMidad
 
 ```sh
