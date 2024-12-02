@@ -26,3 +26,7 @@
 - [⚙️ Modules](#️-modules)
 
 ---
+
+## 📍 Overview
+
+KALMidad is an application designed to help individuals document and share their experiences during calamities (natural disasters, emergencies, etc.), allowing for a collective understanding of their impact. This will help in notifying the government or any other agencies in charge to know which area was severely affected and greatly in need of help.
