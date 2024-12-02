@@ -21,6 +21,8 @@
 - [📖 Table of Contents](#-table-of-contents)
 - [📍 Overview](#-overview)
 - [📦 Features](#-features)
+  - [🌐 Client Features](#-client-features)
+  - [🔒 Admin Features](#-admin-features)
 - [▶ Presentation](#-presentation)
 - [📂 Repository Structure](#-repository-structure)
 - [⚙️ Modules](#️-modules)
@@ -37,6 +39,47 @@ KALMidad is a web application designed to collect reports documenting the effect
 ---
 
 ## 📦 Features
+
+Below are the features of the application referred to as **KALMidad**. Here's a breakdown of its functionalities:
+
+### 🌐 Client Features
+1. **User Registration and Verification**
+   - Create a new account via the **Register** button on the landing page.
+   - Verify the email address by clicking the link sent to the registered email.
+   - Proceed to the login page after successful verification.
+
+2. **User Dashboard**
+   - Access the home page upon login, which serves as the main dashboard.
+   - Navigate through various sections of the application.
+
+3. **Add and Submit Reports**
+   - **First-Time Setup**: Before submitting a report, complete your **Account Information Setup** in a popup form.
+   - **Create a New Report**: Fill out all required fields in the report submission page.
+   - **Cloud Integration**:
+     - Upload selected images to **Cloudinary** for secure storage.
+     - Retrieve the image link and assign it to the report model.
+   - **Database Handling**:
+     - Assign input data to corresponding models.
+     - Store the report data in the **Firestore collection** through API requests.
+   - Receive a **confirmation message** upon successful submission.
+
+4. **Navigation**
+   - Seamlessly move between pages to manage or view your reports.
+
+### 🔒 Admin Features
+1. **Admin Dashboard**
+   - Log in using admin credentials provided on the **Run KALMidad** page.
+   - View a list of submitted reports with detailed information.
+
+2. **Reports Management**
+   - Filter reports by categories.
+   - View the total count of reports for each category.
+
+3. **Account Management**
+   - Update admin account information directly from the dashboard.
+
+4. **Report Status Updates**
+   - Mark reports as **Resolved** or **In Progress** to keep track of their status.
 
 ---
 
