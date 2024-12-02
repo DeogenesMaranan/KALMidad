@@ -94,6 +94,13 @@ Below are the features of the application referred to as **KALMidad**. Here's a 
 
 ## 🚀 Getting Started
 
+To set up and run **KALMidad**, ensure you have the necessary tools and frameworks installed. Follow the steps below:
+
+***Prerequisites***
+
+1. Download and install **Node.js** (LTS Version) from [Node.js Official Site](https://nodejs.org/en).
+2. Download and install **Postman** from [Postman Downloads](https://www.postman.com/downloads/).
+
 ### 🔧 Installation
 
 ### 🤖 Running KALMidad
