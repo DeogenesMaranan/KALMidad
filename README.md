@@ -24,9 +24,41 @@
 - [▶ Presentation](#-presentation)
 - [📂 Repository Structure](#-repository-structure)
 - [⚙️ Modules](#️-modules)
+- [🚀 Getting Started](#-getting-started)
+  - [🔧 Installation](#-installation)
+  - [🤖 Running KALMidad](#-running-kalmidad)
 
 ---
 
 ## 📍 Overview
 
-KALMidad is an application designed to help individuals document and share their experiences during calamities (natural disasters, emergencies, etc.), allowing for a collective understanding of their impact. This will help in notifying the government or any other agencies in charge to know which area was severely affected and greatly in need of help.
+KALMidad is a web application designed to collect reports documenting the effects of a calamity to an area, alerting the authorities about the immediate needs of the residents of that area during or after a calamity. 
+
+---
+
+## 📦 Features
+
+---
+
+## ▶ Presentation
+
+---
+
+## 📂 Repository Structure
+
+---
+
+## ⚙️ Modules
+
+---
+
+## 🚀 Getting Started
+
+### 🔧 Installation
+
+### 🤖 Running KALMidad
+
+```sh
+landing.html
+```
+
