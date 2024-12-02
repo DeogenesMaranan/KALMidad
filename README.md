@@ -105,10 +105,36 @@ To set up and run **KALMidad**, ensure you have the necessary tools and framewor
 
 Install the required frameworks and libraries using the following commands. You can copy-paste them directly into your terminal:
 
-1. **Express**:
+1. **Express**
    ```bash
    npm i --save express@^4.21.1
-
+2. **Firebase**
+   ```bash
+   npm i --save firebase@^11.0.1
+3. **Webpack**
+   ```bash
+   npm i --save webpack@^5.96.1
+4. **Webpack CLI**
+   ```bash
+   npm i --save webpack-cli@^5.1.4
+5. **Cloudinary**
+   ```bash
+   npm i --save cloudinary@^2.5.1
+6. **Axios**
+   ```bash
+   npm i --save axios@^1.7.7
+7. **Crypto-JS**
+   ```bash
+   npm i --save crypto-js@^4.2.0
+8. **Dotenv**
+   ```bash
+   npm i --save dotenv@^16.4.5
+9. **Multer**
+   ```bash
+   npm i --save multer@^1.4.5-lts.1
+10. **TensorFlow.js**
+   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+   
 ### 🤖 Running KALMidad
 
 ```sh
