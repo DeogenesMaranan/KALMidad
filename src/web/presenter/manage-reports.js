@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 reportsContainer.addEventListener('click', (e) => {
     if (e.target.closest('#resolved-button')) {
         handleResolve(e)
+    } 
+    else if (e.target.closest('#in-progress-button')) {
+        handleInProgress(e)
     }
 })
 

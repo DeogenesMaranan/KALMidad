@@ -9,8 +9,7 @@ if(document.getElementById('signup-button')) {
         try {
             const p_email = document.getElementById('signup-email').value 
             const p_password = document.getElementById('signup-password').value 
-            // const recaptchaToken = document.getElementById('g-recaptcha-response').value
-            const recaptchaToken = 'fhdjhu4y4'
+            const recaptchaToken = document.getElementById('g-recaptcha-response').value
     
             const response = await signupUser(p_email, p_password, recaptchaToken)
             

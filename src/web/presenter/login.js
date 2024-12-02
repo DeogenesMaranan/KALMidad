@@ -9,8 +9,7 @@ const signinButton = document.getElementById('signin-button')
 signinButton.addEventListener('click', async () => {
     const p_email = document.getElementById('signin-email').value
     const p_password = document.getElementById('signin-password').value
-    // const recaptchaToken = document.getElementById('g-recaptcha-response').value
-    const recaptchaToken = 'djfhskfd'
+    const recaptchaToken = document.getElementById('g-recaptcha-response').value
 
     try {
         const user = await signInUser(p_email, p_password, recaptchaToken)
