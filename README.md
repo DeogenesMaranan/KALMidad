@@ -23,7 +23,6 @@
 - [📦 Features](#-features)
   - [🌐 Client Features](#-client-features)
   - [🔒 Admin Features](#-admin-features)
-- [▶ Presentation](#-presentation)
 - [📂 Repository Structure](#-repository-structure)
 - [⚙️ Modules](#️-modules)
 - [🚀 Getting Started](#-getting-started)
@@ -82,10 +81,6 @@ Below are the features of the application referred to as **KALMidad**. Here's a 
 
 4. **Report Status Updates**
    - Mark reports as **Resolved** or **In Progress** to keep track of their status.
-
----
-
-## ▶ Presentation
 
 ---
 
