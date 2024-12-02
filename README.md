@@ -176,6 +176,7 @@ The development of **KALMidad**, a web application, was made possibble by the co
   - Regular updates on the GitHub repository.
 - Managed the project timeline, ensuring timely completion of milestones and effective team communication.
 
+
 **In summary**, the collaborative effort across frontend, backend, and full-stack development roles was crucial to building a scalable, secure, and efficient platform. This teamwork resulted in a seamless and engaging experience for both users and administrators, showcasing the team’s ability to transform ideas into a functional and impactful application.
 
 
