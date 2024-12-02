@@ -132,8 +132,11 @@ Install the required frameworks and libraries using the following commands. You 
 9. **Multer**
    ```bash
    npm i --save multer@^1.4.5-lts.1
-10. **TensorFlow.js**
-   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+10. **TensorFlow.js**  
+    Add this script to your HTML file:
+    ```html
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    ```
    
 ### 🤖 Running KALMidad
 
