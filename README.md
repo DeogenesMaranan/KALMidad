@@ -153,10 +153,31 @@ landing.html
 The development of **KALMidad**, a web application, was made possibble by the collaborative efforts of a skilled and dedicated team. Each team member played a crucial role in contributing to the project's success. The following acknowledgments highlight the individual roles and contributions of each team member:
 
 #### [CHUSTINE](https://github.com/chustinecantal): Frontend Developer
- Designed and implemented a responsive and intuitive **user interface** for KALMidad.
+- Designed and implemented a responsive and intuitive **user interface** for KALMidad.
 - Developed smooth user interactions for features such as **registering, logging in, submitting reports, and navigating the dashboard**.
 - Ensured **cross-browser compatibility** and maintained a modern, visually appealing design layout.
 - Collaborated with the backend team to integrate APIs seamlessly, enhancing the user experience.
+
+#### [JESERYL](https://github.com/JeserylMae): Backend Developer
+- Developed the backend logic to handle the core functionalities of KALMidad, including:
+  - **Data processing** for user accounts and report submissions.
+  - **Image uploading** using Cloudinary and linking it with the database.
+  - Managing **report status updates** for admins.
+- Integrated **Firestore** as the primary database for efficient storage and retrieval of user data and reports.
+- Implemented APIs to facilitate communication between the frontend and backend.
+- Ensured robust **security measures**, including data validation and safe handling of sensitive user information.
+
+#### [JOHN](https://github.com/John-Yumul): Full Stack Developer / Project Manager
+- Coordinated the integration of **frontend** and **backend** components, ensuring a cohesive application flow.
+- Designed the basic layout and architecture of KALMidad’s user interface and backend structure.
+- Ensured the application’s **scalability, security**, and **performance optimization**.
+- Implemented version control and maintained project documentation, including:
+  - A **detailed README** for developers and users.
+  - Regular updates on the GitHub repository.
+- Managed the project timeline, ensuring timely completion of milestones and effective team communication.
+
+**In summary**, the collaborative effort across frontend, backend, and full-stack development roles was crucial to building a scalable, secure, and efficient platform. This teamwork resulted in a seamless and engaging experience for both users and administrators, showcasing the team’s ability to transform ideas into a functional and impactful application.
+
 
 [**Return to Top**](#Top)
 
