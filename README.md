@@ -150,7 +150,13 @@ landing.html
 
 ### Acknowledgments
 
-The development of KALMidad, a web application, involved the collaborative efforts of a skilled and dedicated team. Each team member played a crucial role in contributing to the project's success. The following acknowledgments highlight the individual roles and contributions of each team member:
+The development of **KALMidad**, a web application, was made possibble by the collaborative efforts of a skilled and dedicated team. Each team member played a crucial role in contributing to the project's success. The following acknowledgments highlight the individual roles and contributions of each team member:
+
+#### [CHUSTINE](https://github.com/chustinecantal): Frontend Developer
+ Designed and implemented a responsive and intuitive **user interface** for KALMidad.
+- Developed smooth user interactions for features such as **registering, logging in, submitting reports, and navigating the dashboard**.
+- Ensured **cross-browser compatibility** and maintained a modern, visually appealing design layout.
+- Collaborated with the backend team to integrate APIs seamlessly, enhancing the user experience.
 
 [**Return to Top**](#Top)
 
