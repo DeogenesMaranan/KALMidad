@@ -105,3 +105,6 @@ Below are the features of the application referred to as **KALMidad**. Here's a 
 landing.html
 ```
 
+[**Return to Top**](#Top)
+
+---
