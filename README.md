@@ -29,6 +29,8 @@
 - [🚀 Getting Started](#-getting-started)
   - [🔧 Installation](#-installation)
   - [🤖 Running KALMidad](#-running-kalmidad)
+- [👏 Acknowledgement and Contribution Narrative](#-acknowledgement-and-contribution-narrative)
+  - [Acknowledgments](#acknowledgments)
 
 ---
 
@@ -104,6 +106,12 @@ Below are the features of the application referred to as **KALMidad**. Here's a 
 ```sh
 landing.html
 ```
+
+---
+
+## 👏 Acknowledgement and Contribution Narrative
+
+### Acknowledgments
 
 [**Return to Top**](#Top)
 
