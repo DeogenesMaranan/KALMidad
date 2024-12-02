@@ -24,14 +24,14 @@ document.addEventListener('DOMContentLoaded', async() => {
 
         const response = await getAllReportsSubcollection()
         const citiesWithMostReports = getTopCities(response.data.data)
-        console.log(citiesWithMostReports)
-        displayTopCities(citiesWithMostReports)
+        
+        displayTopCities(citiesWithMostReports, citiesWithMostReports.length)
     }
     catch (error) {console.error(error.message) }
 })
 
-function displayTopCities(dataList, number) {
-    number = number < 5? number : 5
+function displayTopCities(dataList, num) {
+    const number = num < 5? num : 5
     
     for(let idx = 0; idx < number; idx++) {
         const cityInfoContainer = document.createElement('div')
