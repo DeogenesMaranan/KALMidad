@@ -108,6 +108,8 @@ landing.html
 
 ### Acknowledgments
 
+The development of KALMidad, a web application, involved the collaborative efforts of a skilled and dedicated team. Each team member played a crucial role in contributing to the project's success. The following acknowledgments highlight the individual roles and contributions of each team member:
+
 [**Return to Top**](#Top)
 
 ---
