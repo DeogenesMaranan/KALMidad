@@ -19,11 +19,10 @@ export async function getReCaptchaResponse() {
     try {
         const recaptchaResponse = await axios.post(
         'https://www.google.com/recaptcha/api/siteverify',
-        null,
-        {
+        null, {
             params: {
-            secret: '6LdWjHkqAAAAALs24s1GqFdINo-UOMVse8TE7W-8', 
-            response: recaptchaToken
+                secret: process.env.FIRESTORE_SECRET_KEY, 
+                response: recaptchaToken
             }
         });
         
