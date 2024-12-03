@@ -34,7 +34,7 @@
 
 ## 📍 Overview
 
-KALMidad is a web application designed to collect reports documenting the effects of a calamity to an area, alerting the authorities about the immediate needs of the residents of that area during or after a calamity. 
+KALMidad is a web application designed to collect reports documenting the effects of a calamity to an area, alerting the authorities about the immediate needs of the residents of that area during or after a calamity. In creating this project, we structured the program into four main directories inside the src folder: model, server, services, and web. We created these directories in order to adhere to the MVC architecture wherein the user interface, database interaction and the data templates are separated to enable efficient code organization, scalability and separation of concerns. 
 
 ---
 
