@@ -90,81 +90,82 @@ The KALMidad repository is structured with a modular and organized layout, ensur
 <details closed> <summary>Click to see Repository Structure</summary>
 
 ```sh
+
 └── KALMidad/
     └── src
-	├── model
-	│   ├── report-details.js
+        ├── model
+        │   ├── report-details.js
         │   ├── user-credentials.js
-	├── server
-	|    ├── controller
-	|    |   ├── image-server-controller.js
-	|    |   ├── user-controller.js
-	|    |   ├── user-credential.js
-	|    ├── database
-        |    |   ├── firebase-config.js
-	|    |   ├── image-server.js
-	|    |   ├── init-multer.js
-	|    |   ├── user-auth.js
-	|    |   ├── user-credential.js
-	|    ├── route
-	|    |   ├── data-route.js
-	|    |   ├── use-route.js
-	├── services
-	|    ├── image-models/flood
-	|    |   ├── metadata.json
-	|    |   ├── model.json
-	|    |   ├── weights.bin
-	|    ├── cipher.js
-	|    ├── converter.js
-	|    ├── image-severity-processor.js
-	|    ├── request.js
-	|    ├── string-validator.js
-	├── web
-	|    ├── assets
-	|    ├── presenter
-	|    |   ├── add-report.js
-	|    |   ├── home-admin.js
-	|    |   ├── home-client.js
-	|    |   ├── home-skeleton.js
-	|    |   ├── landing.js
-	|    |   ├── location.js
-	|    |   ├── login.js
-	|    |   ├── manage-reports.js
-	|    |   ├── recent-asssessments.js
-	|    |   ├── signup.js
-	|    |   ├── user-profile.js
-	|    ├── structure
-	|    |   ├── add-report.html
-	|    |   ├── home-admin.html
-	|    |   ├── home-client.html
-	|    |   ├── home-skeleton.html
-	|    |   ├── landing.html
-	|    |   ├── login.html
-	|    |   ├── manage-reports.html
-	|    |   ├── message-panel.html
-	|    |   ├── recent-assessment.html
-	|    |   ├── signup-confirmation.html
-	|    |   ├── signup.html
-	|    |   ├── user-profile.html
-	|    ├── styling
-	|    |   ├── add-report.css
-	|    |   ├── assessment.css
-	|    |   ├── home-admin.css
-	|    |   ├── home-client.css
-	|    |   ├── home-skeleton.css
-	|    |   ├── home.css
-	|    |   ├── landing.css
-	|    |   ├── login.css
-	|    |   ├── manage-assessment.css
-	|    |   ├── recent-assessment.css
-	|    |   ├── setup-account-popup.css
-	|    |   ├── signup-confirmation.css
-	|    |   ├── user-profile.css
-	├── package-lock.json
-	├── package.json
-	├── webpack.config.cjs
-	├── README.md
-			
+        ├── server
+        │   ├── controller
+        │   │   ├── image-server-controller.js
+        │   │   ├── user-controller.js
+        │   │   ├── user-credential.js
+        │   ├── database
+        │   │   ├── firebase-config.js
+        │   │   ├── image-server.js
+        │   │   ├── init-multer.js
+        │   │   ├── user-auth.js
+        │   │   ├── user-credential.js
+        │   ├── route
+        │   │   ├── data-route.js
+        │   │   ├── use-route.js
+        ├── services
+        │   ├── image-models/flood
+        │   │   ├── metadata.json
+        │   │   ├── model.json
+        │   │   ├── weights.bin
+        │   ├── cipher.js
+        │   ├── converter.js
+        │   ├── image-severity-processor.js
+        │   ├── request.js
+        │   ├── string-validator.js
+        ├── web
+        │   ├── assets
+        │   ├── presenter
+        │   │   ├── add-report.js
+        │   │   ├── home-admin.js
+        │   │   ├── home-client.js
+        │   │   ├── home-skeleton.js
+        │   │   ├── landing.js
+        │   │   ├── location.js
+        │   │   ├── login.js
+        │   │   ├── manage-reports.js
+        │   │   ├── recent-asssessments.js
+        │   │   ├── signup.js
+        │   │   ├── user-profile.js
+        │   ├── structure
+        │   │   ├── add-report.html
+        │   │   ├── home-admin.html
+        │   │   ├── home-client.html
+        │   │   ├── home-skeleton.html
+        │   │   ├── landing.html
+        │   │   ├── login.html
+        │   │   ├── manage-reports.html
+        │   │   ├── message-panel.html
+        │   │   ├── recent-assessment.html
+        │   │   ├── signup-confirmation.html
+        │   │   ├── signup.html
+        │   │   ├── user-profile.html
+        │   ├── styling
+        │   │   ├── add-report.css
+        │   │   ├── assessment.css
+        │   │   ├── home-admin.css
+        │   │   ├── home-client.css
+        │   │   ├── home-skeleton.css
+        │   │   ├── home.css
+        │   │   ├── landing.css
+        │   │   ├── login.css
+        │   │   ├── manage-assessment.css
+        │   │   ├── recent-assessment.css
+        │   │   ├── setup-account-popup.css
+        │   │   ├── signup-confirmation.css
+        │   │   ├── user-profile.css
+    ├── package-lock.json
+    ├── package.json
+    ├── webpack.config.cjs
+    ├── README.md
+
 
 ```
 </details>
