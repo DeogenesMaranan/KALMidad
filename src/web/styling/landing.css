@@ -7,7 +7,7 @@
 }
 
 body {
-    height: min-content;
+    height: 100%;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@ body {
 .landing-container {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -34,8 +34,9 @@ header {
     left: 0;
     width: 100%;
     padding: 2%;
-    background: rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0.4); /* Subtle background to avoid overlap */
     text-align: left;
+    z-index: 10; /* Keeps header above other content */
 }
 
 nav ul {
@@ -51,16 +52,19 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
+    transition: color 0.3s ease; /* Smooth hover effect */
 }
 
 nav ul li a:hover {
     text-decoration: underline;
+    color: #44BBA4; /* Matches button color for consistency */
 }
 
 .content-container {
     display: flex;
+    flex-wrap: wrap; /* Prevents overlapping on small screens */
     width: 50%;
-    height: 100%;
+    height: auto;
 }
 
 .left-side {
@@ -100,10 +104,17 @@ nav ul li a:hover {
     line-height: 40px;
     border-radius: 40px;
     margin-left: 5px;
+    transition: all 0.3s ease; /* Smooth effects */
 }
 
 .register-button:hover {
     background-color: #3c9e8b;
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.register-button:active {
+    background-color: #338a73; /* Darker for clicked effect */
+    transform: scale(0.95); /* Shrinks when clicked */
 }
 
 .popup-container {
@@ -127,7 +138,7 @@ nav ul li a:hover {
 
 #about-us-container {
     width: auto;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     padding: 5rem;
     color: white;
@@ -141,12 +152,12 @@ nav ul li a:hover {
 
 .about-us-content {
     width: 55rem;
-    height: 15rem;
+    min-height: 15rem;
 }
 
 .our-mission-content {
     width: 40rem;
-    height: auto;
+    min-height: auto;
     margin: 1.5rem 0;
     text-align: center;
     margin-right: 45rem;
@@ -154,7 +165,7 @@ nav ul li a:hover {
 
 .our-developers-content {
     width: 40rem;
-    height: 13rem;
+    min-height: 13rem;
     margin-right: 15rem;
 }
 
@@ -185,23 +196,15 @@ nav ul li a:hover {
     font-weight: 700;
 }
 
-.our-developers-content table tr .title {
-    border-right: 0.1rem solid white;
-}
-
-.our-developers-content table tr td {
-    padding: 0.1rem 1rem;
-}
-
 #services-container {
     width: auto;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     padding: 2rem 33%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-size:contain;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url('../assets/services-background.png');
@@ -228,22 +231,49 @@ nav ul li a:hover {
     margin-top: 0.5rem;
 }
 
-.wk-container h3 i {
-    font-weight: 400;
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 1024px) {
+    .about-us-content,
+    .our-mission-content,
+    .our-developers-content {
+        width: 90%;
+        height: auto;
+    }
+
+    .content-container {
+        width: 100%;
+        flex-wrap: wrap; /* Stack elements */
+    }
+
+    .popup-container {
+        width: 80%;
+    }
 }
 
-.wwd-container p i span,
-.wk-container h3 i span,
-.join-container p i span {
-    color: #E7BB41;
-    font-weight: 700;
-}
+@media screen and (max-width: 768px) {
+    .landing-container {
+        flex-direction: column;
+        height: auto;
+        background-size: cover;
+    }
 
-.wwd-container ul {
-    margin-left: 2rem;
-}
+    .content-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
 
-.wwd-container ul li span {
-    color: #44BBA4;
-    font-weight: 700;
+    .intro-text {
+        text-align: center;
+        width: 100%;
+    }
+
+    .popup-container {
+        width: 100%;
+    }
+
+    #about-us-container {
+        padding: 2rem;
+        text-align: center;
+    }
 }
