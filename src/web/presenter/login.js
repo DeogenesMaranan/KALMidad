@@ -5,6 +5,8 @@ import {
 
 
 const signinButton = document.getElementById('signin-button')
+const signinRedirectButton = document.getElementById('signup-inside') 
+
 
 signinButton.addEventListener('click', async () => {
     const p_email = document.getElementById('signin-email').value
@@ -37,6 +39,10 @@ signinButton.addEventListener('click', async () => {
         errorHolder.textContent = `Error signing in: Ensure all information is correct.`
         errorHolder.style.display = 'block';
     }
+})
+
+signinRedirectButton.addEventListener('click', () => {
+    window.open('../structure/signup.html', '_self')
 })
 
 async function getUserType(uid) {

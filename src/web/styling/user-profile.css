@@ -28,6 +28,7 @@ main {
     padding-bottom: 1rem;
     margin-top: 2.5rem;
     border-radius: 1rem;
+    overflow-x: scroll;
     border: 0.1rem solid black;
 }
 
@@ -146,7 +147,7 @@ main h2 {
 }
 
 .address-holder div select {
-    width: 28.7rem;
+    width: 31.3rem;
     height: 1.8rem;
 }
 
@@ -174,7 +175,7 @@ main h2 {
 
 .name-holder button, 
 .address-holder button {
-    width: 13rem;
+    min-width: 13rem;
     height: 2.2rem;
     border: none;
     margin-left: 2rem;

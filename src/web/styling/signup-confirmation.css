@@ -25,6 +25,10 @@ body {
     align-items: center;
 }
 
+.confirmation-constainer::-webkit-scrollbar {
+    display: none;
+}
+
 .confirmation-constainer h1 {
     text-align: center;
     color: black;

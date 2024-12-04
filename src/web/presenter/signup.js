@@ -29,6 +29,14 @@ if(document.getElementById('signup-button')) {
     })
 }
 
+if(document.getElementById('signup-inside')) {
+    const loginRedirectButton = document.getElementById('signup-inside')
+
+    loginRedirectButton.addEventListener('click', () => {
+        window.open('../structure/login.html', '_self')
+    })
+}
+
 if(document.getElementById('continue-button')) {
     const continueButton = document.getElementById('continue-button')
 
