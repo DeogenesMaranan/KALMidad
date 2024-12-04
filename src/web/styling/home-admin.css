@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-
 body {
     width: 100vw;
     height: 100vh;
@@ -66,7 +65,7 @@ body::-webkit-scrollbar {
     border-radius: 1.2rem;
     box-sizing: border-box;
     margin: 0.8rem 0 1.5rem 0;
-    background-image: url('../assets/Frame\ 80.png')
+    background-image: url('../assets/Frame\ 80.png');
 }
 
 .header-container .main-header-container h1 {
@@ -92,7 +91,7 @@ body::-webkit-scrollbar {
     display: flex;
     padding: 1rem;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-between;
     box-sizing: border-box;
     border-radius: 0.5rem;
     border: 0.1rem solid #D3D0CB;
@@ -198,4 +197,114 @@ body::-webkit-scrollbar {
 .cases-container .case div {
     width: 100%;
     height: 1rem;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media screen and (max-width: 1024px) {
+    .header-container .main-header-container {
+        padding: 1.2rem 3rem; /* Adjust padding for smaller screens */
+    }
+
+    .header-container .main-header-container h1 {
+        font-size: 4.5rem; /* Adjust header font size */
+    }
+
+    .dashboard-container {
+        flex-direction: column; /* Stack dashboard containers */
+    }
+
+    .dashboard-container .top-cities-container {
+        width: 100%; /* Full width for top cities container */
+        padding: 0.5rem 2rem; /* Adjust padding */
+        margin-bottom: 1rem;
+    }
+
+    .dashboard-container .total-cases-per-classification {
+        width: 100%; /* Full width for total cases container */
+        margin-left: 0; /* Remove margin */
+    }
+
+    .top-cities-container .top-cities-list-container .city-info-container {
+        font-size: 1rem; /* Adjust font size */
+    }
+
+    .dashboard-container .total-cases-per-classification h2 {
+        font-size: 1.7rem; /* Adjust heading font size */
+    }
+
+    .cases-container .case {
+        min-width: 100%; /* Make cases take full width */
+        margin-bottom: 1rem; /* Adjust margin */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header-container .main-header-container {
+        padding: 1.2rem 2rem; /* Adjust padding further */
+    }
+
+    .header-container .main-header-container h1 {
+        font-size: 3.5rem; /* Reduce font size */
+    }
+
+    .dashboard-container {
+        flex-direction: column; /* Stack dashboard containers */
+        padding: 0.5rem; /* Adjust padding */
+    }
+
+    .dashboard-container .top-cities-container,
+    .dashboard-container .total-cases-per-classification {
+        width: 100%; /* Full width containers */
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .dashboard-container .top-cities-container h3 {
+        font-size: 1.2rem; /* Adjust header font size */
+    }
+
+    .top-cities-container .top-cities-list-container .city-info-container {
+        font-size: 1rem; /* Adjust font size */
+    }
+
+    .cases-container .case {
+        min-width: 45%; /* Adjust case width */
+        margin-bottom: 1rem;
+    }
+
+    .dashboard-container .total-cases-per-classification h2 {
+        font-size: 1.5rem; /* Adjust heading font size */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header-container .main-header-container h1 {
+        font-size: 2.5rem; /* Adjust font size for very small screens */
+    }
+
+    .dashboard-container {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 1rem; /* Adjust padding */
+    }
+
+    .dashboard-container .top-cities-container,
+    .dashboard-container .total-cases-per-classification {
+        width: 100%; /* Full width containers */
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .cases-container .case {
+        min-width: 100%; /* Full width for case cards */
+        margin-bottom: 1rem; /* Adjust margin */
+    }
+
+    .top-cities-container .top-cities-list-container .city-info-container {
+        font-size: 0.9rem; /* Smaller font size */
+    }
+
+    .dashboard-container .total-cases-per-classification h2 {
+        font-size: 1.2rem; /* Adjust heading font size */
+    }
 }
