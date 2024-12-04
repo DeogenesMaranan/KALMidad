@@ -1,4 +1,3 @@
-
 body {
     width: 100vw;
     height: 100vh;
@@ -10,7 +9,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-    display: none; 
+    display: none;
 }
 
 .sidebar-container {
@@ -81,13 +80,34 @@ body::-webkit-scrollbar {
 }
 
 .main-container {
-    width: 100%;
+    width: calc(100% - 7rem); /* The main content takes up the rest of the space, adjusting for the closed sidebar */
     height: 100%;
     box-sizing: border-box;
     background-color: white;
+    transition: width 0.3s ease; /* Smooth transition for resizing */
 }
 
 .main-container iframe {
     width: 100%;
     height: 100%;
+}
+
+/* RESPONSIVE DESIGN FOR MAIN CONTENT */
+
+@media screen and (max-width: 1024px) {
+    .main-container {
+        width: calc(100% - 5rem); /* Adjust width for medium screens (tablets) */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main-container {
+        width: calc(100% - 3rem); /* Reduce the width on smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-container {
+        width: 100%; /* Full width for very small screens */
+    }
 }
