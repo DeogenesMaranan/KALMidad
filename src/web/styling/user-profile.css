@@ -187,3 +187,170 @@ main h2 {
     background-color: #E7BB41;
 }
 
+/* Media Queries for Responsiveness */
+
+/* For tablets and smaller screens (1024px and below) */
+@media (max-width: 1024px) {
+    body {
+        padding: 2rem;
+    }
+
+    .user-profile-image-holder {
+        height: 8rem;
+    }
+
+    .user-profile-image-holder .sub-container {
+        width: 10rem;
+        height: 10rem;
+        margin: 1rem auto;
+    }
+
+    .sub-container #profile-image-holder {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .header-buttons {
+        margin: 5rem 3rem 0 10%;
+    }
+
+    .header-buttons button {
+        width: 16rem;
+        height: 2.5rem;
+    }
+
+    .header-buttons button h3 {
+        font-size: 1rem;
+    }
+
+    main h2 {
+        margin: 2rem 10% 1rem 10%;
+        font-size: 1.5rem;
+    }
+
+    .name-holder div input,
+    .address-holder div select,
+    .email-holder input {
+        width: 90%;
+    }
+
+    .name-holder button,
+    .address-holder button {
+        width: auto;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* For mobile devices (768px and below) */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    main h1 {
+        font-size: 1.8rem;
+    }
+
+    .user-profile-image-holder {
+        height: 7rem;
+    }
+
+    .user-profile-image-holder .sub-container {
+        width: 8rem;
+        height: 8rem;
+        margin: 1rem auto;
+    }
+
+    .sub-container #profile-image-holder {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .header-buttons {
+        margin: 4rem 2rem 0 5%;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .header-buttons button {
+        width: 14rem;
+        height: 2.5rem;
+    }
+
+    main h2 {
+        margin: 1.5rem 5% 1rem 5%;
+        font-size: 1.3rem;
+    }
+
+    .name-holder div input,
+    .address-holder div select,
+    .email-holder input {
+        width: 100%;
+    }
+
+    .name-holder div,
+    .address-holder div {
+        margin-right: 1rem;
+    }
+
+    .name-holder button,
+    .address-holder button {
+        margin-left: 0;
+        align-self: center;
+        width: auto;
+    }
+}
+
+/* For small mobile screens (480px and below) */
+@media (max-width: 480px) {
+    main h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .user-profile-image-holder {
+        height: 6rem;
+    }
+
+    .user-profile-image-holder .sub-container {
+        width: 6rem;
+        height: 6rem;
+        margin: 1rem auto;
+    }
+
+    .sub-container #profile-image-holder {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .header-buttons {
+        margin: 3rem 1rem 0 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .header-buttons button {
+        width: 12rem;
+        height: 2rem;
+    }
+
+    main h2 {
+        margin: 1rem;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .name-holder div input,
+    .address-holder div select,
+    .email-holder input {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .name-holder button,
+    .address-holder button {
+        width: auto;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
