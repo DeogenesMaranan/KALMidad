@@ -93,48 +93,22 @@ main img {
     border-radius: 5rem;
     border: none;
 }
-/* Hover effect for buttons */
-.header-buttons button:hover {
-    background-color: #E7BB41; /* Change background color on hover */
-    color: white; /* Change text color */
-    cursor: pointer; /* Add pointer cursor to indicate it's clickable */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+
+.header-buttons button h3 {
+    font-size: 1.2rem;
+    margin-left: 1rem;
 }
 
-.header-buttons #view-personal-info-button:hover {
-    background-color: #F0E6B6; /* Lighter background color for 'view personal info' button */
-    color: black; /* Change text color */
+.header-buttons #view-personal-info-button {
+    color: black;
+    margin-right: 2rem;
+    background-color: #FAF1D9;
 }
 
-.header-buttons #signout-button:hover {
-    background-color: #F5F5F5; /* Lighter background color for signout button */
-    color: #555555; /* Darker text color */
+.header-buttons #signout-button {
+    color: #878C8E;
+    background-color: white;
 }
-
-/* Click effect for buttons (simulate button press) */
-.header-buttons button:active {
-    transform: scale(0.98); /* Make button appear pressed */
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
-    transition: transform 0.1s ease; /* Smooth transition */
-}
-
-/* Specific click effect for view personal info button */
-.header-buttons #view-personal-info-button:active {
-    transform: scale(0.98); /* Button press effect */
-    background-color: #F0E6B6; /* Maintain hover background color on click */
-}
-
-/* Specific click effect for signout button */
-.header-buttons #signout-button:active {
-    transform: scale(0.98); /* Button press effect */
-    background-color: #F5F5F5; /* Maintain hover background color on click */
-}
-
-/* Optional: Add a slight transition to make the button color change smoother */
-.header-buttons button {
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
-}
-
 
 main h2 {
     margin: 3rem 13% 1.5rem 13%;
