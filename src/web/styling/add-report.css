@@ -1,3 +1,4 @@
+
 body {
     width: 100vw;
     height: 120vh;
@@ -100,12 +101,11 @@ body::-webkit-scrollbar {
     font-size: 1.1rem;
     color: black;
     padding: 0.5rem;
-    width: 100%; /* Ensure inputs and selects take full width */
 }
 
 .name-container div input,
 .datetime-container div input {
-    width: 100%; /* Full width for input elements */
+    width: 18rem;
     height: 2.4rem;
 }
 
@@ -123,7 +123,7 @@ body::-webkit-scrollbar {
 
 .calamity-container select, 
 .address-container div div select {
-    width: 100%; /* Make the select elements full width */
+    width: 19rem;
     padding: 1rem;
 }
 
@@ -147,7 +147,7 @@ body::-webkit-scrollbar {
 }
 
 .description-container textarea {
-    width: 100%; /* Full width textarea */
+    width: 45rem;
     height: 9rem;
 }
 
@@ -219,101 +219,4 @@ body::-webkit-scrollbar {
     border: 0;
     border-radius: 0.3rem;
     background-color: #E7BB41;
-}
-
-/* RESPONSIVE DESIGN */
-
-@media screen and (max-width: 1024px) {
-    .left-container {
-        width: 28rem; /* Adjust left container width */
-    }
-
-    .right-container {
-        padding: 1.5rem; /* Reduce padding in right container */
-    }
-
-    .design-container {
-        padding-bottom: 5rem; /* Adjust padding on smaller screens */
-    }
-
-    .name-container div input,
-    .datetime-container div input {
-        width: 16rem; /* Adjust input fields width */
-    }
-
-    .description-container textarea {
-        width: 35rem; /* Adjust textarea width */
-    }
-
-    #submit-report-button,
-    #update-report-button {
-        width: 10rem; /* Adjust button width */
-    }
-
-    .popup-container .popup {
-        width: 30rem; /* Adjust popup width */
-    }
-}
-
-@media screen and (max-width: 768px) {
-    body {
-        flex-direction: column; /* Stack the elements vertically */
-    }
-
-    .element-container {
-        flex-direction: column; /* Stack the elements vertically */
-        margin: 2rem 2rem; /* Reduce margin */
-    }
-
-    .left-container,
-    .right-container {
-        width: 100%; /* Full width on smaller screens */
-        height: auto; /* Adjust height */
-    }
-
-    .design-container {
-        padding-bottom: 4rem; /* Adjust padding */
-    }
-
-    .name-container div input,
-    .datetime-container div input {
-        width: 100%; /* Full width input fields */
-    }
-
-    .description-container textarea {
-        width: 100%; /* Full width textarea */
-    }
-
-    .popup-container .popup {
-        width: 25rem; /* Adjust popup width */
-    }
-
-    #submit-report-button,
-    #update-report-button {
-        width: 80%; /* Full width buttons */
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .left-container {
-        width: 100%; /* Full width for left container */
-        margin-bottom: 1rem; /* Space between left and right containers */
-    }
-
-    .right-container {
-        width: 100%; /* Full width for right container */
-    }
-
-    .description-container textarea {
-        width: 100%; /* Full width textarea */
-    }
-
-    #submit-report-button,
-    #update-report-button {
-        width: 100%; /* Full width button */
-    }
-
-    .popup-container .popup {
-        width: 90%; /* Popup width to 90% */
-    }
 }
