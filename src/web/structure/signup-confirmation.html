@@ -23,5 +23,11 @@
     </div>
 
     <script src="../../dist/signup.bundle.js"></script>
+    <script>
+        const email = sessionStorage.getItem('email');
+        if (email) {
+            document.getElementById('email-textview').textContent = email;
+        }
+    </script>    
 </body>
 </html>

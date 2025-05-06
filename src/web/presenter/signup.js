@@ -18,6 +18,7 @@ if(document.getElementById('signup-button')) {
 
                 await initializeUserProfile(uid)
                 sessionStorage.setItem('uid', uid) 
+                sessionStorage.setItem('email', p_email)
                 window.open('../structure/signup-confirmation.html', '_self')
             }
         }
