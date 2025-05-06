@@ -1,11 +1,14 @@
+import multer from 'multer';
 
-import multer from 'multer'
+class MulterService {
+    static storage = multer.diskStorage({
+        filename: function (req, file, cb) {
+            cb(null, file.originalname);
+        }
+    });
 
+    static upload = multer({ storage: MulterService.storage });
+}
 
-const storage = multer.diskStorage({
-    filename: function(req, file, cb) {
-        cb(null, file.originalname)
-    }
-})
-
-export const upload = multer({storage: storage})
+export default MulterService.upload;
+export const upload = MulterService.upload;
