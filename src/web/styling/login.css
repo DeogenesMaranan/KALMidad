@@ -114,3 +114,9 @@ body::-webkit-scrollbar {
 .submit-button:hover {
     background-color: #399d89;
 }
+
+.submit-button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
