@@ -1,106 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>KALMidad - Support Request Page</title>
-
-    <link rel="stylesheet" href="../styling/add-report.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KALMidad - Support Request Page</title>
+  <link rel="stylesheet" href="../styling/add-report.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-    <div class="element-container container">
-        <div class="left-container container">
-            <img src="../assets/home_logo.png" alt="KALMidad">
-
-            <div class="container design-container">
-                <img src="../assets/first-aid-kit.png" alt="">
-                <h3>Help is <span style="color: #E7BB41;">one</span> click away!</h3>
-                <p>Let us know your issue by filling up the form.</p>
-            </div>
-        </div>
-
-        <div class="right-container container">
-            <div class="header-container">
-                <h3 id="report-form-header"> Support Request Form</h3>
-                <p>Please complete the form below detailing your request and a member of our support staff will respond as soon as possble.</p>
-            </div>
-
-            <div class="calamity-container">
-                <label for="calamity-dropdown">WHAT TYPE OF CALAMITY AFFECTED YOU? <span style="color: #E21717;">*</span></label>
-                <select name="calamity-dropdown" id="calamity-dropdown">
-                    <option value=""></option>
-                    <option value="flood">Flood</option>
-                    <option value="typhoon">Typhoon</option>
-                    <option value="landslide">Landslide</option>
-                    <option value="earthquake">Earthquake</option>
-                </select>
-            </div>
-
-            <div class="datetime-container">
-                <label>WHEN DID THIS HAPPEN? <span style="color: #E21717;">*</span></label>
-                <div>
-                    <input type="date" id="date-input" required>
-                    <input type="time" id="time-input" required>
-                </div>
-            </div>
-
-            <div class="address-container">
-                <label>WHICH PART OF BATANGAS ARE YOU AT? <span style="color: #E21717;">*</span></label>
-                
-                <div>
-                    <div>
-                        <select name="city-input" id="city-input" required>
-                            <option value=""></option>
-                            <option value="San Pascual">San Pascual</option>
-                            <option value="Bauan">Bauan</option>
-                        </select>
-                        <label for="city-input">City <span style="color: #E21717;">*</span></label>
-                    </div>
-
-                    <div>
-                        <select name="town-input" id="town-input" required>
-                            <option value=""></option>
-                            <option value="Bayanan">Bayanan</option>
-                            <option value="San Mateo">San Mateo</option>
-                        </select>
-                        <label for="town-input">Town <span style="color: #E21717;">*</span></label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="image-selector-container">
-                <label for="image-file-selector">ADD IMAGE OF THE DESTRUCTION THIS CALAMITY HAS CAUSED YOU <span style="color: #E21717;">*</span></label>
-                <div><img id="selected-image-holder" src="" alt="Selected Image"></div>
-                <input type="file" id="image-file-selector" accept="image/*" required>
-            </div>
-
-            <div class="description-container">
-                <label for="description-input">ADD DETAILED EXPLANATION OF HOW THIS CALAMITY AFFECTED YOU <i style="color: #878C8E;">(optional)</i></label>
-                <textarea name="description-input" id="description-input"></textarea>
-            </div>
-
-            <button id="submit-report-button" style="display: none;">Submit</button>
-            <button id="update-report-button" style="display: none;">Update</button>
-        </div>
+  <div class="element-container container">
+    <div class="left-container container">
+      <img src="../assets/home_logo.png" alt="KALMidad">
+      <div class="container design-container">
+        <img src="../assets/first-aid-kit.png" alt="">
+        <h3>Help is <span style="color: #E7BB41;">one</span> click away!</h3>
+        <p>Let us know your issue by filling up the form.</p>
+      </div>
     </div>
 
-    <div class="popup-container" id="popup-container">
-        <div class="popup">
-            <img src="../assets/icons8-check-64.png" alt="">
-            <h3>Successfully posted your report!</h3>
-            <p>Please wait for our team to review your report.</p>
+    <div class="right-container container">
+      <div class="header-container">
+        <h3 id="report-form-header">Support Request Form</h3>
+        <p>Please complete the form below detailing your request and a member of our support staff will respond as soon as possible.</p>
+      </div>
 
-            <button id="continue-button">Continue</button>
+      <form id="support-form" novalidate>
+        <div class="calamity-container">
+          <label for="calamity-dropdown">WHAT TYPE OF CALAMITY AFFECTED YOU? <span style="color: #E21717;">*</span></label>
+          <select name="calamity-dropdown" id="calamity-dropdown" required>
+            <option value=""></option>
+            <option value="flood">Flood</option>
+            <option value="typhoon">Typhoon</option>
+            <option value="landslide">Landslide</option>
+            <option value="earthquake">Earthquake</option>
+          </select>
         </div>
-    </div>
 
-    <script src="../../services/image-severity-processor.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    <script src="../../dist/location.bundle.js"></script>
-    <script src="../../dist/addReport.bundle.js"></script>
+        <div class="datetime-container">
+          <label>WHEN DID THIS HAPPEN? <span style="color: #E21717;">*</span></label>
+          <div>
+            <input type="date" id="date-input" required>
+            <input type="time" id="time-input" required>
+          </div>
+        </div>
+
+        <div class="address-container">
+          <label>WHICH PART OF BATANGAS ARE YOU AT? <span style="color: #E21717;">*</span></label>
+          <div>
+            <div>
+              <select name="city-input" id="city-input" required>
+                <option value=""></option>
+                <option value="San Pascual">San Pascual</option>
+                <option value="Bauan">Bauan</option>
+              </select>
+              <label for="city-input">City <span style="color: #E21717;">*</span></label>
+            </div>
+            <div>
+              <select name="town-input" id="town-input" required>
+                <option value=""></option>
+                <option value="Bayanan">Bayanan</option>
+                <option value="San Mateo">San Mateo</option>
+              </select>
+              <label for="town-input">Town <span style="color: #E21717;">*</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="image-selector-container">
+          <label for="image-file-selector">ADD IMAGE OF THE DESTRUCTION THIS CALAMITY HAS CAUSED YOU <span style="color: #E21717;">*</span></label>
+          <div><img id="selected-image-holder" src="" alt="Selected Image"></div>
+          <input type="file" id="image-file-selector" accept="image/*" required>
+        </div>
+
+        <div class="description-container">
+          <label for="description-input">ADD DETAILED EXPLANATION OF HOW THIS CALAMITY AFFECTED YOU <i style="color: #878C8E;">(optional)</i></label>
+          <textarea name="description-input" id="description-input"></textarea>
+        </div>
+
+        <button type="submit" id="submit-report-button" style="display: none;">Submit</button>
+        <button type="button" id="update-report-button" style="display: none;">Update</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup-container" id="popup-container">
+    <div class="popup">
+      <img src="../assets/icons8-check-64.png" alt="">
+      <h3>Successfully posted your report!</h3>
+      <p>Please wait for our team to review your report.</p>
+      <button id="continue-button">Continue</button>
+    </div>
+  </div>
+
+  <script src="../../services/image-severity-processor.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+  <script src="../../dist/location.bundle.js"></script>
+  <script src="../../dist/addReport.bundle.js"></script>
 </body>
 </html>
