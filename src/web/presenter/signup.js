@@ -23,10 +23,10 @@ if(document.getElementById('signup-button')) {
             }
         }
         catch(error) {
-            const errorHolder = document.getElementById('error-message-holder')
-            errorHolder.textContent = `Error signing up: Ensure email is active.`
-            errorHolder.style.display = 'block'
-        }
+            const errorHolder = document.getElementById('error-message-holder');
+            errorHolder.textContent = `Error: ${error.message || 'Something went wrong.'}`;
+            errorHolder.style.display = 'block';
+        }        
     })
 }
 
