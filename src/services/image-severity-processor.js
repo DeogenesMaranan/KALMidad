@@ -1,24 +1,28 @@
+class ImageSeverityProcessor {
+    static async floodProcessor(p_image) {
+        const modelURL = '../../services/image-models/flood/model.json';
+        const metadataURL = '../../services/image-models/flood/metadata.json';
 
+        const model = await tmImage.load(modelURL, metadataURL);
+        const prediction = await model.predict(p_image);
 
-async function floodProcessor(p_image) {
-    const modelURL = '../../services/image-models/flood/model.json'
-    const metadataURL = '../../services/image-models/flood/metadata.json'
+        return this.getLargest(prediction);
+    }
 
-    let model = await tmImage.load(modelURL, metadataURL)
-    const prediction = await model.predict(p_image)
+    static getLargest(array) {
+        let largest = 0;
+        let name = '';
 
-    return getLargest(prediction)
+        array.forEach(element => {
+            if (element.probability > largest) {
+                largest = element.probability;
+                name = element.className;
+            }
+        });
+
+        return name;
+    }
 }
 
-function getLargest(array) {
-    var largest = 0
-    var name = ''
-
-    array.forEach(element => {
-        if (element.probability > largest) {
-            largest = element.probability
-            name = element.className
-        }
-    });
-    return name
-}
+export const floodProcessor = ImageSeverityProcessor.floodProcessor;
+export const getLargest = ImageSeverityProcessor.getLargest;
