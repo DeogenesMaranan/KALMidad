@@ -286,7 +286,7 @@ landing.html
    <tr>
       <td width="25%">
          <div align="center">
-            <a href="https://drive.google.com/drive/folders/14YdWsfNPUnofs25Nddq7WoeR5iHhVD_q?usp=sharing">
+            <a href="https://docs.google.com/document/d/1UGmG2grI9_qhyXu5an-qhn29iZxMONCByqPgvDas5cE/edit?usp=sharing">
                <img src="https://i.ibb.co/HLyN6mr/9746449.png" width="55%">
             </a>
             <p>Project Documentation</p>
