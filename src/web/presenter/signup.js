@@ -1,36 +1,39 @@
 import { signupUser, insertUserInfo } from '../../services/request.js';
 import UserCredential from '../../model/user-credential.js';
 
-const signupForm = document.getElementById('signup-form');
 
-signupForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    if (!signupForm.checkValidity()) {
-        signupForm.reportValidity();
-        return;
-    }
-
-    try {
-        const p_email = document.getElementById('signup-email').value;
-        const p_password = document.getElementById('signup-password').value;
-        const recaptchaToken = document.getElementById('g-recaptcha-response').value;
-
-        const response = await signupUser(p_email, p_password, recaptchaToken);
-
-        if (response.data.user.uid) {
-            const uid = response.data.user.uid;
-            await initializeUserProfile(uid);
-            sessionStorage.setItem('uid', uid);
-            sessionStorage.setItem('email', p_email);
-            window.open('../structure/signup-confirmation.html', '_self');
+if (document.getElementById('signup-form')){
+    const signupForm = document.getElementById('signup-form');
+    
+    signupForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+    
+        if (!signupForm.checkValidity()) {
+            signupForm.reportValidity();
+            return;
         }
-    } catch (error) {
-        const errorHolder = document.getElementById('error-message-holder');
-        errorHolder.textContent = `Error: ${error.message || 'Something went wrong.'}`;
-        errorHolder.style.display = 'block';
-    }
-});
+    
+        try {
+            const p_email = document.getElementById('signup-email').value;
+            const p_password = document.getElementById('signup-password').value;
+            const recaptchaToken = document.getElementById('g-recaptcha-response').value;
+    
+            const response = await signupUser(p_email, p_password, recaptchaToken);
+    
+            if (response.data.user.uid) {
+                const uid = response.data.user.uid;
+                await initializeUserProfile(uid);
+                sessionStorage.setItem('uid', uid);
+                sessionStorage.setItem('email', p_email);
+                window.open('../structure/signup-confirmation.html', '_self');
+            }
+        } catch (error) {
+            const errorHolder = document.getElementById('error-message-holder');
+            errorHolder.textContent = `Error: ${error.message || 'Something went wrong.'}`;
+            errorHolder.style.display = 'block';
+        }
+    });
+}
 
 if (document.getElementById('signup-inside')) {
     const loginRedirectButton = document.getElementById('signup-inside');
