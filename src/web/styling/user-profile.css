@@ -66,6 +66,7 @@ main img {
 }
 
 .user-profile-image-holder label {
+    color: #878C8E;
     position: absolute;
     margin: 12.5rem 12.5rem 12.5rem 17rem;
 }
@@ -92,6 +93,7 @@ main img {
     align-items: center;
     border-radius: 5rem;
     border: none;
+    transition: transform 0.1s;
 }
 
 .header-buttons button h3 {
@@ -185,6 +187,22 @@ main h2 {
     align-self: flex-end;
     border-radius: 0.4rem;
     background-color: #E7BB41;
+    transition: transform 0.1s;
+}
+
+#signout-button:hover,
+.user-profile-image-holder label:hover {
+    color: black;
+}
+
+#signout-button:active,
+.user-profile-image-holder label:active,
+.button-styling:active {
+    transform: scale(0.95);
+}
+
+.button-styling:hover {
+    background-color: #e7bb41c2;
 }
 
 /* Media Queries for Responsiveness */
