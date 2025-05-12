@@ -141,6 +141,7 @@ body::-webkit-scrollbar {
     background-color: #E7BB41;
     border-width: 0;
     font-size: 1.3rem;
+    transition: ease-in 0.1s;
 }
 
 #add-new-report-button span {
@@ -152,6 +153,14 @@ body::-webkit-scrollbar {
 #add-new-report-button p {
     margin: 0;
     line-height: 0%;
+}
+
+#add-new-report-button:hover {
+    background-color: #e7bb41c2;
+}
+
+#add-new-report-button:active {
+    transform: scale(0.95);
 }
 
 .report-container .report-holder {
