@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/John-Yumul/KALMidad/blob/main/src/web/assets/KALMidad.png" width="250" />
+ <img src="https://iili.io/38aMAVs.gif" height="150"</a>
 </p>
 <p align="center">
     <em><code>Document and Share Experiences During Calamities </code></em>
@@ -9,34 +9,31 @@
   <img src="https://img.shields.io/badge/CSS3-1572B6.svg?style=flat-square&logo=CSS3&logoColor=white" alt="CSS3" />
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black" alt="JavaScript" />
 </p>
-<p align="center">
-	<b>CS-3102</b><br>
-	<a href="https://github.com/JeserylMae">Jeseryl Mae D. Comia</a><br>
-	<a href="https://github.com/chustinecantal">Chustine Mae B. Cantal</a><br>
-	<a href="https://github.com/John-Yumul">John Angelo Yumul</a><br>
-</p>
-<hr>
 
-## 📖 Table of Contents
-- [📖 Table of Contents](#-table-of-contents)
-- [📍 Overview](#-overview)
-- [📦 Features](#-features)
-  - [🌐 Client Features](#-client-features)
-  - [🔒 Admin Features](#-admin-features)
-- [📂 Repository Structure](#-repository-structure)
-- [🚀 Getting Started](#-getting-started)
-  - [🔧 Installation](#-installation)
-  - [🤖 Running KALMidad](#-running-kalmidad)
-- [👏 Acknowledgement and Contribution Narrative](#-acknowledgement-and-contribution-narrative)
-  - [Acknowledgments](#acknowledgments)
+<details>
+	
+<summary><h2>🔎 Contents</h2></summary>
 
----
+- [Overview](#-overview)
+- [Features](#-features)
+  - [Client Features](#-client-features)
+  - [Admin Features](#-admin-features)
+- [Repository Structure](#-repository-structure)
+- [Getting Started](#-getting-started)
+  - [Installation](#-installation)
+  - [Running KALMidad](#-running-kalmidad)
+- [Member Profile](#members)
+
+</details>
 
 ## 📍 Overview
 
+<div align="justify">
+	
 KALMidad is a web application designed to collect reports documenting the effects of a calamity to an area, alerting the authorities about the immediate needs of the residents of that area during or after a calamity. In creating this project, we structured the program into four main directories inside the src folder: model, server, services, and web. We created these directories in order to adhere to the MVC architecture wherein the user interface, database interaction and the data templates are separated to enable efficient code organization, scalability and separation of concerns. 
 
----
+</div>
+<br>
 
 ## 📦 Features
 
@@ -80,8 +77,7 @@ Below are the features of the application referred to as **KALMidad**. Here's a 
 
 4. **Report Status Updates**
    - Mark reports as **Resolved** or **In Progress** to keep track of their status.
-
----
+<br>
 
 ## 📂 Repository Structure
 
@@ -169,8 +165,7 @@ The KALMidad repository is structured with a modular and organized layout, ensur
 
 ```
 </details>
-
----
+<br>
 
 ## 🚀 Getting Started
 
@@ -217,6 +212,8 @@ Install the required frameworks and libraries using the following commands. You 
     ```html
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     ```
+
+    <br>
    
 ### 🤖 Running KALMidad
 
@@ -224,42 +221,96 @@ Install the required frameworks and libraries using the following commands. You 
 landing.html
 ```
 
----
+<br>
 
-## 👏 Acknowledgement and Contribution Narrative
+### <a name="members"></a>
+### Member Profile
 
-### Acknowledgments
+<div align="center">
 
-The development of **KALMidad**, a web application, was made possibble by the collaborative efforts of a skilled and dedicated team. Each team member played a crucial role in contributing to the project's success. The following acknowledgments highlight the individual roles and contributions of each team member:
+<table width="100%">
+  <tr>
+    <td width="70%" align="center">
+      <img src="https://i.ibb.co/MZMmvPN/Passport-Picture-1-removebg-preview.png" width=40%">
+    </td>
+    <td>
+      <strong>💡 Vince Clyde S. Banaag</strong><br>
+      ➟ 22-06373
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://iili.io/38aO8Pt.jpg"  width=40%">
+    </td>
+    <td>
+      <strong>💡 Jeseryl Mae D. Comia</strong><br>
+      ➟ 22-03496
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://iili.io/38lfJRI.png"  width=40%">
+    </td>
+    <td>
+      <strong>💡 Iemerie Jom C. Manguit</strong><br>
+      ➟ 22-09658
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://iili.io/38aNbyv.jpg"  width=40%">
+    </td>
+    <td>
+      <strong>💡 Deogenes Gregorio S. Maranan</strong><br>
+      ➟ 22-07432
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://iili.io/38lHswb.png"  width=40%">
+    </td>
+    <td>
+      <strong>💡 Clarence C. Zamora</strong><br>
+      ➟ 22-04415
+    </td>
+  </tr>
+</table>
 
-#### [CHUSTINE](https://github.com/chustinecantal): Frontend Developer
-- Designed and implemented a responsive and intuitive **user interface** for KALMidad.
-- Developed smooth user interactions for features such as **registering, logging in, submitting reports, and navigating the dashboard**.
-- Ensured **cross-browser compatibility** and maintained a modern, visually appealing design layout.
+</div>
 
-#### [JESERYL](https://github.com/JeserylMae): Backend Developer
-- Developed the backend logic to handle the core functionalities of KALMidad, including:
-  - **Data processing** for user accounts and report submissions.
-  - **Image uploading** using Cloudinary and linking it with the database.
-  - Managing **report status updates** for admins.
-- Integrated **Firestore** as the primary database for efficient storage and retrieval of user data and reports.
-- Implemented APIs to facilitate communication between the frontend and backend.
-- Ensured robust **security measures**, including data validation and safe handling of sensitive user information.
-- Integrated APIs seamlessly, enhancing the user experience.
+### <a name="links"></a>
+## 🔗 Important Links
 
-#### [JOHN](https://github.com/John-Yumul): Full Stack Developer / Project Manager
-- Coordinated the integration of **frontend** and **backend** components, ensuring a cohesive application flow.
-- Designed the basic layout and architecture of KALMidad’s user interface and backend structure.
-- Ensured the application’s **scalability, security**, and **performance optimization**.
-- Implemented version control and maintained project documentation, including:
-  - A **detailed README** for developers and users.
-  - Regular updates on the GitHub repository.
-- Managed the project timeline, ensuring timely completion of milestones and effective team communication.
+<div align="center">
+<table width="100%">
+   <tr>
+      <td width="25%">
+         <div align="center">
+            <a href="https://drive.google.com/drive/folders/14YdWsfNPUnofs25Nddq7WoeR5iHhVD_q?usp=sharing">
+               <img src="https://i.ibb.co/HLyN6mr/9746449.png" width="55%">
+            </a>
+            <p>Project Documentation</p>
+         </div>
+      </td>
+      <td width="25%">
+         <div align="center">
+            <a href="https://www.figma.com/proto/kvVTjMtBxn3BxBEt7yKiMC/RAPID?node-id=1-3&t=fUxihvhNzw4plitc-1">
+               <img src="https://i.ibb.co/ZJKs3pm/4595100.png" width="55%">
+            </a>
+            <p>Initial Interface Design (Figma)</p>
+         </div>
+      </td>
+      <td width="25%">
+         <div align="center">
+            <a href="#">
+               <img src="https://i.ibb.co/JK5jTgY/5651475.png" width="55%">
+            </a>
+            <p>Presentation Slides</p>
+         </div>
+      </td>
+   </tr>
+</table>
+</div>
 
 
-**In summary**, the collaborative effort across frontend, backend, and full-stack development roles was crucial to building a scalable, secure, and efficient platform. This teamwork resulted in a seamless and engaging experience for both users and administrators, showcasing the team’s ability to transform ideas into a functional and impactful application.
 
-
-[**Return to Top**](#Top)
-
----
