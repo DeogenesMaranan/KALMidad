@@ -177,8 +177,8 @@ body::-webkit-scrollbar {
 
 .popup-container {
     width: 100%;
-    height: inherit;
-    position: absolute;
+    height: 100%;
+    position: fixed;
     display: none;
     justify-content: center;
     align-items: center;
@@ -222,4 +222,13 @@ body::-webkit-scrollbar {
     border: 0;
     border-radius: 0.3rem;
     background-color: #E7BB41;
+    transition: ease-in 0.1s;
+}
+
+.popup-container .popup button:hover {
+    background-color: #e7bb41c2;
+}
+
+.popup-container .popup button:active {
+    transform: scale(0.95);
 }
