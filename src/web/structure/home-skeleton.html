@@ -7,23 +7,24 @@
   <title>Home</title>
 
   <link rel="stylesheet" href="../styling/home-skeleton.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&" />
 </head>
 <body>
   <div class="sidebar-container">
     <div class="closed-sidebar-container" id="closed-sidebar-container">
       <button id="open-sidebar-button">
-        <img src="../assets/menu.svg" alt="Menu">
+        <span class="material-symbols-outlined"> menu </span>
       </button>
     </div>
 
     <div class="opened-sidebar-container" id="opened-sidebar-container">
       <div class="menu-items">
-        <div class="menu-item" id="home" style="background-color: #44BBA4;">
-          <img src="../assets/home.svg" alt="Home Icon">
+        <div class="menu-item" id="home" style="background-color: #e7bb4171;">
+          <span class="material-symbols-outlined"> home </span>
           <span>Home</span>
         </div>
         <div class="menu-item" id="recent-assessments">
-          <img src="../assets/scan.svg" alt="Recent Assessments Icon">
+          <span class="material-symbols-outlined"> history </span>
           <span>Recent Assessments</span>
         </div>
         <div class="menu-item" id="manage-reports" style="display: none;">
@@ -32,13 +33,13 @@
           <span>Manage Reports</span>
         </div>
         <div class="menu-item" id="profile-settings">
-          <img src="../assets/user.svg" alt="Profile Settings Icon">
+          <span class="material-symbols-outlined"> person </span>
           <span>Profile Settings</span>
         </div>
       </div>
       <!-- Logout Section -->
       <div class="logout" id="signout-button">
-        <img src="../assets/logout.svg" alt="Logout Icon" class="logout-icon">
+        <span class="material-symbols-outlined"> logout </span>
         <span class="logout-text">Log out</span>
       </div>
     </div>
