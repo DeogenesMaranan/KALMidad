@@ -1,9 +1,7 @@
-
 import { getAllReportsSubcollection } from "../../services/request.js"
 import { updateReportStatus } from "../../services/request.js"
 
 const reportsContainer = document.querySelector('.reports-container')
-
 
 document.addEventListener('DOMContentLoaded', async () => {
     const loadingScreen = document.getElementById('loading-screen');
@@ -34,6 +32,20 @@ async function handleResolve(e) {
 
         await updateReportStatus(uid, reportId, 'Resolved')
         reportHolder.querySelector('.status-holder').textContent = 'Status: Resolved'
+        
+        const resolvedButton = reportHolder.querySelector('#resolved-button')
+        if (resolvedButton) {
+            resolvedButton.remove()
+        }
+        const optionsMenu = reportHolder.querySelector('.status-options-buttons')
+        if (!optionsMenu.querySelector('#in-progress-button')) {
+            optionsMenu.innerHTML += `
+                <button id="in-progress-button">
+                    <p><span class="material-symbols-outlined">clock_loader_40</span></p>
+                    <p>In Progress</p>
+                </button>
+            `
+        }
     }
     catch (error) { console.error(error) }
 }
@@ -46,6 +58,20 @@ async function handleInProgress(e) {
 
         await updateReportStatus(uid, reportId, 'In Process')
         reportHolder.querySelector('.status-holder').textContent = 'Status: In Process'
+        
+        const inProgressButton = reportHolder.querySelector('#in-progress-button')
+        if (inProgressButton) {
+            inProgressButton.remove()
+        }
+        const optionsMenu = reportHolder.querySelector('.status-options-buttons')
+        if (!optionsMenu.querySelector('#resolved-button')) {
+            optionsMenu.innerHTML += `
+                <button id="resolved-button">
+                    <p><span class="material-symbols-outlined">task_alt</span></p>
+                    <p>Resolved</p>
+                </button>
+            `
+        }
     }
     catch (error) { console.error(error) }
 }
@@ -65,7 +91,7 @@ function loadReportButton(reportList) {
         flagIconContainer.innerHTML = (`
             <span class="material-symbols-outlined" style="color: ${flag.color};">flag</span>
             `) 
-        const hoverMenuOption = displayReportHoverOptions()
+        const hoverMenuOption = displayReportHoverOptions(report.status)
         
         reportButton.className = 'report-button'
         holderReport.className = 'holder-report'
@@ -100,23 +126,35 @@ function displayReportDetails(report, flag) {
     return reportDetailsContainer
 }
 
-function displayReportHoverOptions() {
+function displayReportHoverOptions(reportStatus) {
     const optionMenu = document.createElement('div')
 
-    optionMenu.innerHTML = (`
+    let buttonsHTML = `
         <div class="status-options-buttons">
             <h5>Mark as</h5>
+    `;
+    
+    if (reportStatus !== 'Resolved') {
+        buttonsHTML += `
             <button id="resolved-button">
                 <p><span class="material-symbols-outlined">task_alt</span></p>
                 <p>Resolved</p>
             </button>
+        `;
+    }
+    
+    if (reportStatus !== 'In Process') {
+        buttonsHTML += `
             <button id="in-progress-button">
                 <p><span class="material-symbols-outlined">clock_loader_40</span></p>
                 <p>In Progress</p>
             </button>
-        </div>
-    `)
+        `;
+    }
+    
+    buttonsHTML += `</div>`;
 
+    optionMenu.innerHTML = buttonsHTML;
     return optionMenu
 }
 
@@ -143,4 +181,3 @@ function getFlagColor(flagLabel) {
     }
     return flag
 }
-
