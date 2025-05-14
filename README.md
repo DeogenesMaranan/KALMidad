@@ -302,7 +302,7 @@ landing.html
       </td>
       <td width="25%">
          <div align="center">
-            <a href="#">
+            <a href="https://www.canva.com/design/DAGnbh6RXQc/kICbGYASYlOn1mFp5R46nA/view?utm_content=DAGnbh6RXQc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd411ece251">
                <img src="https://i.ibb.co/JK5jTgY/5651475.png" width="55%">
             </a>
             <p>Presentation Slides</p>
