@@ -8,9 +8,22 @@
 
   <link rel="stylesheet" href="../styling/recent-assessment.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"> 
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 
 <body>
+  <div id="loading-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; display: flex; justify-content: center; align-items: center; z-index: 9999;">
+    <div style="text-align: center;">
+      <div class="loader" style="border: 5px solid #f3f3f3; border-top: 5px solid #E7BB41; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+      <p style="margin-top: 20px; font-family: 'Inter', sans-serif; color: #333;">Loading reports...</p>
+    </div>
+  </div>
+
   <div class="element-container">
     <div class="header-container">
       <img src="../assets/home_logo.png" alt="KALMidad">

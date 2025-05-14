@@ -12,18 +12,18 @@ import {
 var uid, userType
 
 document.addEventListener('DOMContentLoaded', async () => {
+    const loadingScreen = document.getElementById('loading-screen');
     userType = sessionStorage.getItem('userType')
     
     try{
         if (userType === 'client') {
             uid = sessionStorage.getItem('uid')
-            const reponse = await getAllUserReport(uid)
-            displayTabularReports(reponse.data.data)
+            const response = await getAllUserReport(uid)
+            displayTabularReports(response.data.data)
         }
         else if (userType === 'admin') {
             const response = await getAllReportsSubcollection()
             const userData = response.data.data
-            
             displayTabularReportsAdmin(userData)
         }
     }
@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         emptyTableIndicator.innerHTML = '<i>Your report history appears here</i>'
 
         mainContainer.appendChild(emptyTableIndicator)
+    }
+    finally {
+        loadingScreen.style.display = 'none';
     }
 })
 
