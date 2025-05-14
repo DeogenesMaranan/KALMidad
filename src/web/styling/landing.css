@@ -75,8 +75,9 @@ nav ul li a:hover {
 }
 
 .logo {
+    margin-bottom: 5%;
     width: auto;
-    height: 45px;
+    height: 60px;
 }
 
 .intro-text {
