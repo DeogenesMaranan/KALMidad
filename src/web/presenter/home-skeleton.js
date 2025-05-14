@@ -98,27 +98,27 @@ function setActiveButton(activeButton) {
     profileSettingButtonClicked = false
     manageReportsButtonClicked = false
 
-    homeButton.style.backgroundColor = '#393E41'
-    recentAssessmentButton.style.backgroundColor = '#393E41'
-    profileSettingButton.style.backgroundColor = '#393E41'
-    manageReportsButton.style.backgroundColor = '#393E41'
+    homeButton.style.backgroundColor = 'white'
+    recentAssessmentButton.style.backgroundColor = 'white'
+    profileSettingButton.style.backgroundColor = 'white'
+    manageReportsButton.style.backgroundColor = 'white'
 
 
     switch (activeButton) {
         case 'HOME':
             homeButtonClicked = true
-            homeButton.style.backgroundColor = '#44BBA4'
+            homeButton.style.backgroundColor = '#e7bb4171'
             break
         case 'ASSESSMENT':
             recentAssessmentButtonClicked = true
-            recentAssessmentButton.style.backgroundColor = '#44BBA4'
+            recentAssessmentButton.style.backgroundColor = '#e7bb4171'
             break
         case 'PROFILE':
             profileSettingButtonClicked = true
-            profileSettingButton.style.backgroundColor = '#44BBA4'
+            profileSettingButton.style.backgroundColor = '#e7bb4171'
             break
         case 'REPORTS':
             manageReportsButtonClicked = true
-            manageReportsButton.style.backgroundColor = '#44BBA4'
+            manageReportsButton.style.backgroundColor = '#e7bb4171'
     }
 }
