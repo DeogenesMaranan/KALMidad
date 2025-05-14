@@ -16,6 +16,7 @@ const updateReportButton = document.getElementById('update-report-button')
 const imageFileSelector = document.getElementById('image-file-selector')
 const selectedImageHolder = document.getElementById('selected-image-holder')
 const form = document.getElementById('support-form')
+const loadingContainer = document.getElementById('loading-container');
 
 document.addEventListener('DOMContentLoaded', async () => {
     const requestType = sessionStorage.getItem('client-report-request')
@@ -49,6 +50,8 @@ form.addEventListener('submit', async (e) => {
         return
     }
 
+    loadingContainer.style.display = 'flex';
+
     try {
         const p_report = getUserInputAdd()
         const image = await uploadImage(selectedImage)
@@ -59,26 +62,27 @@ form.addEventListener('submit', async (e) => {
         const response = await insertReport(p_report, uid)
         const res = await insertNewUser(uid)
 
-        if (response && res) {
-            popupContainer.style.display = 'flex'
-        }
+        popupContainer.style.display = 'flex'
     } catch (error) {
         console.error(error)
+    } finally {
+        loadingContainer.style.display = 'none';
     }
 })
 
 updateReportButton.addEventListener('click', async () => {
     try {
-        const [reportData] = userReports.filter(report => report.id === reportId)
+        loadingContainer.style.display = 'flex';
 
+        const [reportData] = userReports.filter(report => report.id === reportId)
         const p_report = getUserInputUpdate(reportData)
         const response = await insertReport(p_report, uid)
 
-        if (response) {
-            popupContainer.style.display = 'flex'
-        }
+        popupContainer.style.display = 'flex'
     } catch (error) {
         console.error(error)
+    } finally {
+        loadingContainer.style.display = 'none';
     }
 })
 
