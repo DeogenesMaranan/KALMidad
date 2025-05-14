@@ -21,13 +21,13 @@ body::-webkit-scrollbar {
 }
 
 .closed-sidebar-container {
-    width: 7rem;
+    width: max-content;
     height: 100%;
     display: flex;
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
     flex-direction: row;
-    justify-content: center;
-    background-color: #393E41;
+    justify-content: flex-start;
+    background-color: #ffffff;
     box-sizing: border-box;
 }
 
@@ -35,25 +35,28 @@ body::-webkit-scrollbar {
     width: 80%;
     height: 3rem;
     border-width: 0;
-    background-color: #393E41;
+    background-color: #ffffff;
 }
 
-.closed-sidebar-container button img {
-    width: 2rem;
-    height: auto;
+.closed-sidebar-container button span {
+    font-size: 2rem;
+    color: black    ;
 }
 
 .opened-sidebar-container {
-    width: 23rem;
-    height: 100%;
+    width: max-content;
+    height: calc(100%-2rem);
     display: none;
-    color: white;
+    color: black;
     font-size: 1.1rem;
-    padding: 3rem 3.3rem;
+    padding: 2rem 2rem;
+    margin: 2rem;
     box-sizing: border-box;
-    background-color: #393E41;
+    background-color: white;
     flex-direction: column;
     justify-content: space-between;
+    border-radius: 0.5rem;
+    border: black 0.1rem solid;
 }
 
 .menu-item {
@@ -65,10 +68,9 @@ body::-webkit-scrollbar {
     border-radius: 0.5rem;
 }
 
-.menu-item img {
-    width: 1.8rem;
-    height: auto;
-    margin-right: 1rem;
+.menu-item .material-symbols-outlined {
+    color: black;
+    margin-right: 0.5rem;
 }
 
 .logout {
@@ -80,7 +82,7 @@ body::-webkit-scrollbar {
 }
 
 .main-container {
-    width: calc(100% - 7rem); /* The main content takes up the rest of the space, adjusting for the closed sidebar */
+    width: 100%; /* The main content takes up the rest of the space, adjusting for the closed sidebar */
     height: 100%;
     box-sizing: border-box;
     background-color: white;
