@@ -9,11 +9,11 @@
 }
 
 body {
-    width: 100vw;
+    width: 100%;
     height: max-content;
     margin: 0;
     display: flex;
-    padding: 3rem 4rem;
+    padding: 2.5rem 2.5rem 0rem 0.5rem;
     flex-direction: column;
     box-sizing: border-box;
     background-color: white;
