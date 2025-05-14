@@ -6,6 +6,7 @@ import {
 
 const signinButton = document.getElementById('signin-button')
 const signinRedirectButton = document.getElementById('signup-inside') 
+const loadingContainer = document.getElementById('loading-container');
 
 
 signinButton.addEventListener('click', async () => {
@@ -14,6 +15,7 @@ signinButton.addEventListener('click', async () => {
     const recaptchaToken = document.getElementById('g-recaptcha-response').value
 
     try {
+        loadingContainer.style.display = 'flex';
         const user = await signInUser(p_email, p_password, recaptchaToken)
         
         if (user.data.user.emailVerified) {
@@ -38,6 +40,9 @@ signinButton.addEventListener('click', async () => {
         const errorHolder = document.getElementById('error-message-holder')
         errorHolder.textContent = `Error signing in: Ensure all information is correct.`
         errorHolder.style.display = 'block';
+    }
+    finally {
+        loadingContainer.style.display = 'none';
     }
 })
 
