@@ -6,11 +6,15 @@ const reportsContainer = document.querySelector('.reports-container')
 
 
 document.addEventListener('DOMContentLoaded', async () => {
+    const loadingScreen = document.getElementById('loading-screen');
     try {
         const reportList = await getAllReportsSubcollection()
         loadReportButton(reportList.data.data)
     }
     catch(error) { console.error(error) }
+    finally {
+        loadingScreen.style.display = 'none';
+    }
 })
 
 reportsContainer.addEventListener('click', (e) => {
